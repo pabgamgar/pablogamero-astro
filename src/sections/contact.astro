@@ -2,6 +2,8 @@
 import LocationSVG from "../icons/location.astro";
 import ArrowTopLeftSVG from "../icons/arrow-top-left.astro";
 import ArrowTopLeft from "../icons/arrow-top-left.astro";
+import { Button } from "@/components/ui/button";
+import SendSVG from "../icons/send.astro";
 ---
 
 <div class="content-contact content">
@@ -23,9 +25,21 @@ import ArrowTopLeft from "../icons/arrow-top-left.astro";
       <label for="message">𝌕 Message</label>
       <textarea id="message" name="message" required></textarea>
     </div>
-    <button type="submit" class="bg-primary py-2 rounded-md">Send</button>
+    <Button type="submit" className="text-black flex gap-2 group">
+      <p>Send</p>
+      <SendSVG
+        size="16"
+        class="group-hover:translate-x-1 transition duration-300"
+      />
+    </Button>
   </form>
-
+  <p class="text-center">or</p>
+  <a
+    href="https://booking.akiflow.com/pablogamero"
+    class="h-10 w-auto flex items-center justify-center bg-gradient-to-br from-white/50 to-white/10 shadow-2xl rounded-lg"
+  >
+    Book a meeting
+  </a>
   <style>
     .content-contact {
       display: flex;

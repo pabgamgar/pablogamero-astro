@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import LanguageSVG from "@/icons/language.astro";
 
 interface Props {
   title: string;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const { title, lang, desc } = Astro.props;
+const path = Astro.url.pathname;
 ---
 
 <script>
@@ -50,6 +52,26 @@ const { title, lang, desc } = Astro.props;
 
   <body>
     <!-- <Header/> -->
+    <div class="absolute top-6 left-6 flex gap-2">
+      <div
+        class="aspect-square flex items-center justify-center bg-gradient-to-br from-white/50 to-white/10 shadow-2xl rounded-lg size-8"
+      >
+        <LanguageSVG />
+      </div>
+      <a
+        href="/"
+        class=`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 to-white/10 shadow-2xl rounded-lg h-8 w-8 ${path === "/" ? "border" : ""}`
+      >
+        EN
+      </a>
+      <a
+        href="/es"
+        class=`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 to-white/10 shadow-2xl rounded-lg h-8 w-8 ${path === "/es" ? "bg-primary" : ""}`
+      >
+        ES
+      </a>
+    </div>
+
     <main>
       <slot />
     </main>

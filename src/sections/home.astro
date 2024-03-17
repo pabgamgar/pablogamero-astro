@@ -3,6 +3,11 @@ import LocationSVG from "../icons/location.astro";
 import ArrowTopLeftSVG from "../icons/arrow-top-left.astro";
 import ArrowTopLeft from "../icons/arrow-top-left.astro";
 import { Button } from "@/components/ui/button";
+import { socials } from "@/lib/data";
+import InstaSVG from "@/icons/instagram.astro";
+import XSVG from "@/icons/x.astro";
+import GithubSVG from "@/icons/github.astro";
+import LinkedInSVG from "@/icons/linkedin.astro";
 
 // function calculateAge() {
 //   const today = Date.now();
@@ -100,7 +105,37 @@ import { Button } from "@/components/ui/button";
       to grow and learn.
     </p>
   </div>
-  <Button className="px-2 py-1 rounded-md text-black mt-4">Work with me</Button>
+  <div class="flex gap-4 items-center mt-4">
+    <Button className="px-2 py-1 rounded-md text-black flex-grow"
+      >Work with me</Button
+    >
+    <div class="flex gap-2 items-center">
+      <a
+        href="https://linkedin.com/in/pablogamerogarcia"
+        class="size-10 flex items-center justify-center bg-gradient-to-br from-white/50 to-white/10 shadow-2xl rounded-lg"
+      >
+        <LinkedInSVG />
+      </a>
+      <a
+        href="https://instagram.com/pablogamerogarcia"
+        class="size-10 flex items-center justify-center bg-gradient-to-br from-white/50 to-white/10 shadow-2xl rounded-lg"
+      >
+        <InstaSVG />
+      </a>
+      <a
+        href="https://x.com/pabgamgar"
+        class="size-10 flex items-center justify-center bg-gradient-to-br from-white/50 to-white/10 shadow-2xl rounded-lg"
+      >
+        <XSVG />
+      </a>
+      <a
+        href="https://github.com/pablogg411"
+        class="size-10 flex items-center justify-center bg-gradient-to-br from-white/50 to-white/10 shadow-2xl rounded-lg"
+      >
+        <GithubSVG />
+      </a>
+    </div>
+  </div>
 
   <style>
     .content-home {
