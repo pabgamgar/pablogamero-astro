@@ -1,0 +1,96 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title: string;
+  desc: string;
+  lang: "en" | "es";
+}
+
+const { title, lang, desc } = Astro.props;
+---
+
+<script>
+  const favicon = document.getElementById("favicon") as HTMLLinkElement;
+
+  document.addEventListener("visibilitychange", () => {
+    const hidden = document.hidden;
+
+    favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.ico`);
+  });
+</script>
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={desc} />
+    <meta name="viewport" content="width=device-width" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon2.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta
+      name="robots"
+      content="[index, follow | noindex, follow | index, nofollow]"
+    />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content="/favicon.ico" />
+    <meta property="og:url" content="pablogamero.com" />
+
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:card" content="[summary | summary_large_image]" />
+    <meta name="twitter:image" content="/favicon.ico" />
+
+    <link rel="canonical" href="pablogamero.com" />
+    <ViewTransitions />
+  </head>
+
+  <body>
+    <!-- <Header/> -->
+    <main>
+      <slot />
+    </main>
+    <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+      :root {
+        --background-color: lightgreen;
+        --primary: #61ccba;
+        --primary-black: #0a1413;
+        --primary-white: #effaf8;
+        --secondary: #4b98ca;
+      }
+
+      * {
+        font-family: "Oxygen", sans-serif;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        background: url("/images/background.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
+
+      main {
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+
+      li {
+        list-style: square;
+      }
+    </style>
+  </body>
+</html>

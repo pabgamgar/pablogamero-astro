@@ -1,0 +1,133 @@
+---
+import LocationSVG from "../icons/location.astro";
+import ArrowTopLeftSVG from "../icons/arrow-top-left.astro";
+import ArrowTopLeft from "../icons/arrow-top-left.astro";
+import { Button } from "@/components/ui/button";
+
+// function calculateAge() {
+//   const today = Date.now();
+//   const dob = new Date("2002-11-04");
+//   const diffInMs = today - dob.getTime();
+//   const ageInYears = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 365));
+
+//   return ageInYears;
+// }
+
+// let age = calculateAge();
+---
+
+<script>
+  function typingAnimation() {
+    const titleElement = document.querySelector(".hero-title") as HTMLElement;
+    const data = titleElement.getAttribute("data-text") as string;
+    let i = 0;
+
+    function typeCharacter() {
+      if (i < data.length) {
+        const char = data.charAt(i);
+        const span = document.createElement("span");
+        span.innerText = char;
+        titleElement.appendChild(span);
+        i++;
+
+        setTimeout(typeCharacter, 100);
+      }
+    }
+
+    typeCharacter();
+  }
+
+  window.addEventListener("load", typingAnimation);
+
+  function typingAnimation2() {
+    const titleElement = document.querySelector(
+      ".hero-subtitle"
+    ) as HTMLElement;
+    const data = JSON.parse(titleElement.getAttribute("data-text") || "[]");
+    let wordIndex = 0;
+    let charIndex = 0;
+
+    function typeCharacter() {
+      const word = data[wordIndex];
+      if (charIndex < word.length) {
+        const char = word.charAt(charIndex);
+        const span = document.createElement("span");
+        span.innerText = char;
+        titleElement.appendChild(span);
+        charIndex++;
+        setTimeout(typeCharacter, 100);
+      } else {
+        setTimeout(eraseCharacter, 1000);
+      }
+    }
+
+    function eraseCharacter() {
+      const word = data[wordIndex];
+      if (charIndex > 0) {
+        const lastChild = titleElement.lastChild;
+        if (lastChild) {
+          titleElement.removeChild(lastChild);
+        }
+        charIndex--;
+        setTimeout(eraseCharacter, 50);
+      } else {
+        titleElement.innerText = "";
+        wordIndex = (wordIndex + 1) % data.length;
+        setTimeout(typeCharacter, 500);
+      }
+    }
+    setTimeout(typeCharacter, 1750);
+  }
+
+  window.addEventListener("load", typingAnimation2);
+</script>
+
+<div class="content-home content">
+  <h1 class="hero-title text-5xl font-bold h-14" data-text="Hello, I'm Pablo!">
+  </h1>
+  <p
+    class="hero-subtitle text-2xl h-4"
+    data-text='["Developer", "Entrepreneur", "Student"]'
+  >
+  </p>
+  <div class="mt-8 text-justify flex flex-col gap-3">
+    <p>
+      I like to use technology to create innovative solutions to make people's
+      lives easier. I'm a software developer, entrepreneur, and student.
+    </p>
+    <p>
+      I'm passionate about technology and I'm always looking for new challenges
+      to grow and learn.
+    </p>
+  </div>
+  <Button className="px-2 py-1 rounded-md text-black mt-4">Work with me</Button>
+
+  <style>
+    .content-home {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-self: flex-start;
+      max-width: 1000px;
+      width: 50%;
+      padding: 3rem 2rem;
+      margin-block: 2rem;
+      height: fit-content;
+      margin-left: 5%;
+    }
+
+    @media screen and (max-width: 600px) {
+      .content-home {
+        align-self: center;
+        width: 90%;
+        margin-left: 0;
+      }
+    }
+
+    @media screen and (max-width: 901px) {
+      .hero-title {
+        height: 98px;
+      }
+    }
+  </style>
+</div>

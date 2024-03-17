@@ -1,0 +1,472 @@
+---
+
+---
+
+<div class="content">
+  <section id="bio" class="flex gap-8 items-center h-fit">
+    <div class="flex flex-col gap-2 flex-1">
+      <h1 class="title">😄 What's up?</h1>
+      <p>
+        I'm Pablo Gamero, a Computer Engineering student who thrives on
+        connecting with others. I believe in the power of collaboration and am
+        always seeking opportunities to be part of meaningful projects.
+      </p>
+      <p>
+        Whether it's exploring the latest technological advancements, pursuing
+        entrepreneurial endeavors, or diving into the world of music and
+        psychology, I find joy in learning and connecting with like-minded
+        individuals.
+      </p>
+      <p>
+        If you have something to share or need a helping hand, I would be
+        delighted to connect with you. Let's make something great together!
+      </p>
+    </div>
+    <div id="aboutMe-img">
+      <img src="/images/professional-me.webp" alt="Pablo Gamero Photo" />
+    </div>
+  </section>
+
+  <section id="ideas">
+    <h1 class="title">🌟 Ideas I Live By</h1>
+    <ol>
+      <li>
+        <span class="bold">The 1% Rule.</span> To get really good at any skill or
+        discipline, put yourself on a schedule and aim to get 1% better at some aspect
+        of that skill with each new project. Over time, you’ll see your skills grow
+        rapidly.
+      </li>
+      <li>
+        <span class="bold">Show up and have something to show.</span> If you want
+        to build great professional relationships and position yourself for more
+        “lucky” opportunities, both of these actions are needed. You must spend a
+        significant amount of time creating, honing your skills, and building something
+        of value you can offer others. You also have to get out there and “show up”
+        – attend events, interact with people online, and become a part of the community
+        for whatever you’re pursuing.
+      </li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <h1 class="title">🧩 Skills</h1>
+    <div id="portfolioCard">
+      <div id="profile">
+        <img src="/images/happyPablo.png" alt="Pablo Gamero Memoji" />
+        <h5 class="light">SEVILLE, SPAIN</h5>
+        <p>Entrepreneur</p>
+        <div id="socials">
+          <a
+            href="https://www.instagram.com/pablogamerogarcia"
+            aria-label="Link for instagram"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a
+            href="https://twitter.com/pablogg411"
+            aria-label="Link for twitter"
+          >
+            <i class="fa-brands fa-twitter font-awesome"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/pablogamerogarcia"
+            aria-label="Link for linkedin"
+          >
+            <i class="fa-brands fa-linkedin-in font-awesome"></i>
+          </a>
+        </div>
+        <div class="portfolio-callforaction">
+          <a class="callForAction3" href="#contact">Contact</a>
+          <a
+            class="callForAction3"
+            href="https://booking.akiflow.com/pablogamero">Book a meeting</a
+          >
+        </div>
+      </div>
+      <div id="languages">
+        <h4>LANGUAGES</h4>
+        <ul>
+          <li>
+            <h5>SPANISH (native)</h5>
+            <div class="bar">
+              <div id="spanishBar"></div>
+            </div>
+          </li>
+          <li>
+            <h5>ENGLISH (C1)</h5>
+            <div class="bar">
+              <div id="englishBar"></div>
+            </div>
+          </li>
+          <li>
+            <h5>FRENCH (B2)</h5>
+            <div class="bar">
+              <div id="frenchBar"></div>
+            </div>
+          </li>
+          <li>
+            <h5>GERMAN (A2)</h5>
+            <div class="bar">
+              <div id="germanBar"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="competences">
+        <h4>DEVELOPMENT SKILLS</h4>
+        <ul>
+          <li>
+            <h5><i class="fab fa-html5"></i> HTML</h5>
+          </li>
+          <li>
+            <h5><i class="fab fa-css3"></i> CSS</h5>
+          </li>
+          <li>
+            <h5><i class="fab fa-js"></i> JavaScript</h5>
+          </li>
+          <li>
+            <h5><i class="fab fa-python"></i> Python</h5>
+          </li>
+          <li>
+            <h5><i class="fab fa-java"></i> Java</h5>
+          </li>
+          <li>
+            <h5>Flutter</h5>
+          </li>
+          <li>
+            <h5>UI / UX</h5>
+          </li>
+          <li>
+            <h5><i class="fab fa-react"></i> React Native</h5>
+          </li>
+        </ul>
+        <h4>PROFESSIONAL SKILLS</h4>
+        <ul>
+          <li>
+            <h5>Leadership</h5>
+          </li>
+          <li>
+            <h5>Teamwork</h5>
+          </li>
+          <li>
+            <h5>Inniciative</h5>
+          </li>
+        </ul>
+        <h5>OTHER SKILLS</h5>
+        <ul>
+          <li>
+            <h5><i class="fa-solid fa-guitar"></i> Guitar</h5>
+          </li>
+          <li>
+            <h5>Piano</h5>
+          </li>
+        </ul>
+      </div>
+      <a
+        class="downloadCV"
+        href="/documents/Currículum Vitae [EN].pdf"
+        download="CV (English)"
+      >
+        <i class="fa-solid fa-file-arrow-down fa-bounce"></i> DOWNLOAD CV
+      </a>
+    </div>
+  </section>
+</div>
+
+<style>
+  /* ABOUT ME */
+
+  #bio {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    height: fit-content;
+    scroll-margin-top: 5rem;
+  }
+
+  #aboutMe-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  #aboutMe-text p a {
+    text-decoration: none;
+    color: var(--mainGreen);
+    transition: color 0.5s;
+  }
+
+  #aboutMe-text p a:hover {
+    color: #18614e;
+    transition: color 0.5s;
+  }
+
+  #aboutMe-img {
+    flex: 1;
+    position: relative;
+    border-radius: 1rem;
+    aspect-ratio: 1/1;
+  }
+
+  #aboutMe-img > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  /* ABOUT ME END */
+
+  /* IDEAS */
+
+  #ideas {
+    display: flex;
+    flex-direction: column;
+    padding-block: 1rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  #ideas > ol {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  /* IDEAS END */
+
+  /* PORTFOLIO */
+
+  #skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    padding-block: 1rem;
+    width: 100%;
+  }
+
+  #portfolioCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 35rem;
+    max-width: 90%;
+    border-radius: 1rem;
+    gap: 0.5rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+    padding-bottom: 1rem;
+    margin-block: 2rem;
+  }
+
+  #profile {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding-block: 1rem;
+    background-color: #c3e2d6;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  #profile .callForAction3 {
+    color: black;
+    font-weight: 500;
+    font-size: medium;
+    text-align: center;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 100rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  #profile > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 1rem;
+    object-fit: contain;
+  }
+
+  #socials {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+
+  #socials a {
+    text-decoration: none;
+    color: var(--black);
+    transition: ease-in 200ms;
+  }
+
+  .portfolio-callforaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  #languages {
+    width: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #languages li {
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .bar {
+    width: 100%;
+    height: 5px;
+    border-radius: 10rem;
+    border: #000000 solid 1px;
+  }
+
+  #spanishBar {
+    width: 100%;
+    height: 5px;
+    background-color: var(--mainGreen);
+    border-radius: 10rem;
+  }
+
+  #englishBar {
+    width: 83%;
+    height: 5px;
+    background-color: var(--mainGreen);
+    border-radius: 10rem;
+  }
+
+  #frenchBar {
+    width: 66%;
+    height: 5px;
+    background-color: var(--mainGreen);
+    border-radius: 10rem;
+  }
+
+  #germanBar {
+    width: 33%;
+    height: 5px;
+    background-color: var(--mainGreen);
+    border-radius: 10rem;
+  }
+
+  #competences {
+    width: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    box-sizing: border-box;
+  }
+
+  #competences > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #competences > ul > li {
+    border: 1px solid #2d2747;
+    border-radius: 0.3rem;
+    display: inline-block;
+    margin: 0 0 7px 0;
+    padding: 7px;
+  }
+
+  .downloadCV {
+    margin-inline: auto;
+    color: var(--mainGreen);
+    font-weight: bolder;
+    font-family: "Poppins";
+    text-decoration: none;
+  }
+
+  .downloadCV:hover {
+    color: rgb(39, 158, 167);
+  }
+
+  .downloadCV i {
+    color: var(--mainGreen);
+  }
+
+  .downloadCV i:hover {
+    color: rgb(39, 158, 167);
+  }
+
+  /* PORTFOLIO END */
+
+  /* ROLE MODELS */
+
+  .roleModel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ROLE MODELS END */
+
+  @media screen and (max-width: 400px) {
+    .portfolio-callforaction {
+      flex-direction: column;
+    }
+
+    #aboutMe-text {
+      margin-bottom: auto !important;
+    }
+
+    main {
+      padding-top: 4rem !important;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #aboutMe-img {
+      width: 100% !important;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    #bio {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #aboutMe-img {
+      width: 80%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .goal .goalDescription {
+      display: block;
+    }
+
+    .goal:hover > .bold {
+      display: block;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    #goals-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .goal {
+      width: 80%;
+      aspect-ratio: 10/1;
+    }
+  }
+</style>
