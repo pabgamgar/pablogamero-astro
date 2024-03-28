@@ -10,6 +10,7 @@ interface Props {
 
 const { title, lang, desc } = Astro.props;
 const path = Astro.url.pathname;
+console.log(path);
 ---
 
 <script>
@@ -27,7 +28,7 @@ const path = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="description" content={desc} />
     <meta name="viewport" content="width=device-width" />
-    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon2.ico" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -52,21 +53,21 @@ const path = Astro.url.pathname;
 
   <body>
     <!-- <Header/> -->
-    <div class="absolute top-6 left-6 flex gap-2">
+    <div class="absolute min-[750px]:top-6 left-6 bottom-6 flex gap-2">
       <div
-        class="aspect-square flex items-center justify-center bg-gradient-to-br from-white/50 to-white/10 shadow-2xl rounded-lg size-8"
+        class="z-[999] aspect-square flex items-center justify-center bg-gradient-to-br from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg size-8"
       >
         <LanguageSVG />
       </div>
       <a
         href="/"
-        class=`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 to-white/10 shadow-2xl rounded-lg h-8 w-8 ${path === "/" ? "border" : ""}`
+        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/" ? "border" : ""}`}
       >
         EN
       </a>
       <a
         href="/es"
-        class=`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 to-white/10 shadow-2xl rounded-lg h-8 w-8 ${path === "/es" ? "bg-primary" : ""}`
+        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/es" ? "bg-primary" : ""}`}
       >
         ES
       </a>
