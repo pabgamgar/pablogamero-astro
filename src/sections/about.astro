@@ -1,53 +1,114 @@
 ---
+interface Props {
+  lang: "en" | "es";
+}
 
+const { lang = "en" } = Astro.props;
 ---
 
-<div class="content">
-  <section id="bio" class="flex gap-8 items-center h-fit">
-    <div class="flex flex-col gap-2 flex-1">
-      <h1 class="title">😄 What's up?</h1>
-      <p>
-        I'm Pablo Gamero, a Computer Engineering student who thrives on
-        connecting with others. I believe in the power of collaboration and am
-        always seeking opportunities to be part of meaningful projects.
-      </p>
-      <p>
-        Whether it's exploring the latest technological advancements, pursuing
-        entrepreneurial endeavors, or diving into the world of music and
-        psychology, I find joy in learning and connecting with like-minded
-        individuals.
-      </p>
-      <p>
-        If you have something to share or need a helping hand, I would be
-        delighted to connect with you. Let's make something great together!
-      </p>
-    </div>
-    <div id="aboutMe-img">
-      <img src="/images/professional-me.webp" alt="Pablo Gamero Photo" />
-    </div>
-  </section>
+{
+  lang === "en" && (
+    <div class="content">
+      <section id="bio" class="flex gap-8 items-center h-fit">
+        <div class="flex flex-col gap-2 flex-1">
+          <h1 class="title">😄 What's up?</h1>
+          <p>
+            I'm Pablo Gamero, a Computer Engineering student who thrives on
+            connecting with others. I believe in the power of collaboration and
+            am always seeking opportunities to be part of meaningful projects.
+          </p>
+          <p>
+            Whether it's exploring the latest technological advancements,
+            pursuing entrepreneurial endeavors, or diving into the world of
+            music and psychology, I find joy in learning and connecting with
+            like-minded individuals.
+          </p>
+          <p>
+            If you have something to share or need a helping hand, I would be
+            delighted to connect with you. Let's make something great together!
+          </p>
+        </div>
+        <div id="aboutMe-img">
+          <img src="/images/professional-me.webp" alt="Pablo Gamero Photo" />
+        </div>
+      </section>
 
-  <section id="ideas">
-    <h1 class="title">🌟 Ideas I Live By</h1>
-    <ol>
-      <li>
-        <span class="bold">The 1% Rule.</span> To get really good at any skill or
-        discipline, put yourself on a schedule and aim to get 1% better at some aspect
-        of that skill with each new project. Over time, you’ll see your skills grow
-        rapidly.
-      </li>
-      <li>
-        <span class="bold">Show up and have something to show.</span> If you want
-        to build great professional relationships and position yourself for more
-        “lucky” opportunities, both of these actions are needed. You must spend a
-        significant amount of time creating, honing your skills, and building something
-        of value you can offer others. You also have to get out there and “show up”
-        – attend events, interact with people online, and become a part of the community
-        for whatever you’re pursuing.
-      </li>
-    </ol>
-  </section>
-</div>
+      <section id="ideas">
+        <h1 class="title">🌟 Ideas I Live By</h1>
+        <ol>
+          <li>
+            <span class="bold">The 1% Rule.</span> To get really good at any
+            skill or discipline, put yourself on a schedule and aim to get 1%
+            better at some aspect of that skill with each new project. Over
+            time, you’ll see your skills grow rapidly.
+          </li>
+          <li>
+            <span class="bold">Show up and have something to show.</span> If you
+            want to build great professional relationships and position yourself
+            for more “lucky” opportunities, both of these actions are needed.
+            You must spend a significant amount of time creating, honing your
+            skills, and building something of value you can offer others. You
+            also have to get out there and “show up” – attend events, interact
+            with people online, and become a part of the community for whatever
+            you’re pursuing.
+          </li>
+        </ol>
+      </section>
+    </div>
+  )
+}
+
+{
+  lang === "es" && (
+    <div class="content">
+      <section id="bio" class="flex gap-8 items-center h-fit">
+        <div class="flex flex-col gap-2 flex-1">
+          <h1 class="title">😄 ¿Qué tal?</h1>
+          <p>
+            I'm Pablo Gamero, a Computer Engineering student who thrives on
+            connecting with others. I believe in the power of collaboration and
+            am always seeking opportunities to be part of meaningful projects.
+          </p>
+          <p>
+            Whether it's exploring the latest technological advancements,
+            pursuing entrepreneurial endeavors, or diving into the world of
+            music and psychology, I find joy in learning and connecting with
+            like-minded individuals.
+          </p>
+          <p>
+            If you have something to share or need a helping hand, I would be
+            delighted to connect with you. Let's make something great together!
+          </p>
+        </div>
+        <div id="aboutMe-img">
+          <img src="/images/professional-me.webp" alt="Pablo Gamero Photo" />
+        </div>
+      </section>
+
+      <section id="ideas">
+        <h1 class="title">🌟 Ideales</h1>
+        <ol>
+          <li>
+            <span class="bold">La Regla del 1%.</span> To get really good at any
+            skill or discipline, put yourself on a schedule and aim to get 1%
+            better at some aspect of that skill with each new project. Over
+            time, you’ll see your skills grow rapidly.
+          </li>
+          <li>
+            <span class="bold">Show up and have something to show.</span> If you
+            want to build great professional relationships and position yourself
+            for more “lucky” opportunities, both of these actions are needed.
+            You must spend a significant amount of time creating, honing your
+            skills, and building something of value you can offer others. You
+            also have to get out there and “show up” – attend events, interact
+            with people online, and become a part of the community for whatever
+            you’re pursuing.
+          </li>
+        </ol>
+      </section>
+    </div>
+  )
+}
 
 <style>
   /* ABOUT ME */

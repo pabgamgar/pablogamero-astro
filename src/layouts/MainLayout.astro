@@ -48,7 +48,6 @@ console.log(path);
     <meta name="twitter:image" content="/favicon.ico" />
 
     <link rel="canonical" href="pablogamero.com" />
-    <ViewTransitions />
   </head>
 
   <body>
@@ -61,13 +60,13 @@ console.log(path);
       </div>
       <a
         href="/"
-        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/" ? "border" : ""}`}
+        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/en/" || path === "/en" ? "border-2 border-primary" : ""}`}
       >
         EN
       </a>
       <a
         href="/es"
-        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/es" ? "bg-primary" : ""}`}
+        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/es/" || path === "/es" ? "border-2 border-primary" : ""}`}
       >
         ES
       </a>
