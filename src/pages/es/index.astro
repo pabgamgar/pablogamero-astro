@@ -6,7 +6,7 @@ import Portfolio from "@/sections/portfolio.astro";
 import Contact from "@/sections/contact.astro";
 import "@/styles/globals.css";
 
-let activeSection = "Home";
+let activeSection = "Inicio";
 const lang = "es";
 
 const aboutNav = [
@@ -15,18 +15,18 @@ const aboutNav = [
     href: "#bio",
   },
   {
-    title: "🌟 Ideas",
+    title: "🌟 Ideales",
     href: "#ideas",
   },
   {
-    title: "🛠️ Tools",
+    title: "🛠️ Herramientas",
     href: "#tools",
   },
 ] as const;
 
 const portfolioNav = [
   {
-    title: "🚀 Projects",
+    title: "🚀 Proyectos",
     href: "#projects",
   },
   {
@@ -34,7 +34,7 @@ const portfolioNav = [
     href: "#skills",
   },
   {
-    title: "📆 Timeline",
+    title: "📆 Línea temporal",
     href: "#timeline",
   },
   // {
@@ -91,14 +91,17 @@ const portfolioNav = [
 
 <MainLayout title="" desc="" lang={lang}>
   <header
-    class="absolute top-4 left-1/2 -translate-x-1/2 p-2 h-fit z-10 rounded-full flex gap-2 w-[460px] max-[480px]:w-[95%] max-[480px]:flex-wrap max-[480px]:rounded-lg justify-between max-[480px]:justify-around"
+    class="absolute top-4 left-1/2 -translate-x-1/2 p-2 h-fit z-10 rounded-full flex gap-2 w-[500px] max-[530px]:w-[95%] max-[530px]:flex-wrap max-[530px]:rounded-lg justify-between max-[530px]:justify-around"
   >
-    <button class="nav" data-index="0" data-status="active">🏠 Home</button>
-    <button class="nav" data-index="1" data-status="inactive">👨🏻‍💻 About</button>
-    <button class="nav" data-index="2" data-status="inactive"
-      >📑 Portfolio</button
+    <button class="nav" data-index="0" data-status="active">🏠 Inicio</button>
+    <button class="nav" data-index="1" data-status="inactive"
+      >👨🏻‍💻 Sobre mi</button
     >
-    <button class="nav" data-index="3" data-status="inactive">✉️ Contact</button
+    <button class="nav" data-index="2" data-status="inactive"
+      >📑 Portafolio</button
+    >
+    <button class="nav" data-index="3" data-status="inactive"
+      >✉️ Contacto</button
     >
   </header>
   <article data-index="0" data-status="active">
@@ -241,7 +244,7 @@ const portfolioNav = [
     align-self: self-start;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 530px) {
     header > button {
       border-radius: 5px;
       padding-inline: 1rem;
