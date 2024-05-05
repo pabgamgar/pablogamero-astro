@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import postcss from "postcss";
 
 import react from "@astrojs/react";
 

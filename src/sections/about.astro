@@ -1,4 +1,5 @@
 ---
+import { tools } from "@/lib/data.tsx";
 interface Props {
   lang: "en" | "es";
 }
@@ -53,6 +54,26 @@ const { lang = "en" } = Astro.props;
             you’re pursuing.
           </li>
         </ol>
+      </section>
+      <section>
+        <h1 class="title">🛠️ Tools</h1>
+        <div class="flex gap-8">
+          {tools.map((tool) => (
+            <a
+              href={tool.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center w-16 gap-2"
+            >
+              <img
+                src={tool.icon}
+                alt={tool.name}
+                class="w-12 aspect-square object-contain rounded-lg p-2 box-border bg-gradient-to-br from-white/50 to-white/10"
+              />
+              <p>{tool.name}</p>
+            </a>
+          ))}
+        </div>
       </section>
     </div>
   )

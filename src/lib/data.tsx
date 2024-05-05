@@ -25,3 +25,26 @@ export const socials = [
         icon: <XSVG />
     }
 ] as { name: string, url: string, icon: any }[];
+
+export const tools = [
+    {
+        name: "Akiflow",
+        link: "https://akiflow.com",
+        icon: "https://akiflow.com/images/favicon/apple-icon-57x57.png"
+    },
+    {
+        name: "Obsidian",
+        link: "https://obsidian.md",
+        icon: "https://obsidian.md/favicon.ico"
+    },
+    {
+        name: "Notion",
+        link: "https://notion.so",
+        icon: "https://www.notion.so/front-static/favicon.ico"
+    },
+    {
+        name: "Canary",
+        link: "https://canarymail.io",
+        icon: "https://canarymail.io/images/canary-logo.png"
+    }
+] as { name: string, link: string, icon: string }[];
