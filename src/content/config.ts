@@ -6,12 +6,12 @@ const portfolioCollection = defineCollection({
     name: z.string(),
     link: z.string(),
     logo: z.string(),
-    type: z.array(z.string()),
+    type: z.string(),
     description: z.array(z.string()),
     sector: z.optional(z.array(z.array(z.string()))),
     technologies: z.optional(z.array(z.string())),
     socialMedia: z.optional(z.array(z.array(z.string()))),
-    order: z.optional(z.number()),
+    pinned: z.optional(z.boolean()),
   }),
 });
 

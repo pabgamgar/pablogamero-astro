@@ -2,11 +2,13 @@
 name: "Day Keeper"
 link: "https://pablogamero.com/app/daykeeper"
 logo: "/images/daykeeper.webp"
-type: ["Project", "Proyecto"]
+type: "App"
 description:
   [
     "Life tracking made simple. Never forget what you did yesterday",
     "Life tracking made simple. Never forget what you did yesterday",
   ]
-order: 2
+pinned: true
 ---
+
+Fugiat aute mollit officia ad eiusmod sed. Mollit officia ad, eiusmod sed. Eiusmod sed cupidatat, voluptate. Voluptate lorem, duis et pariatur. Et pariatur qui dolor voluptate sint aliquip, aute. Dolor voluptate sint aliquip aute. Sint aliquip aute exercitation pariatur officia ad. Aute exercitation pariatur, officia ad.

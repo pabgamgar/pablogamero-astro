@@ -1,8 +1,8 @@
 ---
 name: "It'sFree"
 link: "https://itsfree.com.es"
-logo: "https://itsfree.com.es/favicon.ico"
-type: ["Enterprise", "Empresa"]
+logo: "/images/itsfree.webp"
+type: "Business"
 description:
   [
     "First free essential consumer goods company in Europe",
