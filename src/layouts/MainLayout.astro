@@ -189,6 +189,21 @@ const { lang = "en", title, desc } = Astro.props;
           transform: translateX(0);
         }
       }
+      @keyframes slideInTop {
+        0% {
+          opacity: 0;
+          transform: translateY(-20%);
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
     </style>
   </body>
 </html>

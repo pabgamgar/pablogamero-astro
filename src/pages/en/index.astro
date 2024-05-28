@@ -21,10 +21,38 @@ import XIcon from "@/icons/x.astro";
     <div
       class="absolute flex flex-col gap-2 top-1/2 -translate-y-1/2 right-0 h-fit"
     >
-      <a href="" class="social"> <GithubIcon size="32" /></a>
-      <a href="" class="social"> <LinkedInIcon size="32" /></a>
-      <a href="" class="social"> <InstaIcon size="32" /></a>
-      <a href="" class="social"> <XIcon size="32" /></a>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/pablogg411"
+        class="social"
+      >
+        <GithubIcon size="32" /></a
+      >
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://linkedin.com/in/pablogamerogarcia"
+        class="social"
+      >
+        <LinkedInIcon size="32" /></a
+      >
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://instagram.com/pablogamerogarcia"
+        class="social"
+      >
+        <InstaIcon size="32" /></a
+      >
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://x.com/pabgamgar"
+        class="social"
+      >
+        <XIcon size="32" /></a
+      >
     </div>
   </div>
 </MainLayout>
@@ -54,5 +82,19 @@ import XIcon from "@/icons/x.astro";
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 8px;
     backdrop-filter: blur(10px);
+    animation: slideInTop 0.45s ease-in-out forwards;
+    opacity: 0;
+  }
+  .social:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+  .social:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .social:nth-child(3) {
+    animation-delay: 0.45s;
+  }
+  .social:nth-child(4) {
+    animation-delay: 0.6s;
   }
 </style>
