@@ -1,16 +1,16 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import LanguageSVG from "@/icons/language.astro";
+import LanguageSVG from "../icons/language.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
   desc: string;
-  lang: "en" | "es";
+  lang?: "en" | "es";
 }
 
-const { title, lang, desc } = Astro.props;
-const path = Astro.url.pathname;
-console.log(path);
+const { lang = "en", title, desc } = Astro.props;
 ---
 
 <script>
@@ -27,7 +27,7 @@ console.log(path);
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={desc} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
@@ -48,49 +48,40 @@ console.log(path);
     <meta name="twitter:image" content="/favicon.ico" />
 
     <link rel="canonical" href="pablogamero.com" />
+    <ViewTransitions />
   </head>
 
   <body>
-    <!-- <Header/> -->
-    <div class="absolute min-[750px]:top-6 left-6 bottom-6 flex gap-2">
-      <div
-        class="z-[999] aspect-square flex items-center justify-center bg-gradient-to-br from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg size-8"
-      >
-        <LanguageSVG />
-      </div>
-      <a
-        href="/"
-        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/en/" || path === "/en" ? "border-2 border-primary" : ""}`}
-      >
-        EN
-      </a>
-      <a
-        href="/es"
-        class={`z-[999] bg-gradient-to-br flex items-center justify-center from-white/50 max-[750px]:from-white/80 to-white/10 max-[750px]:to-white/30 shadow-2xl rounded-lg h-8 w-8 ${path === "/es/" || path === "/es" ? "border-2 border-primary" : ""}`}
-      >
-        ES
-      </a>
-    </div>
+    <Header lang={lang} />
 
     <main>
       <slot />
     </main>
+
+    <Footer />
     <style is:global>
-      @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+      :root {
+        --primary: #f8f8f8;
+        --secondary: #f8f8f8;
+        --accent: #f8f8f8;
+        --background: #f8f8f8;
+        --text: #f8f8f8;
+        --shadow: #f8f8f8;
+      }
+
+      * {
+        font-family: "Satoshi", sans-serif;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
 
       :root {
         --background-color: lightgreen;
         --primary: #61ccba;
-        --primary-black: #0a1413;
-        --primary-white: #effaf8;
+        --black: #1e1e1e;
+        --white: #f1f1f1;
         --secondary: #4b98ca;
-      }
-
-      * {
-        font-family: "Oxygen", sans-serif;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
       }
 
       body {
@@ -105,17 +96,113 @@ console.log(path);
       }
 
       main {
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding-inline: 64px;
+        box-sizing: border-box;
         height: 100%;
-        width: 100%;
+        justify-content: center;
       }
 
-      li {
-        list-style: square;
+      .content {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+        overflow-y: scroll;
+        height: fit-content;
+        min-width: 300px;
+        width: fit-content;
+        max-width: min(calc(100vw - 64px), 1000px);
+        max-height: calc(100vh - 112px);
+        align-self: center;
+        animation: transitionIn 1s;
       }
 
-      p {
-        text-wrap: pretty;
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      @keyframes transitionIn {
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      @keyframes slideInBottom {
+        0% {
+          opacity: 0;
+          transform: translateY(20%);
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-20%);
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        0% {
+          opacity: 0;
+          transform: translateX(20%);
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideInTop {
+        0% {
+          opacity: 0;
+          transform: translateY(-20%);
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
     </style>
   </body>
