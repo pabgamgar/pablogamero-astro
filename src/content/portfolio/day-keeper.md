@@ -1,6 +1,6 @@
 ---
 name: "Day Keeper"
-link: "https://pablogamero.com/app/daykeeper"
+link: "https://pablogamero.com/products/daykeeper"
 logo: "/images/daykeeper.webp"
 type: "App"
 description:

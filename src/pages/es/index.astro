@@ -19,33 +19,29 @@ import XIcon from "@/icons/x.astro";
       </div>
     </div>
     <div
-      id="socials-list"
       class="absolute flex flex-col gap-2 top-1/2 -translate-y-1/2 right-0 h-fit"
     >
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://github.com/pabgamgar"
+        href="https://github.com/pablogg411"
         class="social"
-        aria-label="GitHub Profile"
       >
         <GithubIcon size="32" /></a
       >
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://linkedin.com/in/pabgamgar"
+        href="https://linkedin.com/in/pablogamerogarcia"
         class="social"
-        aria-label="LinkedIn Profile"
       >
         <LinkedInIcon size="32" /></a
       >
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://instagram.com/pabgamgar"
+        href="https://instagram.com/pablogamerogarcia"
         class="social"
-        aria-label="Instagram Profile"
       >
         <InstaIcon size="32" /></a
       >
@@ -54,7 +50,6 @@ import XIcon from "@/icons/x.astro";
         rel="noopener noreferrer"
         href="https://x.com/pabgamgar"
         class="social"
-        aria-label="X Profile"
       >
         <XIcon size="32" /></a
       >
@@ -69,10 +64,9 @@ import XIcon from "@/icons/x.astro";
     margin: 0;
     width: 500px;
     height: 350px;
-    animation: transitionIn 1s;
   }
   .content {
-    padding: 64px 96px 64px 40px;
+    padding: 64px 128px 64px 32px;
     width: 500px;
     height: 350px;
     justify-content: center;
@@ -80,7 +74,6 @@ import XIcon from "@/icons/x.astro";
     clip-path: path(
       "M0 12C0 5.37259 5.37258 0 12 0H488C494.627 0 500 5.37258 500 12V38.5556C500 45.183 494.627 50.5556 488 50.5556H452C445.373 50.5556 440 55.9281 440 62.5556V287.444C440 294.072 445.373 299.444 452 299.444H488C494.627 299.444 500 304.817 500 311.444V338C500 344.627 494.627 350 488 350H12C5.37258 350 0 344.627 0 338V12Z"
     );
-    transition: all 0.45s ease-in-out;
     animation: none;
   }
 
@@ -103,13 +96,5 @@ import XIcon from "@/icons/x.astro";
   }
   .social:nth-child(4) {
     animation-delay: 0.6s;
-  }
-
-  @media screen and (max-width: 640px) {
-    .content {
-      padding: 64px 24px 64px 24px;
-      width: 90vw;
-      clip-path: none;
-    }
   }
 </style>

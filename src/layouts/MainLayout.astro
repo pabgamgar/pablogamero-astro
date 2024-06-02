@@ -60,15 +60,6 @@ const { lang = "en", title, desc } = Astro.props;
 
     <Footer />
     <style is:global>
-      :root {
-        --primary: #f8f8f8;
-        --secondary: #f8f8f8;
-        --accent: #f8f8f8;
-        --background: #f8f8f8;
-        --text: #f8f8f8;
-        --shadow: #f8f8f8;
-      }
-
       * {
         font-family: "Satoshi", sans-serif;
         box-sizing: border-box;
@@ -77,11 +68,18 @@ const { lang = "en", title, desc } = Astro.props;
       }
 
       :root {
-        --background-color: lightgreen;
         --primary: #61ccba;
+        --secondary: #4b98ca;
         --black: #1e1e1e;
         --white: #f1f1f1;
-        --secondary: #4b98ca;
+        --pastel1: #cfe6cf; /* Pastel Green */
+        --pastel2: #fdeca6; /* Pastel Yellow */
+        --pastel3: #d8cbea; /* Pastel Purple */
+        --pastel4: #ffdab9; /* Pastel Peach */
+        --pastel5: #e3d9ff; /* Pastel Lavender */
+        --pastel6: #b7e4c7; /* Pastel Mint */
+        --pastel7: #ff9e94; /* Pastel Coral */
+        --pastel8: #dbc3e3; /* Pastel Lilac */
       }
 
       body {
@@ -105,8 +103,8 @@ const { lang = "en", title, desc } = Astro.props;
       }
 
       .content {
-        background-color: rgba(255, 255, 255, 0.5);
         border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
@@ -202,6 +200,13 @@ const { lang = "en", title, desc } = Astro.props;
         100% {
           opacity: 1;
           transform: translateX(0);
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        main {
+          padding-inline: 16px;
+          align-items: center;
         }
       }
     </style>

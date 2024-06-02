@@ -33,17 +33,12 @@ import professionalImg from "/public/images/professional-me.webp";
       />
     </div>
     <div class="flex gap-8 items-center">
-      <div class="flex-[3] flex flex-wrap gap-1">
-        <div class="objective">Create Value-Driven Products</div>
-        <div class="objective">Enhance Daily Life</div>
-        <div class="objective">Simplify Tasks</div>
-        <div class="objective">Facilitate Self-Understanding</div>
-        <div class="objective">Remove Obstacles to Innovation</div>
-        <!-- <div class="objective">Remove Obstacles <br /> to Innovation</div>
-        <div class="objective">Remove Obstacles <br /> to Innovation</div>
-        <div class="objective">Remove Obstacles <br /> to Innovation</div> -->
-      </div>
-      <div class="flex flex-col gap-3 flex-[7]">
+      <Image
+        src={professionalImg}
+        alt=""
+        class="size-96 aspect-square object-cover rounded-xl"
+      />
+      <div class="flex flex-col gap-3">
         <h2>My Objectives</h2>
         <p>
           My goal is to create products that enhance daily life by helping
@@ -79,42 +74,6 @@ import professionalImg from "/public/images/professional-me.webp";
   }
   #about-img:hover {
     animation: blobAnimation 7s infinite;
-  }
-
-  .objective {
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-    font-size: small;
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-  }
-
-  .objective:nth-child(1n) {
-    background-color: var(--pastel1);
-  }
-  .objective:nth-child(2n) {
-    background-color: var(--pastel2);
-  }
-  .objective:nth-child(3n) {
-    background-color: var(--pastel3);
-  }
-  .objective:nth-child(4n) {
-    background-color: var(--pastel4);
-  }
-  .objective:nth-child(5n) {
-    background-color: var(--pastel5);
-  }
-  .objective:nth-child(6n) {
-    background-color: var(--pastel6);
-  }
-  .objective:nth-child(7n) {
-    background-color: var(--pastel7);
-  }
-  .objective:nth-child(8n) {
-    background-color: var(--pastel8);
   }
 
   @keyframes blobAnimation {

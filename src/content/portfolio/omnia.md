@@ -2,7 +2,7 @@
 name: "Omnia"
 link: "https://omniacorp.es"
 logo: "https://omniacorp.es/favicon.ico"
-type: "StartUp"
+type: "Startup"
 description:
   [
     "At Omnia, we bring your brand to life and elevate your digital presence",

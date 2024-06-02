@@ -6,6 +6,7 @@ const {
   border,
   classes,
   external,
+  href,
   ...rest
 } = Astro.props;
 ---
@@ -15,6 +16,7 @@ const {
   {type}
   class:list={[classes, { border: border }, variant, size]}
   {...rest}
+  onclick={`location.href='${href}'`}
 >
   <slot />
 </button>
@@ -48,6 +50,11 @@ const {
   .outlined {
     border: 1px solid var(--black);
     background-color: transparent;
+    transition: all 0.3s;
+  }
+  .outlined:hover {
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2) inset;
+    transition: all 0.3s;
   }
 
   .border {
