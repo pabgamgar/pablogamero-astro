@@ -69,9 +69,9 @@ const { lang } = Astro.props;
     }
   </div>
 </header> -->
-<header class="w-full flex justify-between">
+<header class="w-full flex justify-between z-10 bg-white/50 sm:bg-transparent">
   <nav
-    class="rounded-br-xl bg-white/50 w-fit px-8 py-2 flex gap-12 items-center backdrop-blur-xl"
+    class="rounded-br-xl sm:bg-white/50 w-fit px-8 py-2 flex gap-12 items-center backdrop-blur-xl"
   >
     {
       lang == "en" ? (
@@ -114,7 +114,7 @@ const { lang } = Astro.props;
     }
   </nav>
   <div
-    class="rounded-bl-xl bg-white/50 w-fit backdrop-blur-xl flex flex-col px-6 py-3 absolute right-0 top-0 gap-5 -translate-y-1/2 hover:translate-y-0 transition-all duration-500"
+    class="rounded-bl-xl sm:bg-white/50 w-fit sm:backdrop-blur-xl flex flex-col px-6 py-[10px] absolute right-0 top-0 gap-5 -translate-y-1/2 hover:translate-y-0 transition-all duration-500"
   >
     {
       lang == "en" ? (

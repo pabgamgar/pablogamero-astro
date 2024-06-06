@@ -12,8 +12,8 @@ export default defineConfig({
     defaultLocale: "en",
     locales: ["en", "es"],
     routing: {
-      prefixDefaultLocale: true
-    }
+      prefixDefaultLocale: true,
+    },
   },
-  site: "https://pablogamero.com"
+  site: "https://pablogamero.com",
 });
