@@ -1,0 +1,201 @@
+---
+import { Image } from 'astro:assets'
+import happyBlabli from 'public/images/happyPablo.png'
+import { socials, linktreeProjectsBusinesses } from '@/content/data'
+import { ArrowUpRight, Globe, BookUser, Download, Mail, Phone } from 'lucide-react'
+---
+
+<div
+	class="flex h-screen w-screen flex-col items-center overflow-scroll bg-[#1e1e1e] p-6 text-[#e0e0e0]"
+>
+	<div class="flex max-w-[320px] flex-col items-center gap-8">
+		<div
+			class="box flex h-32 w-[320px] items-center justify-center gap-4 rounded-xl bg-[#1e1e1e] py-6"
+		>
+			<Image src={happyBlabli} alt="Pablo Gamero" class="w-16 rounded-full" />
+			<div class="flex flex-col">
+				<h1 class="text-3xl font-bold">Pablo Gamero</h1>
+				<h2>Developer & Entrepreneur</h2>
+			</div>
+		</div>
+		<div class="flex flex-col gap-3">
+			<h3 class="text-xl font-bold">General</h3>
+			<div class="flex flex-wrap gap-x-4 gap-y-4">
+				<div class="box2x2">
+					<div class="box-top">
+						<div class="icon-container">
+							<BookUser size={24} />
+						</div>
+						<h4>Contact Card</h4>
+					</div>
+					<p>Phone, email and website</p>
+					<a href="/assets/Pablo Gamero García.vcf">
+						<p>Download</p>
+						<Download size={16} />
+					</a>
+				</div>
+				<div class="box2x2">
+					<div class="box-top">
+						<div class="icon-container">
+							<Globe size={24} />
+						</div>
+						<h4>Web</h4>
+					</div>
+					<p>pablogamero.com</p>
+					<a href="https://www.pablogamero.com">
+						<p>Visit</p>
+						<ArrowUpRight size={16} />
+					</a>
+				</div>
+				<a class="box4x1" href="mailto:pablogamerogarcia@gmail.com">
+					<div class="box-top">
+						<div class="icon-container">
+							<Mail size={24} />
+						</div>
+						<div>
+							<h4>Email</h4>
+							<p class="text-[14px] text-[#777777]">pablogamerogarcia@gmail.com</p>
+						</div>
+					</div>
+					<ArrowUpRight size={24} />
+				</a>
+				<a class="box4x1" href="tel:+34601159109">
+					<div class="box-top">
+						<div class="icon-container">
+							<Phone size={24} />
+						</div>
+						<div>
+							<h4>Phone</h4>
+							<p class="text-[14px] text-[#777777]">+34 601159109</p>
+						</div>
+					</div>
+					<ArrowUpRight size={24} />
+				</a>
+			</div>
+		</div>
+		<div class="flex flex-col gap-3">
+			<h3 class="text-xl font-bold">Socials</h3>
+			<div class="flex flex-wrap gap-x-4 gap-y-4">
+				{
+					socials.map((social, index) => (
+						<div class="box2x2">
+							<div class="box-top">
+								<div class="icon-container">
+									<img src={'/images/' + social.icon} class="h-auto w-6" />
+								</div>
+								<h4>{social.name}</h4>
+							</div>
+							<p>{social.text}</p>
+							<a href={social.url}>
+								<p>Follow</p>
+								<ArrowUpRight size={16} />
+							</a>
+						</div>
+					))
+				}
+			</div>
+		</div>
+		<div class="flex flex-col gap-3">
+			<h3 class="text-xl font-bold">Projects / Businesses</h3>
+			<div class="flex flex-wrap gap-x-4 gap-y-4">
+				{
+					linktreeProjectsBusinesses.map((item, index) => (
+						<div class="box2x2">
+							<div class="box-top">
+								<div class="img-container">
+									<img src={'/images/' + (item.icon ?? 'link-icon.webp')} class="h-auto w-6" />
+								</div>
+								<h4>{item.name}</h4>
+							</div>
+							<p>{item.text}</p>
+							<a href={item.url}>
+								<p>Follow</p>
+								<ArrowUpRight size={16} />
+							</a>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	* {
+		font-family: 'Satoshi', sans-serif;
+		box-sizing: border-box;
+	}
+	h3 {
+		margin-left: 12px;
+	}
+	h4 {
+		line-height: 20px;
+	}
+	.box {
+		box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.25);
+		background-color: #1e1e1e;
+	}
+	.box4x2 {
+		box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.25);
+		border-radius: 12px;
+		height: 128px;
+		width: 320px;
+		max-width: 100%;
+		padding: 12px;
+		background-color: #1e1e1e;
+	}
+	.box2x2 {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.25);
+		border-radius: 12px;
+		height: 152px;
+		width: 152px;
+		min-width: 152px;
+		padding: 12px;
+		background-color: #1e1e1e;
+	}
+	.box-top {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+	}
+	.icon-container {
+		box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.25);
+		border-radius: 8px;
+		height: 40px;
+		width: 40px;
+		min-width: 40px;
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.box2x2 > p {
+		font-size: 14px;
+		color: #777777;
+	}
+	.box2x2 a {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		padding-inline: 10px;
+		padding-block: 3px;
+		border: 1px solid #e0e0e0;
+		border-radius: 4px;
+		width: fit-content;
+		font-size: small;
+	}
+	.box4x1 {
+		box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.25);
+		border-radius: 12px;
+		height: 68px;
+		width: 320px;
+		padding: 12px;
+		background-color: #1e1e1e;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+</style>
