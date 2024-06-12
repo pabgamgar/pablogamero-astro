@@ -9,18 +9,18 @@ import XIcon from "@/icons/x.astro";
 
 <MainLayout title="Home" desc="">
   <div class="container">
-    <div class="content mask">
+    <div class="content">
       <h1 class="font-bold text-5xl">Pablo Gamero</h1>
       <h2 class="font-light text-2xl">Developer & Entrepreneur</h2>
       <p>Leveraging technology to engineer innovative solutions.</p>
-      <div class="flex gap-6">
+      <div class="flex sm:gap-6 sm:flex-row flex-col items-center gap-3 mt-8 sm:mt-4">
         <Button href="/en/work"> Browse My Work </Button>
         <Button variant="outlined" href="/en/contact"> Contact Me </Button>
       </div>
     </div>
     <div
       id="socials-list"
-      class="absolute flex flex-col gap-2 top-1/2 -translate-y-1/2 right-0 h-fit"
+      class="sm:absolute flex sm:flex-col gap-2 sm:top-1/2 sm:-translate-y-1/2 sm:right-0 h-fit"
     >
       <a
         target="_blank"
@@ -64,12 +64,16 @@ import XIcon from "@/icons/x.astro";
 
 <style>
   .container {
-    position: relative;
-    padding: 0;
-    margin: 0;
+    margin-left: 10%;
+    position: absolute;
     width: 500px;
-    height: 350px;
+    height: 100vh;
+    top: 0;
     animation: transitionIn 1s;
+    align-self: flex-start;
+    justify-self: center;
+    display: flex;
+    align-items: center;
   }
   .content {
     padding: 64px 96px 64px 40px;
@@ -86,11 +90,12 @@ import XIcon from "@/icons/x.astro";
 
   .social {
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--content);
     border-radius: 8px;
     backdrop-filter: blur(10px);
     animation: slideInTop 0.45s ease-in-out forwards;
     opacity: 0;
+    color: var(--content-foreground)
   }
   .social:nth-child(1) {
     animation-delay: 0.15s;
@@ -105,11 +110,23 @@ import XIcon from "@/icons/x.astro";
     animation-delay: 0.6s;
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (width < 640px) {
     .content {
       padding: 64px 24px 64px 24px;
-      width: 90vw;
+      width: 95%;
+      max-width: 450px;
       clip-path: none;
+      height: fit-content;
+    }
+    .container {
+      margin: 0;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
     }
   }
 </style>

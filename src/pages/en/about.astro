@@ -8,317 +8,156 @@ import { inspiration } from "@/content/data";
 ---
 
 <MainLayout title="About" desc="">
-  <!-- <div class="content">
-    <h1 class="hidden">About</h1>
-    <div class="flex gap-8 items-center">
-      <div class="flex flex-col gap-3">
-        <h2>A Little About Me</h2>
-        <p>
-          While still studying, I'm deeply involved in various computer science
-          projects and <span class="font-bold">co-founded a startup</span>. My
-          journey in the tech world started with a love for learning and
-          creating innovative solutions.
-        </p>
-        <p>
-          Originally from Seville, Spain, I'm proud to call this vibrant city my
-          home. When I'm not buried in code or brainstorming business ideas,
-          you'll find me enjoying spontaneous mini-trips with friends, playing
-          the piano, or diving into the latest tech trends.
-        </p>
-        <Button href="/en/work">Browse My Work</Button>
-      </div>
+  <div
+    class="grid w-full max-w-7xl mx-auto px-6 gap-4 lg:grid-cols-6 md:grid-cols-3 grid-cols-1"
+  >
+    <div
+      id="bio"
+      class="content lg:col-span-4 lg:row-span-1 md:col-span-3 md:row-span-1 flex flex-col gap-3 justify-center lg:order-1 md:order-1"
+    >
+      <p>
+        While still studying, I'm deeply involved in various computer science
+        projects and <span class="font-bold">co-founded a startup</span>. My
+        journey in the tech world started with a love for learning and creating
+        innovative solutions.
+      </p>
+      <p>
+        Originally from Seville, Spain, I'm proud to call this vibrant city my
+        home. When I'm not buried in code or brainstorming business ideas,
+        you'll find me enjoying spontaneous mini-trips with friends, playing the
+        piano, or diving into the latest tech trends.
+      </p>
+      <Button href="/en/work">Browse My Work</Button>
+    </div>
+    <div
+      id="img-container"
+      class="content lg:col-span-2 lg:row-span-1 md:col-span-1 md:row-span-1 !p-0 overflow-clip lg:order-2 md:order-2 max-w-[256px] md:max-w-none hidden md:block order-9"
+    >
       <Image
         id="about-img"
         src={professionalImg}
         alt=""
-        class="size-96 aspect-square object-cover"
+        class="object-cover lg:max-h-[300px] md:max-h-[384px] hidden md:block"
       />
     </div>
-    <div class="flex gap-8 items-center">
-      <div class="flex-[3] flex flex-wrap gap-1">
-        <div class="objective">Create Value-Driven Products</div>
-        <div class="objective">Enhance Daily Life</div>
-        <div class="objective">Simplify Tasks</div>
-        <div class="objective">Facilitate Self-Understanding</div>
-        <div class="objective">Remove Obstacles to Innovation</div>
-      </div>
-      <div class="flex flex-col gap-3 flex-[7]">
-        <h2>My Objectives</h2>
-        <p>
-          My goal is to create products that enhance daily life by helping
-          people understand themselves better and making tasks simpler and more
-          connected.
-        </p>
-        <p>
-          I believe that everyone should enjoy the process of turning their
-          ideas into reality, and I want to remove as many obstacles as possible
-          from that journey. Inspired by David Allen's quote, "Your mind is for
-          having ideas, not holding them," I am passionate about using
-          technology to free our minds from mundane tasks. This way, we can
-          focus our creative energy on building amazing things that add value to
-          our lives.
-        </p>
-        <p>
-          Have a project in mind? I’d love to hear about it!
-          <a href="/en/contact" class="italic underline">Let’s talk!</a>
-        </p>
-        <Button href="/en/services">My Services</Button>
+    <div
+      id="experience"
+      class="content lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 flex flex-col gap-3 pr-0 lg:order-3 md:order-5"
+    >
+      <h2>EXPERIENCE</h2>
+      <div class="flex w-full gap-2 overflow-scroll pr-2">
+        {
+          experience.toReversed().map((xp) => (
+            <div class="box">
+              <p class="font-semibold">{xp.company}</p>
+              <p>{xp.position}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
-  </div> -->
-  <div
-    class="contain h-[100vh] max-w-7xl absolute overflow-y-scroll overflow-x-hidden self-center"
-  >
     <div
-      class="grid w-full max-w-full -z-10 mx-auto my-16 px-6 gap-4 lg:grid-cols-6 md:grid-cols-3 grid-cols-1"
+      id="objectives"
+      class="content lg:col-span-4 lg:row-span-2 flex flex-col gap-3 flex-[7] md:col-span-2 lg:order-4 md:order-3"
     >
-      <div
-        id="bio"
-        class="lg:col-span-4 lg:row-span-1 md:col-span-3 md:row-span-1 flex flex-col gap-3 justify-center lg:order-1 md:order-1"
-      >
-        <p>
-          While still studying, I'm deeply involved in various computer science
-          projects and <span class="font-bold">co-founded a startup</span>. My
-          journey in the tech world started with a love for learning and
-          creating innovative solutions.
-        </p>
-        <p>
-          Originally from Seville, Spain, I'm proud to call this vibrant city my
-          home. When I'm not buried in code or brainstorming business ideas,
-          you'll find me enjoying spontaneous mini-trips with friends, playing
-          the piano, or diving into the latest tech trends.
-        </p>
-        <Button href="/en/work">Browse My Work</Button>
-      </div>
-      <div
-        id="img-container"
-        class="lg:col-span-2 lg:row-span-1 md:col-span-1 md:row-span-1 !p-0 overflow-clip lg:order-2 md:order-2 max-w-[256px] md:max-w-none hidden md:block order-9"
-      >
-        <Image
-          id="about-img"
-          src={professionalImg}
-          alt=""
-          class="object-cover lg:max-h-[300px] md:max-h-[384px] hidden md:block"
-        />
-      </div>
-      <div
-        id="experience"
-        class="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 flex flex-col gap-3 pr-0 lg:order-3 md:order-5"
-      >
-        <h2>EXPERIENCE</h2>
-        <div class="flex w-full gap-2 overflow-scroll pr-2">
-          {
-            experience.toReversed().map((xp) => (
-              <div class="box">
-                <p class="font-semibold">{xp.company}</p>
-                <p>{xp.position}</p>
-              </div>
-            ))
-          }
+      <h2>MY OBJECTIVES</h2>
+      <p>
+        My goal is to create products that enhance daily life by helping people
+        understand themselves better and making tasks simpler and more
+        connected.
+      </p>
+      <p>
+        I believe that everyone should enjoy the process of turning their ideas
+        into reality, and I want to remove as many obstacles as possible from
+        that journey. Inspired by David Allen's quote, "Your mind is for having
+        ideas, not holding them," I am passionate about using technology to free
+        our minds from mundane tasks. This way, we can focus our creative energy
+        on building amazing things that add value to our lives.
+      </p>
+      <p>
+        Have a project in mind? I’d love to hear about it!
+        <a href="/en/contact" class="italic underline">Let’s talk!</a>
+      </p>
+      <Button href="/en/services">My Services</Button>
+    </div>
+    <div
+      id="skills"
+      class="content lg:col-span-2 lg:row-span-2 flex flex-col gap-3 md:col-span-1 md:row-span-2 lg:order-5 md:order-4"
+    >
+      <h2>SKILLS</h2>
+      <div class="flex flex-col gap-1">
+        <h3 class="text-lg">Technical Skills</h3>
+        <div class="flex flex-wrap w-full gap-1">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JS</li>
+          <li>NextJS</li>
+          <li>React</li>
+          <li>Astro</li>
+          <li>Flutter</li>
+          <li>React Native</li>
+          <li>SQL</li>
+          <li>Firebase</li>
+          <li>Figma</li>
+          <li>Git</li>
         </div>
       </div>
-      <div
-        id="objectives"
-        class="lg:col-span-4 lg:row-span-2 flex flex-col gap-3 flex-[7] md:col-span-2 lg:order-4 md:order-3"
-      >
-        <h2>MY OBJECTIVES</h2>
-        <p>
-          My goal is to create products that enhance daily life by helping
-          people understand themselves better and making tasks simpler and more
-          connected.
-        </p>
-        <p>
-          I believe that everyone should enjoy the process of turning their
-          ideas into reality, and I want to remove as many obstacles as possible
-          from that journey. Inspired by David Allen's quote, "Your mind is for
-          having ideas, not holding them," I am passionate about using
-          technology to free our minds from mundane tasks. This way, we can
-          focus our creative energy on building amazing things that add value to
-          our lives.
-        </p>
-        <p>
-          Have a project in mind? I’d love to hear about it!
-          <a href="/en/contact" class="italic underline">Let’s talk!</a>
-        </p>
-        <Button href="/en/services">My Services</Button>
-      </div>
-      <div
-        id="skills"
-        class="lg:col-span-2 lg:row-span-2 flex flex-col gap-3 md:col-span-1 md:row-span-2 lg:order-5 md:order-4"
-      >
-        <h2>SKILLS</h2>
-        <div class="flex flex-col gap-1">
-          <h3 class="text-lg">Technical Skills</h3>
-          <div class="flex flex-wrap w-full gap-1">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JS</li>
-            <li>NextJS</li>
-            <li>React</li>
-            <li>Astro</li>
-            <li>Flutter</li>
-            <li>React Native</li>
-            <li>SQL</li>
-            <li>Firebase</li>
-            <li>Figma</li>
-            <li>Git</li>
-          </div>
-        </div>
-        <div class="flex flex-col gap-1">
-          <h3 class="text-lg">Analog Skills</h3>
-          <div class="flex flex-wrap w-full gap-1">
-            <li>Research</li>
-            <li>Design</li>
-            <li>English <span class="text text-xs">(fluent)</span></li>
-            <li>Spanish <span class="text-xs">(native)</span></li>
-            <li>French <span class="text-xs">(fluent)</span></li>
-          </div>
+      <div class="flex flex-col gap-1">
+        <h3 class="text-lg">Analog Skills</h3>
+        <div class="flex flex-wrap w-full gap-1">
+          <li>Research</li>
+          <li>Design</li>
+          <li>English <span class="text text-xs">(fluent)</span></li>
+          <li>Spanish <span class="text-xs">(native)</span></li>
+          <li>French <span class="text-xs">(fluent)</span></li>
         </div>
       </div>
-      <div
-        id="inspiration"
-        class="lg:col-span-2 lg:row-span-1 flex flex-col gap-3 md:col-span-1 lg:order-6 md:order-6"
-      >
-        <h2>INSPIRATION</h2>
-        <div class="flex w-full gap-2 overflow-scroll pr-2">
-          {
-            inspiration.toReversed().map((p) => (
-              <div class="box">
-                <p class="font-semibold">{p.name}</p>
-                <p>{p.desc}</p>
-              </div>
-            ))
-          }
-        </div>
+    </div>
+    <div
+      id="inspiration"
+      class="content lg:col-span-2 lg:row-span-1 flex flex-col gap-3 md:col-span-1 lg:order-6 md:order-6"
+    >
+      <h2>INSPIRATION</h2>
+      <div class="flex w-full gap-2 overflow-scroll pr-2">
+        {
+          inspiration.toReversed().map((p) => (
+            <div class="box">
+              <p class="font-semibold">{p.name}</p>
+              <p>{p.desc}</p>
+            </div>
+          ))
+        }
       </div>
-      <div
-        id="apps"
-        class="lg:col-span-2 lg:row-span-1 flex flex-col gap-3 lg:order-7 md:order-7"
-      >
-        <h2>APPS I USE DAILY</h2>
-      </div>
+    </div>
+    <div
+      id="apps"
+      class="content lg:col-span-2 lg:row-span-1 flex flex-col gap-3 lg:order-7 md:order-7"
+    >
+      <h2>APPS I USE DAILY</h2>
     </div>
   </div>
 </MainLayout>
 
 <style>
-  .grid > div {
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
+  .content {
     display: flex;
     padding: 24px;
+    height: 100% !important;
   }
-  /*   
-  #bio {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    justify-content: center;
-    grid-column: span 6;
-    grid-row: span 2;
-  }
-
-  #img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    overflow: clip;
-    grid-column: span 2;
-    grid-row: span 2;
-    max-height: 300px;
-  }
-
-  #skills {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    grid-column: span 2;
-    grid-row: span 3;
-  } */
   li {
     list-style-type: none;
     padding: 2px 8px;
     border-radius: 100px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--content);
   }
-  /* 
-  #objectives {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    grid-column: span 6;
-    grid-row: span 2;
-  }
-
-  #experience {
-    display: flex;
-    flex-direction: column;
-    grid-column: span 6;
-    grid-row: span 1;
-    padding-right: 0;
-    gap: 12px;
-  }
-
-  #apps {
-    display: flex;
-    flex-direction: column;
-    grid-column: span 3;
-    grid-row: span 1;
-  }
-  #inspiration {
-    display: flex;
-    flex-direction: column;
-    padding-right: 0;
-    gap: 12px;
-    grid-column: span 5;
-    grid-row: span 1;
-  } */
 
   .box {
     display: flex;
     flex-direction: column;
     gap: 4px;
     padding: 8px 16px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--content);
     border-radius: 12px;
     text-wrap: nowrap;
   }
-  /* 
-  @media screen and (max-width: 1071px) {
-    .grid-layout {
-      grid-template-columns: repeat(3, 244px);
-      max-width: 90%;
-    }
-    #bio {
-      grid-column: span 4;
-      grid-row: span 1;
-    }
-    #img-container {
-      grid-column: span 1;
-      grid-row: span 1;
-      max-width: fit-content;
-    }
-    #skills {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
-    #objectives {
-      grid-column: span 2;
-      grid-row: 2fr;
-    }
-    #experience {
-      grid-column: 1fr;
-      grid-row: 1fr;
-    }
-    #inspiration {
-      grid-column: 1fr;
-      grid-row: 1fr;
-    }
-    #apps {
-      grid-column: 1fr;
-      grid-row: 1fr;
-    }
-  } */
 </style>

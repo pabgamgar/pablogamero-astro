@@ -1,17 +1,13 @@
 ---
-
+interface Props {
+	lang: 'es' | 'en'
+}
+const { lang } = Astro.props
 ---
 
-<footer class="w-full flex justify-between">
-  <p
-    class="rounded-tr-xl bg-white/50 w-fit px-6 py-2 flex gap-12 items-center backdrop-blur-xl font-bold text-sm"
-  >
-    pablogamero.com &copy; All rights reserved
-  </p>
-  <div
-    class="rounded-tl-xl bg-white/50 w-fit backdrop-blur-xl flex px-6 py-2 gap-8 text-sm"
-  >
-    <a href="/privacy-policy">Privacy policy</a>
-    <a href="/cookie-policy">Cookie Policy</a>
-  </div>
+<footer
+	class="flex-warp absolute bottom-2 flex gap-6 self-center rounded-md bg-[var(--content)] px-4 py-2 text-[var(--content-foreground)] backdrop-blur-xl"
+>
+	<a href="/privacy-policy">{lang == 'en' ? 'Privacy policy' : 'Política de privacidad'}</a>
+	<a href="/cookie-policy">{lang == 'en' ? 'Cookie policy' : 'Política de cookies'}</a>
 </footer>

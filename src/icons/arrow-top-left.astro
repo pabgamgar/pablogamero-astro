@@ -1,5 +1,5 @@
 ---
-const { size = "4", color = "currentColor" } = Astro.props;
+const { size = "4", color = "#f0f0f0" } = Astro.props;
 ---
 
 <svg
@@ -7,7 +7,7 @@ const { size = "4", color = "currentColor" } = Astro.props;
   fill="none"
   viewBox="0 0 24 24"
   stroke-width="1.5"
-  stroke="currentColor"
+  stroke={color}
   class={`size-${size} group-hover:translate-x-px group-hover:-translate-y-px transition`}
 >
   <path

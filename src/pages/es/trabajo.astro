@@ -1,0 +1,13 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro'
+import Button from '@/components/Button.astro'
+import { getCollection } from 'astro:content'
+const portfolio = await getCollection('portfolio')
+import Showcase from '@/components/Showcase'
+const productTypes = ['App', 'Website', 'Product', 'Web App', 'SaaS']
+const businessTypes = ['Business', 'Startup']
+---
+
+<MainLayout title="Trabajo" desc="" lang="es">
+	<Showcase client:load />
+</MainLayout>
