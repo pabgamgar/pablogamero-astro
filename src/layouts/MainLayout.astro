@@ -34,6 +34,7 @@ const { lang = 'en', title, desc, kw, canon, alt } = Astro.props
 		<meta name="robots" content="index, follow" />
 		<link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		<meta http-equiv="Cache-control" content="public">
 		<!-- END COMMON TAGS -->
 
 		<title>{title}</title>
@@ -94,7 +95,7 @@ const { lang = 'en', title, desc, kw, canon, alt } = Astro.props
 
 			html,
 			body {
-				background: url('/images/background.jpg');
+				background: url('/images/background.webp');
 				background-size: cover;
 				background-position: center;
 				display: flex;
@@ -279,7 +280,7 @@ const { lang = 'en', title, desc, kw, canon, alt } = Astro.props
 			@media screen and (width < 768px) {
 				html,
 				body {
-					background: url('/images/background-sm.jpg');
+					background: url('/images/background-sm.webp');
 					background-size: cover;
 					background-position: right;
 				}

@@ -14,7 +14,7 @@ export default function Showcase() {
 
   return (
     <>
-      <div className="fixed left-1/2 top-[80px] z-10 flex w-fit -translate-x-1/2 -translate-y-1/2 gap-2 rounded-md bg-[var(--content)] text-[var(--content-foreground)] p-2 backdrop-blur-[30px]">
+      <div className="fixed left-1/2 top-[80px] z-10 flex w-fit -translate-x-1/2 -translate-y-1/2 gap-2 rounded-md bg-[var(--content)] p-2 text-[var(--content-foreground)] backdrop-blur-[30px]">
         <button
           onClick={() => selectTab("Favourites")}
           className={`rounded-md px-2 py-0.5 transition-all duration-500 ${tab == "Favourites" && "bg-sky-400 text-black"}`}
@@ -63,6 +63,7 @@ const Favourites = () => {
           <img
             src={`/images/${item.slug}-show.webp`}
             className="md max-h-96 w-fit rounded-md object-contain"
+            alt={item.data.name}
           />
           <div className="flex flex-col gap-2">
             <h3>{item.data.name}</h3>
@@ -96,7 +97,9 @@ const All = () => {
   );
 };
 const Products = () => {
-  const items = portfolio.filter((item: any) => productTypes.includes(item.data.type));
+  const items = portfolio.filter((item: any) =>
+    productTypes.includes(item.data.type),
+  );
   return (
     <>
       {items.map((item: any) => (
