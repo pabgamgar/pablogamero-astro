@@ -1,13 +1,15 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro'
-import Button from '@/components/Button.astro'
-import { getCollection } from 'astro:content'
-const portfolio = await getCollection('portfolio')
 import Showcase from '@/components/Showcase'
-const productTypes = ['App', 'Website', 'Product', 'Web App', 'SaaS']
-const businessTypes = ['Business', 'Startup']
 ---
 
-<MainLayout title="Trabajo" desc="" lang="es">
+<MainLayout
+  title="Mi trabajo | Pablo Gamero García"
+  desc="Explora mi trabajo, incluyendo aplicaciones, sitios web, startups y negocios que ha desarrollado."
+  kw="Pablo Gamero García, trabajo, apps, sitios web, startups, negocios, portafolio"
+  lang='es'
+  canon='https://pablogamero.com/es/trabajo'
+  alt='https://pablogamero.com/en/work'
+>
 	<Showcase client:load />
 </MainLayout>

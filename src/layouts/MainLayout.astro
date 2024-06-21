@@ -1,16 +1,17 @@
 ---
 import { ViewTransitions } from 'astro:transitions'
-import LanguageSVG from '../icons/language.astro'
 import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
 
 interface Props {
-	title: string
-	desc: string
-	lang?: 'en' | 'es'
+	title: string,
+	desc: string,
+	kw?: string,
+	lang?: 'en' | 'es',
+	canon?: string,
+	alt?: string, 
 }
 
-const { lang = 'en', title, desc } = Astro.props
+const { lang = 'en', title, desc, kw, canon, alt } = Astro.props
 ---
 
 <script>
@@ -24,27 +25,37 @@ const { lang = 'en', title, desc } = Astro.props
 </script>
 
 <html lang={lang}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={desc} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<>
+		<!-- COMMON TAGS -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Pablo Gamero García">
+		<meta name="language" content={lang}>
+		<meta name="robots" content="index, follow" />
 		<link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		<!-- END COMMON TAGS -->
 
 		<title>{title}</title>
-		<meta name="robots" content="[index, follow | noindex, follow | index, nofollow]" />
+		<meta name="description" content={desc} />
+		<meta name="keywords" content={kw}>
 
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
 		<meta property="og:image" content="/favicon.ico" />
-		<meta property="og:url" content="pablogamero.com" />
+		<meta property="og:url" content={canon} />
+		<meta property="og:type" content="website">
 
+		<link rel="canonical" href={canon}>
+		<link rel="alternate" hreflang={lang == "en" ? "es" : "en"} href={alt}>
+		
+		<!-- TWITTER -->
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={desc} />
-		<meta name="twitter:card" content="[summary | summary_large_image]" />
 		<meta name="twitter:image" content="/favicon.ico" />
+		<meta name="twitter:url" content={canon}/>
 
-		<link rel="canonical" href="pablogamero.com" />
 		<ViewTransitions />
 	</head>
 
@@ -56,8 +67,6 @@ const { lang = 'en', title, desc } = Astro.props
 				<slot />
 			</div>
 		</main>
-
-		<Footer lang={lang} />
 		<style is:global>
 			* {
 				font-family: 'Satoshi', sans-serif;
