@@ -13,13 +13,16 @@ const snakeCase = (string: string) => {
 }
 import { getPathByLocale } from 'astro:i18n'
 import { Menu, X, ChevronDown } from 'lucide-react'
-const path = snakeCase(Astro.url.pathname.substring(4))
+const path = lang == "en"
+	? snakeCase(Astro.url.pathname.substring(1))
+	: snakeCase(Astro.url.pathname.substring(4))
 const sectionName =
 	path == ''
 		? lang == 'en'
 			? 'Home'
 			: 'Inicio'
 		: (path.charAt(0).toUpperCase() + path.slice(1)).replaceAll('_', ' ')
+
 ---
 
 <script>
@@ -93,7 +96,7 @@ const sectionName =
 					</button>
 				</nav>
 				<button
-					onclick="location.href='/en';"
+					onclick="location.href='/';"
 					class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl"
 				>
 					🇬🇧 EN
