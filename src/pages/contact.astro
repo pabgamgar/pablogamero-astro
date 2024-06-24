@@ -1,43 +1,96 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import Button from "@/components/Button.astro";
+import { MailIcon } from "lucide-react";
 ---
 
 <MainLayout
-  title="Contact me | Pablo Gamero García"
+  title="Contact me • Pablo Gamero"
   desc="Let's talk! Get in touch with me and fill me out on your ideas!"
   kw="Pablo Gamero García, contact, developer, entrepreneur, inquiries, collaborations"
-  canon='https://pablogamero.com/contact'
-  alt='https://pablogamero.com/es/contacto'
+  canon="https://pablogamero.com/contact"
+  alt="https://pablogamero.com/es/contacto"
 >
   <div class="content">
-    <h2>Let's Talk!</h2>
-    <form
-      action="https://formspree.io/f/mqkopjvg"
-      method="POST"
-      class="mt-4 flex flex-col gap-2"
-    >
-      <div class="flex flex-col gap-1">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-12">
+      <div
+        class="flex flex-col sm:flex-row gap-4 lg:flex-col items-center w-full justify-center"
+      >
+        <img
+          src="/images/happyPablo.png"
+          alt="Pablo Gamero Avatar"
+          class="size-20 object-contain sm:size-32"
+        />
+        <div
+          class="flex flex-col gap-2 items-center sm:items-start lg:items-center"
+        >
+          <p
+            class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit flex gap-2 items-center text-sm"
+          >
+            <span class="relative inline-flex rounded-full size-2 bg-green-500">
+              <span
+                class="animate-ping inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+              >
+              </span>
+            </span>
+            Open to work
+          </p>
+          <h2 class="text-3xl">Pablo Gamero</h2>
+          <a
+            class="flex gap-2 items-center"
+            href="mailto:pablo@pablogamero.com"
+          >
+            <MailIcon size={16} />
+            pablo@pablogamero.com
+          </a>
+        </div>
       </div>
-      <div class="flex flex-col gap-1">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
+      <div>
+        <h2>Let's Talk!</h2>
+        <form
+          action="https://formspree.io/f/mqkopjvg"
+          method="POST"
+          class="mt-4 flex flex-col gap-2 min-w-48 w-full md:min-w-96"
+        >
+          <div class="flex flex-col gap-1">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+            ></textarea>
+          </div>
+          <Button type="submit">Send</Button>
+        </form>
       </div>
-      <div class="flex flex-col gap-1">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-      <Button type="submit">Send</Button>
-    </form>
+    </div>
   </div>
 </MainLayout>
 
 <style>
   .content {
-    width: 500px;
     margin: auto;
+    min-width: fit-content;
+    width: 85%;
+    max-width: 500px;
   }
 
   form {

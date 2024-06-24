@@ -8,23 +8,41 @@ import XIcon from "@/icons/x.astro";
 ---
 
 <MainLayout
-  title="Pablo Gamero García | Developer & Entrepreneur"
+  title="Pablo Gamero • Developer & Entrepreneur"
   desc="Welcome to my website! I'm a developer and entrepreneur. Learn more about my work, experience, and how to contact me."
   kw="Pablo Gamero García, developer, entrepreneur, freelancer, tech, startups, web development"
-  canon='https://pablogamero.com'
-  alt='https://pablogamero.com/es'
+  canon="https://pablogamero.com"
+  alt="https://pablogamero.com/es"
 >
-<script>
-  console.log(navigator.language.includes("en"))
-</script>
+  <script>
+    console.log(navigator.language.includes("en"));
+  </script>
   <div class="container">
     <div class="content">
       <h1 class="font-bold text-5xl">Pablo Gamero</h1>
       <h2 class="font-light text-2xl">Developer & Entrepreneur</h2>
+      <p
+        class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit flex gap-2 items-center text-sm text-center self-center sm:self-auto"
+      >
+        <span class="relative inline-flex rounded-full size-2 bg-green-500">
+          <span
+            class="animate-ping inline-flex size-full rounded-full bg-green-400 opacity-75"
+          >
+          </span>
+        </span>
+        Open to work
+      </p>
       <p>Leveraging technology to engineer innovative solutions.</p>
-      <div class="flex sm:gap-6 sm:flex-row flex-col items-center gap-3 mt-8 sm:mt-4">
+      <div
+        class="flex sm:gap-6 sm:flex-row flex-col items-center gap-3 mt-8 sm:mt-4"
+      >
         <Button href="/work"> Browse My Work </Button>
-        <Button variant="outlined" href="/contact"> Contact Me </Button>
+        <Button
+          variant="outlined"
+          href="/contact"
+        >
+          Contact Me
+        </Button>
       </div>
     </div>
     <div
@@ -104,7 +122,7 @@ import XIcon from "@/icons/x.astro";
     backdrop-filter: blur(10px);
     animation: slideInTop 0.45s ease-in-out forwards;
     opacity: 0;
-    color: var(--content-foreground)
+    color: var(--content-foreground);
   }
   .social:nth-child(1) {
     animation-delay: 0.15s;

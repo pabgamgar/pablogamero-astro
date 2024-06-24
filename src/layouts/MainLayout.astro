@@ -1,290 +1,359 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
-import Header from '../components/Header.astro'
+import { ViewTransitions } from "astro:transitions";
+import Header from "../components/Header.astro";
 
 interface Props {
-	title: string,
-	desc: string,
-	kw?: string,
-	lang?: 'en' | 'es',
-	canon?: string,
-	alt?: string, 
+  title: string;
+  desc: string;
+  kw?: string;
+  lang?: "en" | "es";
+  canon?: string;
+  alt?: string;
 }
 
-const { lang = 'en', title, desc, kw, canon, alt } = Astro.props
+const { lang = "en", title, desc, kw, canon, alt } = Astro.props;
 ---
 
 <script>
-	const favicon = document.getElementById('favicon') as HTMLLinkElement
+  const favicon = document.getElementById("favicon") as HTMLLinkElement;
 
-	document.addEventListener('visibilitychange', () => {
-		const hidden = document.hidden
+  document.addEventListener("visibilitychange", () => {
+    const hidden = document.hidden;
 
-		favicon.setAttribute('href', `/favicon${hidden ? '-hidden' : ''}.ico`)
-	})
+    favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.ico`);
+  });
 </script>
 
 <html lang={lang}>
-	<>
-		<!-- COMMON TAGS -->
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="Pablo Gamero García">
-		<meta name="language" content={lang}>
-		<meta name="robots" content="index, follow" />
-		<link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta http-equiv="Cache-control" content="public">
-		<!-- END COMMON TAGS -->
+  <>
+    <!-- COMMON TAGS -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="author"
+      content="Pablo Gamero García"
+    />
+    <meta
+      name="language"
+      content={lang}
+    />
+    <meta
+      name="robots"
+      content="index, follow"
+    />
+    <link
+      id="favicon"
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.ico"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <meta
+      http-equiv="Cache-control"
+      content="public"
+    />
+    <!-- END COMMON TAGS -->
 
-		<title>{title}</title>
-		<meta name="description" content={desc} />
-		<meta name="keywords" content={kw}>
+    <title>{title}</title>
+    <meta
+      name="description"
+      content={desc}
+    />
+    <meta
+      name="keywords"
+      content={kw}
+    />
 
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/favicon.ico" />
-		<meta property="og:url" content={canon} />
-		<meta property="og:type" content="website">
+    <meta
+      property="og:title"
+      content={title}
+    />
+    <meta
+      property="og:description"
+      content={desc}
+    />
+    <meta
+      property="og:image"
+      content="/favicon.ico"
+    />
+    <meta
+      property="og:url"
+      content={canon}
+    />
+    <meta
+      property="og:type"
+      content="website"
+    />
 
-		<link rel="canonical" href={canon}>
-		<link rel="alternate" hreflang={lang == "en" ? "es" : "en"} href={alt}>
-		
-		<!-- TWITTER -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={desc} />
-		<meta name="twitter:image" content="/favicon.ico" />
-		<meta name="twitter:url" content={canon}/>
+    <link
+      rel="canonical"
+      href={canon}
+    />
+    <link
+      rel="alternate"
+      hreflang={lang == "en" ? "es" : "en"}
+      href={alt}
+    />
 
-		<ViewTransitions />
-	</head>
+    <!-- TWITTER -->
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      name="twitter:title"
+      content={title}
+    />
+    <meta
+      name="twitter:description"
+      content={desc}
+    />
+    <meta
+      name="twitter:image"
+      content="/favicon.ico"
+    />
+    <meta
+      name="twitter:url"
+      content={canon}
+    />
 
-	<body>
-		<Header lang={lang} />
+    <ViewTransitions />
+  </>
 
-		<main>
-			<div class="content-container">
-				<slot />
-			</div>
-		</main>
-		<style is:global>
-			* {
-				font-family: 'Satoshi', sans-serif;
-				box-sizing: border-box;
-				padding: 0;
-				margin: 0;
-			}
+  <body>
+    <Header lang={lang} />
 
-			:root {
-				--primary: #61ccba;
-				--secondary: #4b98ca;
-				--black: #1e1e1e;
-				--white: #f1f1f1;
-				--pastel1: #cfe6cf; /* Pastel Green */
-				--pastel2: #fdeca6; /* Pastel Yellow */
-				--pastel3: #d8cbea; /* Pastel Purple */
-				--pastel4: #ffdab9; /* Pastel Peach */
-				--pastel5: #e3d9ff; /* Pastel Lavender */
-				--pastel6: #b7e4c7; /* Pastel Mint */
-				--pastel7: #ff9e94; /* Pastel Coral */
-				--pastel8: #dbc3e3; /* Pastel Lilac */
-				--content: rgba(0, 0, 0, 0.7);
-				--content-foreground: #e1e1e1;
-			}
+    <main>
+      <div class="content-container">
+        <slot />
+      </div>
+    </main>
+    <style is:global>
+      * {
+        font-family: "Satoshi", sans-serif;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
 
-			html,
-			body {
-				background: url('/images/background.webp');
-				background-size: cover;
-				background-position: center;
-				display: flex;
-				flex-direction: column;
-				height: 100vh;
-				width: 100vw;
-				overflow: hidden;
-			}
+      :root {
+        --primary: #61ccba;
+        --secondary: #4b98ca;
+        --black: #1e1e1e;
+        --white: #f1f1f1;
+        --pastel1: #cfe6cf; /* Pastel Green */
+        --pastel2: #fdeca6; /* Pastel Yellow */
+        --pastel3: #d8cbea; /* Pastel Purple */
+        --pastel4: #ffdab9; /* Pastel Peach */
+        --pastel5: #e3d9ff; /* Pastel Lavender */
+        --pastel6: #b7e4c7; /* Pastel Mint */
+        --pastel7: #ff9e94; /* Pastel Coral */
+        --pastel8: #dbc3e3; /* Pastel Lilac */
+        --content: rgba(0, 0, 0, 0.75);
+        --content-foreground: #e1e1e1;
+      }
 
-			main {
-				display: flex;
-				flex-direction: column;
-				box-sizing: border-box;
-				height: 100%;
-				align-content: center;
-			}
+      html,
+      body {
+        background: url("/images/background.webp");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
 
-			.content-container {
-				display: flex;
-				flex-direction: column;
-				z-index: 1;
-				height: 100vh;
-				width: 100vw;
-				position: absolute;
-				overflow-y: scroll;
-				overflow-x: hidden;
-				align-items: center;
-				justify-items: center;
-				top: 0;
-				padding-block: 64px;
-			}
+      main {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: 100%;
+        align-content: center;
+      }
 
-			.content {
-				border-radius: 12px;
-				/* background-color: rgba(255, 255, 255, 0.5); */
-				background-color: var(--content);
-				backdrop-filter: blur(10px);
-				display: flex;
-				flex-direction: column;
-				padding: 32px;
-				overflow-y: scroll;
-				height: fit-content;
-				min-width: 220px;
-				max-width: min(calc(100vw - 64px), 1000px);
-				max-height: calc(100vh - 112px);
-				animation: transitionIn 1s;
-				color: var(--content-foreground);
-			}
+      .content-container {
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        align-items: center;
+        justify-items: center;
+        top: 0;
+        padding-block: 64px;
+      }
 
-			h1 {
-				font-size: 1.875rem /* 30px */;
-				line-height: 2.25rem /* 36px */;
-				font-weight: bold;
-			}
-			h2 {
-				font-size: 1.25rem /* 20px */;
-				line-height: 1.75rem /* 28px */;
-				font-weight: bold;
-			}
-			h3 {
-				font-size: 1.125rem /* 18px */;
-				line-height: 1.75rem /* 28px */;
-				font-weight: bold;
-			}
+      .content {
+        border-radius: 12px;
+        /* background-color: rgba(255, 255, 255, 0.5); */
+        background-color: var(--content);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+        overflow-y: scroll;
+        height: fit-content;
+        min-width: 220px;
+        max-width: min(calc(100vw - 64px), 1000px);
+        max-height: calc(100vh - 112px);
+        animation: transitionIn 1s;
+        color: var(--content-foreground);
+      }
 
-			@keyframes transitionIn {
-				from {
-					transform: scale(0.8);
-				}
-				to {
-					transform: scale(1);
-				}
-			}
-			@keyframes slideInBottom {
-				0% {
-					opacity: 0;
-					transform: translateY(20%);
-				}
+      h1 {
+        font-size: 1.875rem /* 30px */;
+        line-height: 2.25rem /* 36px */;
+        font-weight: bold;
+      }
+      h2 {
+        font-size: 1.25rem /* 20px */;
+        line-height: 1.75rem /* 28px */;
+        font-weight: bold;
+      }
+      h3 {
+        font-size: 1.125rem /* 18px */;
+        line-height: 1.75rem /* 28px */;
+        font-weight: bold;
+      }
 
-				50% {
-					opacity: 1;
-				}
+      @keyframes transitionIn {
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      @keyframes slideInBottom {
+        0% {
+          opacity: 0;
+          transform: translateY(20%);
+        }
 
-				100% {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
+        50% {
+          opacity: 1;
+        }
 
-			@keyframes slideInLeft {
-				0% {
-					opacity: 0;
-					transform: translateX(-20%);
-				}
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-				50% {
-					opacity: 1;
-				}
+      @keyframes slideInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-20%);
+        }
 
-				100% {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
+        50% {
+          opacity: 1;
+        }
 
-			@keyframes slideInRight {
-				0% {
-					opacity: 0;
-					transform: translateX(20%);
-				}
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-				50% {
-					opacity: 1;
-				}
+      @keyframes slideInRight {
+        0% {
+          opacity: 0;
+          transform: translateX(20%);
+        }
 
-				100% {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
-			@keyframes slideInTop {
-				0% {
-					opacity: 0;
-					transform: translateY(-20%);
-				}
+        50% {
+          opacity: 1;
+        }
 
-				50% {
-					opacity: 1;
-				}
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideInTop {
+        0% {
+          opacity: 0;
+          transform: translateY(-20%);
+        }
 
-				100% {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
+        50% {
+          opacity: 1;
+        }
 
-			@media screen and (max-width: 640px) {
-				main {
-					padding-inline: 16px;
-					align-items: center;
-				}
-			}
-			.content:nth-child(1) {
-				animation: transitionIn 0.2s;
-			}
-			.content:nth-child(2) {
-				animation: transitionIn 0.4s;
-			}
-			.content:nth-child(3) {
-				animation: transitionIn 0.6s;
-			}
-			.content:nth-child(4) {
-				animation: transitionIn 0.8s;
-			}
-			.content:nth-child(5) {
-				animation: transitionIn 1s;
-			}
-			.content:nth-child(6) {
-				animation: transitionIn 1.2s;
-			}
-			.content:nth-child(7) {
-				animation: transitionIn 1.4s;
-			}
-			.content:nth-child(8) {
-				animation: transitionIn 1.6s;
-			}
-			.content:nth-child(9) {
-				animation: transitionIn 1.8s;
-			}
-			.content:nth-child(10) {
-				animation: transitionIn 2s;
-			}
-			.scrollbar-hide::-webkit-scrollbar {
-				display: none;
-			}
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-			/* For IE, Edge and Firefox */
-			.scrollbar-hide {
-				-ms-overflow-style: none; /* IE and Edge */
-				scrollbar-width: none; /* Firefox */
-			}
-			@media screen and (width < 768px) {
-				html,
-				body {
-					background: url('/images/background-sm.webp');
-					background-size: cover;
-					background-position: right;
-				}
-			}
-		</style>
-	</body>
+      @media screen and (max-width: 640px) {
+        main {
+          padding-inline: 16px;
+          align-items: center;
+        }
+        .content {
+          padding: 20px !important;
+        }
+      }
+      .content:nth-child(1) {
+        animation: transitionIn 0.2s;
+      }
+      .content:nth-child(2) {
+        animation: transitionIn 0.4s;
+      }
+      .content:nth-child(3) {
+        animation: transitionIn 0.6s;
+      }
+      .content:nth-child(4) {
+        animation: transitionIn 0.8s;
+      }
+      .content:nth-child(5) {
+        animation: transitionIn 1s;
+      }
+      .content:nth-child(6) {
+        animation: transitionIn 1.2s;
+      }
+      .content:nth-child(7) {
+        animation: transitionIn 1.4s;
+      }
+      .content:nth-child(8) {
+        animation: transitionIn 1.6s;
+      }
+      .content:nth-child(9) {
+        animation: transitionIn 1.8s;
+      }
+      .content:nth-child(10) {
+        animation: transitionIn 2s;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* For IE, Edge and Firefox */
+      .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      @media screen and (width < 768px) {
+        html,
+        body {
+          background: url("/images/background-sm.webp");
+          background-size: cover;
+          background-position: right;
+        }
+      }
+    </style>
+  </body>
 </html>
