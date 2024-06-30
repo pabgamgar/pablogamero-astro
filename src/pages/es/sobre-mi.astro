@@ -1,165 +1,177 @@
 ---
-import MainLayout from '@/layouts/MainLayout.astro'
-import Button from '@/components/Button.astro'
-import { Image } from 'astro:assets'
-import professionalImg from '/public/images/professional-me.webp'
-import { experience } from '@/content/data'
-import { inspiration } from '@/content/data'
+import MainLayout from "@/layouts/MainLayout.astro";
+import Button from "@/components/Button.astro";
+import { Image } from "astro:assets";
+import professionalImg from "/public/images/professional-me.webp";
+import { experience } from "@/content/data";
+import { inspiration } from "@/content/data";
 ---
 
 <MainLayout
   title="Sobre mi • Pablo Gamero"
   desc="Descubre más sobre mi, mi experiencia laboral, habilidades e inspiraciones. Conoce las aplicaciones que utilizo diariamente."
-  kw="Pablo Gamero García, sobre, desarrollador, emprendedor, experiencia laboral, habilidades, inspiraciones, aplicaciones diarias"
-  lang='es'
-  canon='https://pablogamero.com/es/sobre-mi'
-  alt='https://pablogamero.com/about'
+  kw="Pablo Gamero, Pablo Gamero García, sobre, desarrollador, emprendedor, experiencia laboral, habilidades, inspiraciones, aplicaciones diarias"
+  lang="es"
+  canon="https://pablogamero.com/es/sobre-mi"
+  alt="https://pablogamero.com/about"
 >
-	<div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 px-6 md:grid-cols-3 lg:grid-cols-6">
-		<div
-			id="bio"
-			class="content flex flex-col justify-center gap-3 md:order-1 md:col-span-3 md:row-span-1 lg:order-1 lg:col-span-4 lg:row-span-1"
-		>
-			<p>
-				Mientras sigo estudiando, estoy profundamente involucrado en varios proyectos de informática
-				y <span class="font-bold">cofundé una startup</span>. Mi viaje en el mundo de la tecnología
-				comenzó con un amor por aprender y crear soluciones innovadoras.
-			</p>
-			<p>
-				Originario de Sevilla, España, me enorgullece llamar a esta vibrante ciudad mi hogar. Cuando
-				no estoy inmerso en código o ideando ideas de negocio, me encontrarás disfrutando de mini
-				viajes espontáneos con amigos, tocando el piano o sumergiéndome en las últimas tendencias
-				tecnológicas.
-			</p>
-			<Button href="/es/trabajo">Explora Mi Trabajo</Button>
-		</div>
-		<div
-			id="img-container"
-			class="content order-9 hidden max-w-[256px] overflow-clip !p-0 md:order-2 md:col-span-1 md:row-span-1 md:block md:max-w-none lg:order-2 lg:col-span-2 lg:row-span-1"
-		>
-			<Image
-				id="about-img"
-				src={professionalImg}
-				alt=""
-				class="hidden object-cover md:block md:max-h-[384px] lg:max-h-[300px]"
-			/>
-		</div>
-		<div
-			id="experience"
-			class="content flex flex-col gap-3 pr-0 md:order-5 md:col-span-2 md:row-span-1 lg:order-3 lg:col-span-2 lg:row-span-1"
-		>
-			<h2>EXPERIENCIA</h2>
-			<div class="flex w-full gap-2 overflow-scroll pr-2">
-				{
-					experience.toReversed().map((xp) => (
-						<div class="box">
-							<p class="font-semibold">{xp.company}</p>
-							<p>{xp.position}</p>
-						</div>
-					))
-				}
-			</div>
-		</div>
-		<div
-			id="objectives"
-			class="content flex flex-[7] flex-col gap-3 md:order-3 md:col-span-2 lg:order-4 lg:col-span-4 lg:row-span-2"
-		>
-			<h2>MIS OBJETIVOS</h2>
-			<p>
-				Mi objetivo es crear productos que mejoren la vida diaria ayudando a las personas a
-				entenderse mejor y haciendo las tareas más simples y conectadas.
-			</p>
-			<p>
-				Creo que todos deberían disfrutar del proceso de convertir sus ideas en realidad, y quiero
-				eliminar tantos obstáculos como sea posible en ese viaje. Inspirado por la cita de David
-				Allen, "Tu mente es para tener ideas, no para retenerlas", me apasiona usar la tecnología
-				para liberar nuestras mentes de las tareas mundanas. De esta manera, podemos enfocar nuestra
-				energía creativa en construir cosas increíbles que añadan valor a nuestras vidas.
-			</p>
-			<p>
-				¿Tienes un proyecto en mente? ¡Me encantaría saber sobre él!
-				<a href="/es/contacto" class="italic underline">¡Hablemos!</a>
-			</p>
-			<Button href="/es/servicios">Mis Servicios</Button>
-		</div>
-		<div
-			id="skills"
-			class="content flex flex-col gap-3 md:order-4 md:col-span-1 md:row-span-2 lg:order-5 lg:col-span-2 lg:row-span-2"
-		>
-			<h2>HABILIDADES</h2>
-			<div class="flex flex-col gap-1">
-				<h3 class="text-lg">Habilidades Técnicas</h3>
-				<ul class="flex w-full flex-wrap gap-1">
-					<li>HTML</li>
-					<li>CSS</li>
-					<li>JS</li>
-					<li>NextJS</li>
-					<li>React</li>
-					<li>Astro</li>
-					<li>Flutter</li>
-					<li>React Native</li>
-					<li>SQL</li>
-					<li>Firebase</li>
-					<li>Figma</li>
-					<li>Git</li>
-				</ul>
-			</div>
-			<div class="flex flex-col gap-1">
-				<h3 class="text-lg">Habilidades Integrales</h3>
-				<ul class="flex w-full flex-wrap gap-1">
-					<li>Investigación</li>
-					<li>Diseño</li>
-					<li>Inglés <span class="text text-xs">(fluido)</span></li>
-					<li>Español <span class="text-xs">(nativo)</span></li>
-					<li>Francés <span class="text-xs">(fluido)</span></li>
-				</ul>
-			</div>
-		</div>
-		<div
-			id="inspiration"
-			class="content flex flex-col gap-3 md:order-6 md:col-span-1 lg:order-6 lg:col-span-2 lg:row-span-1"
-		>
-			<h2>INSPIRACIONES</h2>
-			<div class="flex w-full gap-2 overflow-scroll pr-2">
-				{
-					inspiration.toReversed().map((p) => (
-						<div class="box">
-							<p class="font-semibold">{p.name}</p>
-							<p>{p.desc}</p>
-						</div>
-					))
-				}
-			</div>
-		</div>
-		<div
-			id="apps"
-			class="content flex flex-col gap-3 md:order-7 lg:order-7 lg:col-span-2 lg:row-span-1"
-		>
-			<h2>APPS FAVORITAS</h2>
-		</div>
-	</div>
+  <div
+    class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 px-6 md:grid-cols-3 lg:grid-cols-6"
+  >
+    <div
+      id="bio"
+      class="content flex flex-col justify-center gap-3 md:order-1 md:col-span-3 md:row-span-1 lg:order-1 lg:col-span-4 lg:row-span-1"
+    >
+      <p>
+        Mientras sigo estudiando, estoy profundamente involucrado en varios
+        proyectos de informática y <span class="font-bold"
+          >cofundé una startup</span
+        >. Mi viaje en el mundo de la tecnología comenzó con un amor por
+        aprender y crear soluciones innovadoras.
+      </p>
+      <p>
+        Originario de Sevilla, España, me enorgullece llamar a esta vibrante
+        ciudad mi hogar. Cuando no estoy inmerso en código o ideando ideas de
+        negocio, me encontrarás disfrutando de mini viajes espontáneos con
+        amigos, tocando el piano o sumergiéndome en las últimas tendencias
+        tecnológicas.
+      </p>
+      <Button href="/es/trabajo">Explora Mi Trabajo</Button>
+    </div>
+    <div
+      id="img-container"
+      class="content order-9 hidden max-w-[256px] overflow-clip !p-0 md:order-2 md:col-span-1 md:row-span-1 md:block md:max-w-none lg:order-2 lg:col-span-2 lg:row-span-1"
+    >
+      <Image
+        id="about-img"
+        src={professionalImg}
+        alt=""
+        class="hidden object-cover md:block md:max-h-[384px] lg:max-h-[300px]"
+      />
+    </div>
+    <div
+      id="experience"
+      class="content flex flex-col gap-3 pr-0 md:order-5 md:col-span-2 md:row-span-1 lg:order-3 lg:col-span-2 lg:row-span-1"
+    >
+      <h2>EXPERIENCIA</h2>
+      <div class="flex w-full gap-2 overflow-scroll pr-2">
+        {
+          experience.toReversed().map((xp) => (
+            <div class="box">
+              <p class="font-semibold">{xp.company}</p>
+              <p>{xp.position}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      id="objectives"
+      class="content flex flex-[7] flex-col gap-3 md:order-3 md:col-span-2 lg:order-4 lg:col-span-4 lg:row-span-2"
+    >
+      <h2>MIS OBJETIVOS</h2>
+      <p>
+        Mi objetivo es crear productos que mejoren la vida diaria ayudando a las
+        personas a entenderse mejor y haciendo las tareas más simples y
+        conectadas.
+      </p>
+      <p>
+        Creo que todos deberían disfrutar del proceso de convertir sus ideas en
+        realidad, y quiero eliminar tantos obstáculos como sea posible en ese
+        viaje. Inspirado por la cita de David Allen, "Tu mente es para tener
+        ideas, no para retenerlas", me apasiona usar la tecnología para liberar
+        nuestras mentes de las tareas mundanas. De esta manera, podemos enfocar
+        nuestra energía creativa en construir cosas increíbles que añadan valor
+        a nuestras vidas.
+      </p>
+      <p>
+        ¿Tienes un proyecto en mente? ¡Me encantaría saber sobre él!
+        <a
+          href="/es/contacto"
+          class="italic underline"
+          >¡Hablemos!</a
+        >
+      </p>
+      <Button href="/es/servicios">Mis Servicios</Button>
+    </div>
+    <div
+      id="skills"
+      class="content flex flex-col gap-3 md:order-4 md:col-span-1 md:row-span-2 lg:order-5 lg:col-span-2 lg:row-span-2"
+    >
+      <h2>HABILIDADES</h2>
+      <div class="flex flex-col gap-1">
+        <h3 class="text-lg">Habilidades Técnicas</h3>
+        <ul class="flex w-full flex-wrap gap-1">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JS</li>
+          <li>NextJS</li>
+          <li>React</li>
+          <li>Astro</li>
+          <li>Flutter</li>
+          <li>React Native</li>
+          <li>SQL</li>
+          <li>Firebase</li>
+          <li>Figma</li>
+          <li>Git</li>
+        </ul>
+      </div>
+      <div class="flex flex-col gap-1">
+        <h3 class="text-lg">Habilidades Integrales</h3>
+        <ul class="flex w-full flex-wrap gap-1">
+          <li>Investigación</li>
+          <li>Diseño</li>
+          <li>Inglés <span class="text text-xs">(fluido)</span></li>
+          <li>Español <span class="text-xs">(nativo)</span></li>
+          <li>Francés <span class="text-xs">(fluido)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="inspiration"
+      class="content flex flex-col gap-3 md:order-6 md:col-span-1 lg:order-6 lg:col-span-2 lg:row-span-1"
+    >
+      <h2>INSPIRACIONES</h2>
+      <div class="flex w-full gap-2 overflow-scroll pr-2">
+        {
+          inspiration.toReversed().map((p) => (
+            <div class="box">
+              <p class="font-semibold">{p.name}</p>
+              <p>{p.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      id="apps"
+      class="content flex flex-col gap-3 md:order-7 lg:order-7 lg:col-span-2 lg:row-span-1"
+    >
+      <h2>APPS FAVORITAS</h2>
+    </div>
+  </div>
 </MainLayout>
 
 <style>
-	.content {
-		display: flex;
-		padding: 24px;
-		height: 100% !important;
-	}
-	li {
-		list-style-type: none;
-		padding: 2px 8px;
-		border-radius: 100px;
-		background-color: var(--content);
-	}
+  .content {
+    display: flex;
+    padding: 24px;
+    height: 100% !important;
+  }
+  li {
+    list-style-type: none;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background-color: var(--content);
+  }
 
-	.box {
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-		padding: 8px 16px;
-		background-color: var(--content);
-		border-radius: 12px;
-		text-wrap: nowrap;
-	}
+  .box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 16px;
+    background-color: var(--content);
+    border-radius: 12px;
+    text-wrap: nowrap;
+  }
 </style>
