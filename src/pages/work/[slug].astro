@@ -1,0 +1,27 @@
+---
+import { getCollection, getEntryBySlug } from 'astro:content';
+import ProjectLayout from '../../layouts/ProjectLayout.astro'; // Adjust the path if necessary
+
+// Implement getStaticPaths to generate pages for each project
+export async function getStaticPaths() {
+  const projects = await getCollection('portfolio');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+// Get the project slug from the URL
+const { slug } = Astro.params;
+
+if (!slug) {
+  throw new Error("Project slug is undefined");
+}
+
+const project = await getEntryBySlug('portfolio', slug);
+
+if (!project) {
+  throw new Error(`Project with slug "${slug}" not found`);
+}
+---
+
+<ProjectLayout {...project.data} />

@@ -1,4 +1,7 @@
 ---
+import SpainFlag from '../icons/spain.astro'
+import UKFlag from '../icons/uk.astro'
+
 interface Props {
 	lang: 'es' | 'en'
 }
@@ -11,14 +14,13 @@ const snakeCase = (string: string) => {
 		.map((word: string) => word.toLowerCase())
 		.join('_')
 }
-import { getPathByLocale } from 'astro:i18n'
-import { Menu, X, ChevronDown } from 'lucide-react'
-const path = lang == "en"
+import { ChevronDown } from 'lucide-react'
+const path = lang === "en"
 	? snakeCase(Astro.url.pathname.substring(1))
 	: snakeCase(Astro.url.pathname.substring(4))
 const sectionName =
-	path == ''
-		? lang == 'en'
+	path === ''
+		? lang === 'en'
 			? 'Home'
 			: 'Inicio'
 		: (path.charAt(0).toUpperCase() + path.slice(1)).replaceAll('_', ' ')
@@ -59,18 +61,16 @@ const sectionName =
 					<button onclick="location.href='/work';" class="w-fit font-normal">
 						Work
 					</button>
-					{/* <button onclick="location.href='/blog';" class="w-fit font-normal">
-						Blog
-					</button> */}
 					<button onclick="location.href='/contact';" class="w-fit font-normal">
 						Contact
 					</button>
 				</nav>
 				<button
 					onclick="location.href='/es';"
-					class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl"
+					class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl flex gap-2 items-center"
 				>
-					🇪🇸 ES
+					<SpainFlag size="16" />
+					<span>ES</span>
 				</button>
 			</>
 		)
@@ -88,18 +88,16 @@ const sectionName =
 					<button onclick="location.href='/es/trabajo';" class="w-fit font-normal">
 						Trabajo
 					</button>
-					{/* <button onclick="location.href='/blog';" class="w-fit font-normal">
-						Blog
-					</button> */}
 					<button onclick="location.href='/es/contacto';" class="w-fit font-normal">
 						Contacto
 					</button>
 				</nav>
 				<button
 					onclick="location.href='/';"
-					class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl"
+					class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl flex gap-2 items-center"
 				>
-					🇬🇧 EN
+					<UKFlag size="16" />
+					<span>EN</span>
 				</button>
 			</>
 		)

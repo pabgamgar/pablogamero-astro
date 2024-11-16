@@ -14,11 +14,8 @@ import XIcon from "@/icons/x.astro";
   canon="https://pablogamero.com"
   alt="https://pablogamero.com/es"
 >
-  <script>
-    console.log(navigator.language.includes("en"));
-  </script>
   <div class="container">
-    <div class="content">
+    <div class="content !overflow-hidden">
       <h1 class="font-bold text-5xl">Pablo Gamero</h1>
       <h2 class="font-light text-2xl">Developer & Entrepreneur</h2>
       <p
@@ -122,6 +119,11 @@ import XIcon from "@/icons/x.astro";
     animation: slideInTop 0.45s ease-in-out forwards;
     opacity: 0;
     color: var(--content-foreground);
+    transition: all 250ms ease-in;
+  }
+  .social:hover {
+    scale: 1.1;
+    transition: all 250ms ease-in;
   }
   .social:nth-child(1) {
     animation-delay: 0.15s;

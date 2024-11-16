@@ -16,7 +16,7 @@ import XIcon from "@/icons/x.astro";
   alt="https://pablogamero.com"
 >
   <div class="container">
-    <div class="content">
+    <div class="content !overflow-hidden">
       <h1 class="text-5xl font-bold">Pablo Gamero</h1>
       <h2 class="text-2xl font-light">Desarrollador y Emprendedor</h2>
       <p
@@ -120,6 +120,11 @@ import XIcon from "@/icons/x.astro";
     animation: slideInTop 0.45s ease-in-out forwards;
     opacity: 0;
     color: var(--content-foreground);
+    transition: all 250ms ease-in;
+  }
+  .social:hover {
+    scale: 1.1;
+    transition: all 250ms ease-in;
   }
   .social:nth-child(1) {
     animation-delay: 0.15s;

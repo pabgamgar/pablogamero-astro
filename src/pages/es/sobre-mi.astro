@@ -2,7 +2,7 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import Button from "@/components/Button.astro";
 import { Image } from "astro:assets";
-import professionalImg from "/public/images/professional-me.webp";
+import professionalImg from "/images/professional-me.webp";
 import { experience } from "@/content/data";
 import { inspiration } from "@/content/data";
 ---
@@ -42,9 +42,9 @@ import { inspiration } from "@/content/data";
       id="img-container"
       class="content order-9 hidden max-w-[256px] overflow-clip !p-0 md:order-2 md:col-span-1 md:row-span-1 md:block md:max-w-none lg:order-2 lg:col-span-2 lg:row-span-1"
     >
-      <Image
+      <img
         id="about-img"
-        src={professionalImg}
+        src="/images/professional-me.webp"
         alt=""
         class="hidden object-cover md:block md:max-h-[384px] lg:max-h-[300px]"
       />

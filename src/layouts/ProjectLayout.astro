@@ -1,0 +1,238 @@
+---
+import type { PortfolioItem } from '../content/config'
+import MainLayout from './MainLayout.astro'
+
+const project = Astro.props as PortfolioItem
+
+const { name, link, logo, type, description, sector, technologies, socialMedia, body } = project
+---
+
+<!-- Minimal and Modern Landing Page Layout -->
+<MainLayout
+	title={name}
+	desc={description[0]}
+	kw={name}
+	canon={link}
+	alt={link}
+>
+	<article class="project-landing-page content">
+		<!-- Hero Section -->
+		<header class="hero">
+			<div class="hero-content">
+				{
+					logo && (
+						<img
+							src={logo}
+							alt={`${name} Logo`}
+							class="project-logo"
+						/>
+					)
+				}
+				<h1>{name}</h1>
+				{type && <p class="project-type">{type}</p>}
+				{
+					link && (
+						<a
+							href={link}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="cta-button"
+						>
+							Visit the Website
+						</a>
+					)
+				}
+			</div>
+		</header>
+
+		<!-- Project Overview Section -->
+		<section class="overview">
+			<h2>About the Project</h2>
+			{description && description.map((paragraph, index) => <p>{paragraph}</p>)}
+		</section>
+
+		<!-- Project Details Section -->
+		{
+			body && (
+				<section
+					class="details"
+				>
+          {body}
+        </section>
+			)
+		}
+
+		<!-- Additional Information Section -->
+		<section class="additional-info">
+			{
+				sector && sector.length > 0 && (
+					<div class="info-block">
+						<h3>Sector</h3>
+						<ul>
+							{sector.map((sec, index) => (
+								<li>{sec.join(' > ')}</li>
+							))}
+						</ul>
+					</div>
+				)
+			}
+
+			{
+				technologies && technologies.length > 0 && (
+					<div class="info-block">
+						<h3>Technologies Used</h3>
+						<ul>
+							{technologies.map((tech, index) => (
+								<li>{tech}</li>
+							))}
+						</ul>
+					</div>
+				)
+			}
+
+			{
+				socialMedia && socialMedia.length > 0 && (
+					<div class="info-block">
+						<h3>Find Us Online</h3>
+						<ul>
+							{socialMedia.map(([platform, url], index) => (
+								<li>
+									<a
+										href={url}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{platform}
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)
+			}
+		</section>
+	</article>
+
+	<style>
+		:root {
+			--primary-color: #007acc;
+			--secondary-color: #1e1e1e;
+			--background-color: #ffffff;
+			--text-color: #333;
+			--border-color: #e5e5e5;
+			--cta-color: #007acc;
+			--cta-hover-color: #005fa3;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-color: var(--background-color);
+			color: var(--text-color);
+			margin: 0;
+			padding: 0;
+		}
+
+		.project-landing-page {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 1.5rem;
+		}
+
+		.hero {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: var(--primary-color);
+			color: #fff;
+			padding: 2rem;
+			border-radius: 8px;
+			margin-bottom: 2rem;
+			text-align: center;
+		}
+
+		.hero-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.project-logo {
+			max-height: 100px;
+			margin-bottom: 1rem;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 2.5rem;
+		}
+
+		.project-type {
+			font-size: 1.1rem;
+			margin: 0.5rem 0 1rem 0;
+		}
+
+		.cta-button {
+			background-color: var(--cta-color);
+			color: #fff;
+			padding: 0.75rem 1.5rem;
+			text-decoration: none;
+			border-radius: 4px;
+			transition: background-color 0.3s;
+			margin-top: 1rem;
+		}
+
+		.cta-button:hover {
+			background-color: var(--cta-hover-color);
+		}
+
+		.overview,
+		.details,
+		.additional-info {
+			margin-bottom: 2rem;
+		}
+
+		.overview h2 {
+			font-size: 1.75rem;
+			margin-bottom: 1rem;
+		}
+
+		.overview p {
+			line-height: 1.6;
+			margin-bottom: 1rem;
+		}
+
+		.info-block {
+			margin-bottom: 1.5rem;
+		}
+
+		.info-block h3 {
+			margin-bottom: 0.5rem;
+			color: var(--primary-color);
+		}
+
+		.info-block ul {
+			list-style-type: disc;
+			padding-left: 1.25rem;
+		}
+
+		.info-block ul li {
+			margin-bottom: 0.25rem;
+		}
+
+		@media (max-width: 768px) {
+			.hero {
+				padding: 1.5rem;
+			}
+
+			.hero-content h1 {
+				font-size: 2rem;
+			}
+
+			.overview,
+			.details,
+			.additional-info {
+				padding: 1rem;
+			}
+		}
+	</style>
+</MainLayout>
