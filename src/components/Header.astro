@@ -7,24 +7,20 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const snakeCase = (string: string) => {
-  return string
-    .replace(/\W+/g, " ")
-    .split(/ |\B(?=[A-Z])/)
-    .map((word: string) => word.toLowerCase())
-    .join("_");
+const camelCase = (string: string) => {
+  return string.replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) => {
+    return letter.toUpperCase();
+  });
 };
 import { ChevronDown } from "lucide-react";
-const path =
-  lang === "en"
-    ? snakeCase(Astro.url.pathname.substring(1))
-    : snakeCase(Astro.url.pathname.substring(4));
+const path = Astro.url.pathname.replace("/es/", "");
 const sectionName =
   path === ""
     ? lang === "en"
       ? "Home"
       : "Inicio"
-    : (path.charAt(0).toUpperCase() + path.slice(1)).replaceAll("_", " ");
+    : camelCase(path.split("/")[0].replaceAll("-", " "));
+console.log(path);
 ---
 
 <script>
