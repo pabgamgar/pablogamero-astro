@@ -1,120 +1,146 @@
 ---
-import SpainFlag from '../icons/spain.astro'
-import UKFlag from '../icons/uk.astro'
+import SpainFlag from "../icons/spain.astro";
+import UKFlag from "../icons/uk.astro";
 
 interface Props {
-	lang: 'es' | 'en'
+  lang: "es" | "en";
 }
 
-const { lang } = Astro.props
+const { lang } = Astro.props;
 const snakeCase = (string: string) => {
-	return string
-		.replace(/\W+/g, ' ')
-		.split(/ |\B(?=[A-Z])/)
-		.map((word: string) => word.toLowerCase())
-		.join('_')
-}
-import { ChevronDown } from 'lucide-react'
-const path = lang === "en"
-	? snakeCase(Astro.url.pathname.substring(1))
-	: snakeCase(Astro.url.pathname.substring(4))
+  return string
+    .replace(/\W+/g, " ")
+    .split(/ |\B(?=[A-Z])/)
+    .map((word: string) => word.toLowerCase())
+    .join("_");
+};
+import { ChevronDown } from "lucide-react";
+const path =
+  lang === "en"
+    ? snakeCase(Astro.url.pathname.substring(1))
+    : snakeCase(Astro.url.pathname.substring(4));
 const sectionName =
-	path === ''
-		? lang === 'en'
-			? 'Home'
-			: 'Inicio'
-		: (path.charAt(0).toUpperCase() + path.slice(1)).replaceAll('_', ' ')
-
+  path === ""
+    ? lang === "en"
+      ? "Home"
+      : "Inicio"
+    : (path.charAt(0).toUpperCase() + path.slice(1)).replaceAll("_", " ");
 ---
 
 <script>
-	const header = document.querySelector('header')
-	var headerExpanded = header?.getAttribute('aria-expanded')
-	const chevron = document.querySelector('svg#chevron')
-	var chevronExpanded = chevron?.getAttribute('aria-expanded')
+  const header = document.querySelector("header");
+  var headerExpanded = header?.getAttribute("aria-expanded");
+  const chevron = document.querySelector("svg#chevron");
 
-	document.querySelectorAll('button#btn')[0].addEventListener('click', () => {
-		headerExpanded = headerExpanded == 'true' ? 'false' : 'true'
-		header?.setAttribute('aria-expanded', headerExpanded)
-		chevron?.setAttribute('aria-expanded', headerExpanded)
-	})
+  document.querySelectorAll("button#btn")[0].addEventListener("click", () => {
+    headerExpanded = headerExpanded == "true" ? "false" : "true";
+    header?.setAttribute("aria-expanded", headerExpanded);
+    chevron?.setAttribute("aria-expanded", headerExpanded);
+  });
 </script>
 
 <header
-	aria-expanded="false"
-	class="text-content absolute top-2 z-20 box-border flex h-full max-h-10 w-full max-w-48 flex-col items-center justify-start gap-4 self-center overflow-hidden rounded-md bg-[var(--content)] px-4 py-2 text-[var(--content-foreground)] backdrop-blur-xl transition-all duration-500 sm:max-w-fit sm:flex-row sm:gap-4 sm:bg-transparent sm:p-0 sm:backdrop-blur-0"
+  aria-expanded="false"
+  class="text-content absolute top-2 z-20 box-border flex h-full max-h-10 w-full max-w-48 flex-col items-center justify-start gap-4 self-center overflow-hidden rounded-md bg-[var(--content)] px-4 py-2 text-[var(--content-foreground)] backdrop-blur-xl transition-all duration-500 sm:max-w-fit sm:flex-row sm:gap-4 sm:bg-transparent sm:p-0"
 >
-	<button id="btn" class="flex h-full w-fit gap-2 transition-all duration-500 sm:hidden">
-		<ChevronDown id="chevron" />
-		{sectionName}
-	</button>
-	{
-		lang == 'en' && (
-			<>
-				<nav class="mt-2 flex flex-col items-center gap-3 rounded-md py-3 sm:mt-0 sm:flex-row sm:gap-8 sm:bg-[var(--content)] sm:p-0 sm:px-4 sm:py-2 sm:backdrop-blur-xl">
-					<button onclick="location.href='/';" class="w-fit font-normal">
-						Home
-					</button>
-					<button onclick="location.href='/about';" class="w-fit font-normal">
-						About
-					</button>
-					<button onclick="location.href='/work';" class="w-fit font-normal">
-						Work
-					</button>
-					<button onclick="location.href='/contact';" class="w-fit font-normal">
-						Contact
-					</button>
-				</nav>
-				<button
-					onclick="location.href='/es';"
-					class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl flex gap-2 items-center"
-				>
-					<SpainFlag size="16" />
-					<span>ES</span>
-				</button>
-			</>
-		)
-	}
-	{
-		lang == 'es' && (
-			<>
-				<nav class="mt-2 flex flex-col items-center justify-around gap-3 rounded-md py-3 sm:mt-0 sm:flex-row sm:gap-8 sm:bg-[var(--content)] sm:p-0 sm:px-4 sm:py-2 sm:backdrop-blur-xl">
-					<button onclick="location.href='/es';" class="w-fit font-normal">
-						Inicio
-					</button>
-					<button onclick="location.href='/es/sobre-mi';" class="w-fit font-normal">
-						Sobre mi
-					</button>
-					<button onclick="location.href='/es/trabajo';" class="w-fit font-normal">
-						Trabajo
-					</button>
-					<button onclick="location.href='/es/contacto';" class="w-fit font-normal">
-						Contacto
-					</button>
-				</nav>
-				<button
-					onclick="location.href='/';"
-					class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl flex gap-2 items-center"
-				>
-					<UKFlag size="16" />
-					<span>EN</span>
-				</button>
-			</>
-		)
-	}
+  <button
+    id="btn"
+    class="flex h-full w-fit gap-2 transition-all duration-500 sm:hidden"
+  >
+    <ChevronDown id="chevron" />
+    {sectionName}
+  </button>
+  {
+    lang == "en" && (
+      <>
+        <nav class="mt-2 flex flex-col items-center gap-3 rounded-md py-3 sm:mt-0 sm:flex-row sm:gap-8 sm:bg-[var(--content)] sm:p-0 sm:px-4 sm:py-2 sm:backdrop-blur-xl">
+          <button
+            onclick="location.href='/';"
+            class="w-fit font-normal"
+          >
+            Home
+          </button>
+          <button
+            onclick="location.href='/about';"
+            class="w-fit font-normal"
+          >
+            About
+          </button>
+          <button
+            onclick="location.href='/work';"
+            class="w-fit font-normal"
+          >
+            Work
+          </button>
+          <button
+            onclick="location.href='/contact';"
+            class="w-fit font-normal"
+          >
+            Contact
+          </button>
+        </nav>
+        <button
+          onclick="location.href='/es';"
+          class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl flex gap-2 items-center"
+        >
+          <SpainFlag size="16" />
+          <span>ES</span>
+        </button>
+      </>
+    )
+  }
+  {
+    lang == "es" && (
+      <>
+        <nav class="mt-2 flex flex-col items-center justify-around gap-3 rounded-md py-3 sm:mt-0 sm:flex-row sm:gap-8 sm:bg-[var(--content)] sm:p-0 sm:px-4 sm:py-2 sm:backdrop-blur-xl">
+          <button
+            onclick="location.href='/es';"
+            class="w-fit font-normal"
+          >
+            Inicio
+          </button>
+          <button
+            onclick="location.href='/es/sobre-mi';"
+            class="w-fit font-normal"
+          >
+            Sobre mi
+          </button>
+          <button
+            onclick="location.href='/es/trabajo';"
+            class="w-fit font-normal"
+          >
+            Trabajo
+          </button>
+          <button
+            onclick="location.href='/es/contacto';"
+            class="w-fit font-normal"
+          >
+            Contacto
+          </button>
+        </nav>
+        <button
+          onclick="location.href='/';"
+          class="w-fit rounded-md font-normal sm:bg-[var(--content)] sm:px-4 sm:py-2 sm:backdrop-blur-xl flex gap-2 items-center"
+        >
+          <UKFlag size="16" />
+          <span>EN</span>
+        </button>
+      </>
+    )
+  }
 </header>
 
 <style>
-	header[aria-expanded='true'] {
-		max-height: 272px;
-		transition: all 0.5s ease-in;
-	}
-	#chevron[aria-expanded='true'] {
-		transform: rotate(-180deg);
-		transition: transform 0.5s;
-	}
-	nav > button:hover {
-		text-decoration: underline;
-		text-underline-offset: 2px;
-	}
+  header[aria-expanded="true"] {
+    max-height: 272px;
+    transition: all 0.5s ease-in;
+  }
+  #chevron[aria-expanded="true"] {
+    transform: rotate(-180deg);
+    transition: transform 0.5s;
+  }
+  nav > button:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 </style>

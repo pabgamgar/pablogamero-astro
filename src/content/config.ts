@@ -1,26 +1,21 @@
 import { z, defineCollection } from "astro:content";
 
-export const PortfolioItemSchema = z.object({
-	name: z.string(),
-	link: z.string(),
-	logo: z.string(),
-	type: z.string(),
-	description: z.array(z.string()),
-	sector: z.optional(z.array(z.array(z.string()))),
-	technologies: z.optional(z.array(z.string())),
-	socialMedia: z.optional(z.array(z.array(z.string()))),
-	pinned: z.optional(z.boolean()),
-	slug: z.string(),
-	body: z.string(),
+export const WorkItemSchema = z.object({
+  name: z.string(),
+  title: z.string(),
+  description: z.array(z.string()),
+  links: z.record(z.string()),
+  type: z.enum(["App", "Website", "SaaS", "Web App", "Business", "Startup"]),
+  featured: z.optional(z.boolean()),
 });
 
-const portfolioCollection = defineCollection({
-	type: "content",
-	schema: PortfolioItemSchema.omit({ slug: true, body: true }),
+const workCollection = defineCollection({
+  type: "content",
 });
 
-export type PortfolioItem = z.infer<typeof PortfolioItemSchema>;
+export type WorkItem = z.infer<typeof WorkItemSchema>;
 
 export const collections = {
-	portfolio: portfolioCollection,
+  work: workCollection,
+  trabajo: workCollection,
 };

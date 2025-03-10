@@ -1,238 +1,87 @@
 ---
-import type { PortfolioItem } from '../content/config'
-import MainLayout from './MainLayout.astro'
+import type { WorkItem } from "@/content/config";
+import type { Render, RenderedContent } from "astro:content";
+import MainLayout from "./MainLayout.astro";
 
-const project = Astro.props as PortfolioItem
+interface Props {
+  project: {
+    id: string;
+    render(): Render[".md"];
+    slug: string;
+    body: string;
+    collection: "work" | "trabajo";
+    data: WorkItem;
+    rendered?: RenderedContent;
+    filePath?: string;
+  };
+}
 
-const { name, link, logo, type, description, sector, technologies, socialMedia, body } = project
+const { project } = Astro.props;
+const { slug, data } = project;
+const { name, title, description, featured, links } = data;
 ---
 
-<!-- Minimal and Modern Landing Page Layout -->
 <MainLayout
-	title={name}
-	desc={description[0]}
-	kw={name}
-	canon={link}
-	alt={link}
+  title={name}
+  desc={description[0]}
+  kw={name}
+  canon={`work/${slug}`}
+  alt={`es/trabajo/${slug}`}
 >
-	<article class="project-landing-page content">
-		<!-- Hero Section -->
-		<header class="hero">
-			<div class="hero-content">
-				{
-					logo && (
-						<img
-							src={logo}
-							alt={`${name} Logo`}
-							class="project-logo"
-						/>
-					)
-				}
-				<h1>{name}</h1>
-				{type && <p class="project-type">{type}</p>}
-				{
-					link && (
-						<a
-							href={link}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="cta-button"
-						>
-							Visit the Website
-						</a>
-					)
-				}
-			</div>
-		</header>
-
-		<!-- Project Overview Section -->
-		<section class="overview">
-			<h2>About the Project</h2>
-			{description && description.map((paragraph, index) => <p>{paragraph}</p>)}
-		</section>
-
-		<!-- Project Details Section -->
-		{
-			body && (
-				<section
-					class="details"
-				>
-          {body}
-        </section>
-			)
-		}
-
-		<!-- Additional Information Section -->
-		<section class="additional-info">
-			{
-				sector && sector.length > 0 && (
-					<div class="info-block">
-						<h3>Sector</h3>
-						<ul>
-							{sector.map((sec, index) => (
-								<li>{sec.join(' > ')}</li>
-							))}
-						</ul>
-					</div>
-				)
-			}
-
-			{
-				technologies && technologies.length > 0 && (
-					<div class="info-block">
-						<h3>Technologies Used</h3>
-						<ul>
-							{technologies.map((tech, index) => (
-								<li>{tech}</li>
-							))}
-						</ul>
-					</div>
-				)
-			}
-
-			{
-				socialMedia && socialMedia.length > 0 && (
-					<div class="info-block">
-						<h3>Find Us Online</h3>
-						<ul>
-							{socialMedia.map(([platform, url], index) => (
-								<li>
-									<a
-										href={url}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{platform}
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				)
-			}
-		</section>
-	</article>
-
-	<style>
-		:root {
-			--primary-color: #007acc;
-			--secondary-color: #1e1e1e;
-			--background-color: #ffffff;
-			--text-color: #333;
-			--border-color: #e5e5e5;
-			--cta-color: #007acc;
-			--cta-hover-color: #005fa3;
-		}
-
-		body {
-			font-family: Arial, sans-serif;
-			background-color: var(--background-color);
-			color: var(--text-color);
-			margin: 0;
-			padding: 0;
-		}
-
-		.project-landing-page {
-			max-width: 900px;
-			margin: 0 auto;
-			padding: 1.5rem;
-		}
-
-		.hero {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			background-color: var(--primary-color);
-			color: #fff;
-			padding: 2rem;
-			border-radius: 8px;
-			margin-bottom: 2rem;
-			text-align: center;
-		}
-
-		.hero-content {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-
-		.project-logo {
-			max-height: 100px;
-			margin-bottom: 1rem;
-		}
-
-		h1 {
-			margin: 0;
-			font-size: 2.5rem;
-		}
-
-		.project-type {
-			font-size: 1.1rem;
-			margin: 0.5rem 0 1rem 0;
-		}
-
-		.cta-button {
-			background-color: var(--cta-color);
-			color: #fff;
-			padding: 0.75rem 1.5rem;
-			text-decoration: none;
-			border-radius: 4px;
-			transition: background-color 0.3s;
-			margin-top: 1rem;
-		}
-
-		.cta-button:hover {
-			background-color: var(--cta-hover-color);
-		}
-
-		.overview,
-		.details,
-		.additional-info {
-			margin-bottom: 2rem;
-		}
-
-		.overview h2 {
-			font-size: 1.75rem;
-			margin-bottom: 1rem;
-		}
-
-		.overview p {
-			line-height: 1.6;
-			margin-bottom: 1rem;
-		}
-
-		.info-block {
-			margin-bottom: 1.5rem;
-		}
-
-		.info-block h3 {
-			margin-bottom: 0.5rem;
-			color: var(--primary-color);
-		}
-
-		.info-block ul {
-			list-style-type: disc;
-			padding-left: 1.25rem;
-		}
-
-		.info-block ul li {
-			margin-bottom: 0.25rem;
-		}
-
-		@media (max-width: 768px) {
-			.hero {
-				padding: 1.5rem;
-			}
-
-			.hero-content h1 {
-				font-size: 2rem;
-			}
-
-			.overview,
-			.details,
-			.additional-info {
-				padding: 1rem;
-			}
-		}
-	</style>
+  <article
+    class="text-white max-w-4xl flex flex-col gap-8 self-center px-4 sm:px-8 md:px-12 py-4"
+  >
+    <section
+      id="hero"
+      class="w-full flex flex-col gap-4"
+    >
+      <h1 class="font-bold text-pretty flex gap-4 items-center">
+        {
+          featured && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="#fde047"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-star size-5 text-yellow-300"
+            >
+              <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+            </svg>
+          )
+        }{name}{title && `: ${title}`}
+      </h1>
+      <p class="text-pretty text-neutral-300">{description}</p>
+      <div class="w-full aspect-video overflow-clip rounded-xl">
+        <img
+          src={`/images/${slug}-show.webp`}
+          alt={name}
+          class="object-cover w-full h-full"
+          transition:name={`img-${slug}`}
+        />
+      </div>
+      <div class="flex gap-4">
+        {
+          Object.entries(links).map(([name, link]) => (
+            <a
+              href={link}
+              class="flex items-center justify-center px-3 py-1 bg-neutral-800 border border-neutral-600 text-sm rounded-md hover:bg-neutral-600 transition-colors duration-500"
+            >
+              {name}
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <section
+      id="content"
+      class="flex flex-col gap-4"
+    >
+      <slot />
+    </section>
+  </article>
 </MainLayout>

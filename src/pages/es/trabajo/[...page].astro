@@ -1,0 +1,77 @@
+---
+import ProjectTile from "@/components/ProjectTile.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("trabajo");
+
+export async function getStaticPaths() {
+  const projects = await getCollection("trabajo");
+  return projects.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+---
+
+<MainLayout
+  title="Mi trabajo • Pablo Gamero"
+  desc="Explora mi trabajo, incluyendo aplicaciones, sitios web, startups y negocios que ha desarrollado."
+  kw="Pablo Gamero, Pablo Gamero García, trabajo, apps, sitios web, startups, negocios, portafolio"
+  lang="es"
+  canon="https://pablogamero.com/es/trabajo"
+  alt="https://pablogamero.com/work"
+>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl gap-16 p-16"
+  >
+    {
+      projects.map((project) => {
+        return (
+          <ProjectTile
+            project={project}
+            lang="es"
+          />
+        );
+      })
+    }
+  </div>
+</MainLayout>
+
+<style is:global>
+  .projecttile {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeInUp 1.5s ease-out forwards;
+  }
+
+  .projecttile:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .projecttile:nth-child(2) {
+    animation-delay: 0.22s;
+  }
+  .projecttile:nth-child(3) {
+    animation-delay: 0.34s;
+  }
+  .projecttile:nth-child(4) {
+    animation-delay: 0.46s;
+  }
+  .projecttile:nth-child(5) {
+    animation-delay: 0.58s;
+  }
+  .projecttile:nth-child(6) {
+    animation-delay: 0.7s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
