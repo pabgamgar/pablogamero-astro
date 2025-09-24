@@ -1,0 +1,166 @@
+---
+interface Props {
+  title: string;
+  desc: string;
+  kw?: string;
+  lang?: "en" | "es";
+  canon?: string;
+  alt?: string;
+}
+const { lang = "en", title, desc, kw, canon, alt } = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <!-- COMMON TAGS -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="author"
+      content="Pablo Gamero García"
+    />
+    <meta
+      name="language"
+      content={lang}
+    />
+    <meta
+      name="robots"
+      content="index, follow"
+    />
+    <link
+      id="favicon"
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.ico"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <meta
+      http-equiv="Cache-control"
+      content="public"
+    />
+    <!-- END COMMON TAGS -->
+
+    <title>{title}</title>
+    <meta
+      name="description"
+      content={desc}
+    />
+    <meta
+      name="keywords"
+      content={kw}
+    />
+
+    <meta
+      property="og:title"
+      content={title}
+    />
+    <meta
+      property="og:description"
+      content={desc}
+    />
+    <meta
+      property="og:image"
+      content="/favicon.ico"
+    />
+    <meta
+      property="og:url"
+      content={canon}
+    />
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <link
+      rel="canonical"
+      href={canon}
+    />
+    <link
+      rel="alternate"
+      hreflang={lang == "en" ? "es" : "en"}
+      href={alt}
+    />
+
+    <!-- TWITTER -->
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      name="twitter:title"
+      content={title}
+    />
+    <meta
+      name="twitter:description"
+      content={desc}
+    />
+    <meta
+      name="twitter:image"
+      content="/favicon.ico"
+    />
+    <meta
+      name="twitter:url"
+      content={canon}
+    />
+  </head>
+  <body class="w-full h-fit max-w-5xl px-6 py-8 mx-auto">
+    <main
+      class="w-full h-full max-w-7xl flex flex-row px-12 py-12 border shadow-lg gap-12"
+    >
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:inline>
+  h3,
+  h4,
+  p,
+  a {
+    font-weight: 300;
+  }
+  h1,
+  h2 {
+    color: rgb(75, 153, 202);
+  }
+  h1 {
+    font-size: 1.875rem /* 30px */;
+    line-height: 2.25rem /* 36px */;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 1.1rem /* 20px */;
+    line-height: 1.75rem /* 28px */;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 1rem /* 18px */;
+    line-height: 1.75rem /* 28px */;
+  }
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: square;
+    list-style-type: square;
+    padding-left: 16px;
+    list-style-position: inside;
+    font-weight: 300;
+  }
+
+  span.date {
+    font-size: x-small;
+    color: grey;
+    padding-left: 12px;
+  }
+
+  .bold {
+    font-weight: 500;
+  }
+</style>
