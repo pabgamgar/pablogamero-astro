@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import MobileNav from "../components/MobileNav.astro";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -127,6 +128,7 @@ const { lang = "en", title, desc, kw, canon, alt } = Astro.props;
 
   <body>
     <Header lang={lang} />
+    <MobileNav lang={lang} />
 
     <main>
       <div class="content-container">
@@ -198,6 +200,12 @@ const { lang = "en", title, desc, kw, canon, alt } = Astro.props;
         justify-items: center;
         top: 0;
         padding-block: 64px;
+      }
+
+      @media screen and (width < 640px) {
+        .content-container {
+          padding-bottom: 100px;
+        }
       }
 
       .content {
