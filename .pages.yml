@@ -1,0 +1,18 @@
+media: public/images
+content:
+  - name: blog
+    label: blog
+    type: collection
+    path: 'src/content/blog'
+  - name: blog_es
+    label: blog_es
+    type: collection
+    path: 'src/content/blog_es'
+  - name: projects
+    label: projects
+    type: collection
+    path: 'src/content/projects'
+  - name: proyectos
+    label: proyectos
+    type: collection
+    path: 'src/content/proyectos'
