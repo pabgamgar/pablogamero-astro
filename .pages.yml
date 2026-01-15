@@ -16,3 +16,7 @@ content:
     label: proyectos
     type: collection
     path: 'src/content/proyectos'
+  - name: config
+    label: Astro Content Config
+    path: 'src/content/config.ts'
+    type: file
