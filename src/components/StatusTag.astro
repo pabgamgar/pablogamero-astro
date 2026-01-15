@@ -1,0 +1,15 @@
+---
+import statusData from "@/content/status.json";
+---
+
+<p
+    class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit flex gap-2 items-center text-sm text-center self-center sm:self-auto"
+>
+    <span class="relative inline-flex rounded-full size-2 bg-green-500">
+        <span
+            class="animate-ping inline-flex size-full rounded-full bg-green-400 opacity-75"
+        >
+        </span>
+    </span>
+    {statusData.current}
+</p>

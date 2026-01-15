@@ -4,17 +4,17 @@ import type { Render, RenderedContent } from "astro:content";
 import MainLayout from "./MainLayout.astro";
 
 interface Props {
-  project: {
-    id: string;
-    render(): Render[".md"];
-    slug: string;
-    body: string;
-    collection: "work" | "trabajo";
-    data: WorkItem;
-    rendered?: RenderedContent;
-    filePath?: string;
-  };
-  lang: "en" | "es";
+    project: {
+        id: string;
+        render(): Render[".md"];
+        slug: string;
+        body: string;
+        collection: "projects" | "proyectos";
+        data: WorkItem;
+        rendered?: RenderedContent;
+        filePath?: string;
+    };
+    lang: "en" | "es";
 }
 
 const { project, lang } = Astro.props;
@@ -23,50 +23,62 @@ const { name, title, description, links } = data;
 ---
 
 <MainLayout
-  title={name}
-  desc={description[0]}
-  kw={name}
-  canon={lang === "en" ? `work/${slug}` : `es/trabajo/${slug}`}
-  alt={lang === "en" ? `es/trabajo/${slug}` : `work/${slug}`}
-  lang={lang}
+    title={name}
+    desc={description[0]}
+    kw={name}
+    canon={`https://pablogamero.com${lang === "en" ? "/projects" : "/es/proyectos"}/${slug}`}
+    alt={`https://pablogamero.com${lang === "en" ? "/es/proyectos" : "/projects"}/${slug}`}
+    lang={lang}
 >
-  <article
-    class="text-white max-w-4xl flex flex-col gap-8 self-center px-4 sm:px-8 md:px-12 py-4"
-  >
-    <section
-      id="hero"
-      class="w-full flex flex-col gap-4"
+    <article
+        class="text-white max-w-4xl flex flex-col gap-8 self-center px-4 sm:px-8 md:px-12 py-4"
     >
-      <h1 class="font-bold text-pretty flex gap-4 items-center">
-        {name}{title && `: ${title}`}
-      </h1>
-      <p class="text-pretty text-neutral-300">{description}</p>
-      <div class="w-full aspect-video overflow-clip rounded-xl">
-        <img
-          src={`/images/${slug}-show.webp`}
-          alt={name}
-          class="object-cover w-full h-full"
-          transition:name={`img-${slug}`}
-        />
-      </div>
-      <div class="flex gap-4">
-        {
-          Object.entries(links).map(([name, link]) => (
-            <a
-              href={link}
-              class="flex items-center justify-center px-3 py-1 bg-neutral-800 border border-neutral-600 text-sm rounded-md hover:bg-neutral-600 transition-colors duration-500"
-            >
-              {name}
-            </a>
-          ))
-        }
-      </div>
-    </section>
-    <section
-      id="content"
-      class="flex flex-col gap-4"
-    >
-      <slot />
-    </section>
-  </article>
+        <section id="hero" class="w-full flex flex-col gap-4">
+            <h1 class="font-bold text-pretty flex gap-4 items-center">
+                {name}{title && `: ${title}`}
+            </h1>
+            <p class="text-pretty text-neutral-300">{description}</p>
+            <div class="w-full aspect-video overflow-clip rounded-xl">
+                <img
+                    src={`/images/${slug}-show.webp`}
+                    alt={name}
+                    class="object-cover w-full h-full"
+                    transition:name={`img-${slug}`}
+                />
+            </div>
+            <div class="flex gap-4">
+                {
+                    Object.entries(links).map(([name, link]) => (
+                        <a
+                            href={link}
+                            class="flex items-center justify-center rounded-lg
+                            border border-white/15
+                            bg-white/[0.03]
+                            hover:border-white/25
+                            hover:bg-white/[0.05] transition-all duration-300 px-3 py-1"
+                        >
+                            {name}
+                        </a>
+                    ))
+                }
+            </div>
+        </section>
+        <section id="content" class="flex flex-col gap-4">
+            <slot />
+        </section>
+    </article>
 </MainLayout>
+<style is:inline>
+    ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    li {
+        display: list-item;
+    }
+</style>

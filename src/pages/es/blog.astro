@@ -4,35 +4,35 @@ import ArticleTile from "@/components/PostTile.astro";
 import BackButton from "@/components/BackButton.astro";
 import { getCollection } from "astro:content";
 
-const blogPosts = await getCollection("blog", ({ data }) => !data.draft);
+const blogPosts = await getCollection("blog_es", ({ data }) => !data.draft);
 const sortedPosts = blogPosts.sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---
 
 <MainLayout
-    title="Writing • Pablo Gamero"
-    desc="Thoughts on building Omnia, shipping products, and lessons learned along the way."
+    title="Blog • Pablo Gamero"
+    desc="Reflexiones sobre construir Omnia, lanzar productos y lecciones aprendidas en el camino."
     kw="blog, writing, lessons learned, building in public, Pablo Gamero"
-    canon="https://pablogamero.com/blog"
-    alt="https://pablogamero.com/es/blog"
+    canon="https://pablogamero.com/es/blog"
+    alt="https://pablogamero.com/blog"
 >
     <div
         id="content"
         class="max-w-5xl w-full flex flex-col gap-8 px-4 sm:px-6 md:px-8 items-start"
     >
-        <BackButton />
+        <BackButton link="/es" text="Volver a inicio" />
         <div class="flex flex-col gap-2">
-            <h1>Writing</h1>
+            <h1>Blog</h1>
             <p class="text-pretty">
-                Documenting the journey of building Omnia, shipping products,
-                and learning in public.
+                Documentando el viaje de construir Omnia, lanzar productos y
+                aprender en público.
             </p>
         </div>
         <div class="flex flex-col gap-2 w-full">
             {
                 sortedPosts.map((post) => {
-                    return <ArticleTile post={post} lang="en" />;
+                    return <ArticleTile post={post} lang="es" />;
                 })
             }
         </div>

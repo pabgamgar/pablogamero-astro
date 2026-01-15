@@ -6,7 +6,18 @@ import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), sitemap(), react(), robotsTxt()],
+  integrations: [
+    tailwind(),
+    sitemap(),
+    react(),
+    robotsTxt({
+      sitemap: [
+        "https://pablogamero.com/sitemap-index.xml",
+        "https://pablogamero.com/rss.xml",
+        "https://pablogamero.com/es/rss.xml",
+      ],
+    }),
+  ],
   trailingSlash: "never",
   i18n: {
     defaultLocale: "en",

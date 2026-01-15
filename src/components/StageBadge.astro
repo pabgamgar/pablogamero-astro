@@ -1,0 +1,31 @@
+---
+type Stage = "building" | "maintaining" | "paused" | "active";
+
+const { stage } = Astro.props as { stage: Stage };
+
+const LABEL: Record<Stage, string> = {
+    building: "building",
+    maintaining: "maintaining",
+    paused: "paused",
+    active: "active",
+};
+
+const CLASS: Record<Stage, string> = {
+    building: "bg-slate-800/40 text-slate-200 border border-slate-700/60",
+    maintaining:
+        "bg-emerald-900/25 text-emerald-200 border border-emerald-800/50",
+    paused: "bg-amber-900/20 text-amber-200 border border-amber-800/45",
+    active: "bg-sky-900/25 text-sky-200 border border-sky-800/45",
+};
+---
+
+<span
+    class={[
+        "inline-flex items-center rounded-full px-2 py-0.5",
+        "text-[11px] leading-4 tracking-wide",
+        "select-none whitespace-nowrap",
+        CLASS[stage],
+    ].join(" ")}
+>
+    {LABEL[stage]}
+</span>

@@ -28,3 +28,8 @@ firebase-debug.log*
 .firebaserc
 firebase.json
 .firebase/
+
+# .md files
+AGENTS.md
+GEMINI.md
+writing-instructions.md

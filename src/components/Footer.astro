@@ -1,13 +1,75 @@
 ---
-interface Props {
-	lang: 'es' | 'en'
-}
-const { lang } = Astro.props
+import GithubIcon from "@/icons/github.astro";
+import InstaIcon from "@/icons/instagram.astro";
+import LinkedInIcon from "@/icons/linkedin.astro";
+import XIcon from "@/icons/x.astro";
+
+const githubUsername = "pabgamgar";
+const linkedinUsername = "pabgamgar";
+const instagramUsername = "pabgamgar";
+const twitterUsername = "pabgamgar";
 ---
 
-<footer
-	class="flex-warp absolute bottom-2 flex gap-6 self-center rounded-md bg-[var(--content)] px-4 py-2 text-[var(--content-foreground)] backdrop-blur-xl"
->
-	<a href="/privacy-policy">{lang == 'en' ? 'Privacy policy' : 'Política de privacidad'}</a>
-	<a href="/cookie-policy">{lang == 'en' ? 'Cookie policy' : 'Política de cookies'}</a>
+<footer class="footer">
+    <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`https://github.com/${githubUsername}`}
+        class="social-icon"
+        aria-label="GitHub Profile"
+    >
+        <GithubIcon size="24" />
+    </a>
+    <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`https://linkedin.com/in/${linkedinUsername}`}
+        class="social-icon"
+        aria-label="LinkedIn Profile"
+    >
+        <LinkedInIcon size="24" />
+    </a>
+    <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`https://instagram.com/${instagramUsername}`}
+        class="social-icon"
+        aria-label="Instagram Profile"
+    >
+        <InstaIcon size="24" />
+    </a>
+    <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`https://x.com/${twitterUsername}`}
+        class="social-icon"
+        aria-label="X Profile"
+    >
+        <XIcon size="24" />
+    </a>
 </footer>
+
+<style>
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        padding-block: 16px;
+    }
+
+    .social-icon {
+        padding: 10px;
+        border-radius: 8px;
+        color: var(--content-foreground);
+        transition: all 250ms ease-in;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .social-icon:hover {
+        scale: 1.1;
+        transition: all 250ms ease-in;
+    }
+</style>

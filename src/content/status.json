@@ -1,0 +1,23 @@
+{
+  "current": "building omnia",
+  "updated": "2026-01-12T17:30:00Z",
+  "history": [
+    "evaluating app idea",
+    "client work"
+  ],
+  "allowedStatuses": [
+    "building omnia",
+    "evaluating app idea",
+    "client meeting",
+    "client work",
+    "admin",
+    "writing",
+    "recharging",
+    "shipping",
+    "debugging",
+    "planning",
+    "researching",
+    "learning",
+    "experimenting"
+  ]
+}

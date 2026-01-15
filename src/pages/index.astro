@@ -1,161 +1,74 @@
 ---
-import Button from "@/components/Button.astro";
+import LangSelector from "@/components/LangSelector.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
-import GithubIcon from "@/icons/github.astro";
-import InstaIcon from "@/icons/instagram.astro";
-import LinkedInIcon from "@/icons/linkedin.astro";
-import XIcon from "@/icons/x.astro";
+import StatusTag from "@/components/StatusTag.astro";
 ---
 
 <MainLayout
-  title="Pablo Gamero • Developer & Entrepreneur"
-  desc="Welcome to my website! I'm a developer and entrepreneur. Learn more about my work, experience, and how to contact me."
-  kw="Pablo Gamero, Pablo Gamero García, developer, entrepreneur, freelancer, tech, startups, web development"
-  canon="https://pablogamero.com"
-  alt="https://pablogamero.com/es"
+    title="Pablo Gamero"
+    desc="Pablo Gamero — I learn by building products and working on real business problems."
+    kw="Pablo Gamero, Pablo Gamero García, building in public, Omnia, Pubmefy, Dibs, developer, entrepreneur"
+    canon="https://pablogamero.com"
+    alt="https://pablogamero.com/es"
 >
-  <div class="container">
-    <div class="content !overflow-hidden">
-      <h1 class="font-bold text-5xl">Pablo Gamero</h1>
-      <h2 class="font-light text-2xl">Developer & Entrepreneur</h2>
-      <p
-        class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit flex gap-2 items-center text-sm text-center self-center sm:self-auto"
-      >
-        <span class="relative inline-flex rounded-full size-2 bg-green-500">
-          <span
-            class="animate-ping inline-flex size-full rounded-full bg-green-400 opacity-75"
-          >
-          </span>
-        </span>
-        Open to work
-      </p>
-      <p>Leveraging technology to engineer innovative solutions.</p>
-      <div
-        class="flex sm:gap-6 sm:flex-row flex-col items-center gap-3 mt-8 sm:mt-4"
-      >
-        <Button href="/work"> Browse My Work </Button>
-        <Button
-          variant="outlined"
-          href="/contact"
-        >
-          Contact Me
-        </Button>
-      </div>
-    </div>
+    <LangSelector />
     <div
-      id="socials-list"
-      class="sm:absolute flex sm:flex-col gap-2 sm:top-1/2 sm:-translate-y-1/2 sm:right-0 h-fit"
+        id="content"
+        class="flex flex-col gap-12 items-center flex-1 justify-center px-2 pb-8 max-w-xl text-center"
     >
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/pabgamgar"
-        class="social"
-        aria-label="GitHub Profile"
-      >
-        <GithubIcon size="32" /></a
-      >
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://linkedin.com/in/pabgamgar"
-        class="social"
-        aria-label="LinkedIn Profile"
-      >
-        <LinkedInIcon size="32" /></a
-      >
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://instagram.com/pabgamgar"
-        class="social"
-        aria-label="Instagram Profile"
-      >
-        <InstaIcon size="32" /></a
-      >
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://x.com/pabgamgar"
-        class="social"
-        aria-label="X Profile"
-      >
-        <XIcon size="32" /></a
-      >
+        <div class="flex flex-col gap-3 items-center">
+            <h1 class="text-center flex flex-col">
+                <span class="font-normal text-2xl">Hi there, I'm </span>
+                <span class="text-3xl">Pablo Gamero</span>
+            </h1>
+            <StatusTag />
+        </div>
+        <div class="flex flex-col items-center gap-3 group/projects">
+            <p class="text-2xl">I build problem-specific products</p>
+            <div class="flex gap-2">
+                <a
+                    href="https://dibs.pablogamero.com"
+                    class="relative group/dibs translate-x-2 -rotate-6 group-hover/projects:translate-x-0 group-hover/projects:rotate-0 transition-transform duration-300"
+                >
+                    <img
+                        src="/images/dibs-icon.webp"
+                        alt="Dibs icon"
+                        class="size-10 rounded-lg"
+                    />
+                    <span
+                        class="absolute -top-8 -translate-x-16 bg-black text-white px-2.5 py-1 rounded-xl bg-opacity-80 text-xs opacity-0 sm:group-hover/dibs:opacity-100 transition-opacity whitespace-nowrap hidden sm:block"
+                        >Dibs - A simple debt tracker</span
+                    >
+                </a>
+                <a
+                    href="https://pubmefy.vercel.app"
+                    class="relative group/pubmefy -translate-x-2 -rotate-6 group-hover/projects:translate-x-0 group-hover/projects:rotate-0 transition-transform duration-300"
+                >
+                    <img
+                        src="/images/pubmefy-icon.webp"
+                        alt="Pubmefy icon"
+                        class="size-10 rounded-lg"
+                    />
+                    <span
+                        class="absolute -top-8 -translate-x-24 bg-black text-white px-2.5 py-1 rounded-xl bg-opacity-80 text-xs opacity-0 sm:group-hover/pubmefy:opacity-100 transition-opacity whitespace-nowrap hidden sm:block"
+                        >Pubmefy - Automated CVs for researchers</span
+                    >
+                </a>
+            </div>
+        </div>
+        <p class="text-2xl text-balance group/omnia">
+            I'm also running <a
+                href="https://omniacorp.es"
+                class="font-medium group-hover/omnia:text-blue-400 transition-colors duration-500 italic"
+                >Omnia</a
+            >, where I work with small businesses on real operational problems.
+        </p>
+        <nav class="flex gap-6 pt-4 text-sm text-white/60">
+            <a href="/projects" class="hover:text-white/90 transition">
+                Projects
+            </a>
+            <a href="/blog" class="hover:text-white/90 transition"> Writing </a>
+            <a href="/about" class="hover:text-white/90 transition"> About </a>
+        </nav>
     </div>
-  </div>
 </MainLayout>
-
-<style>
-  .container {
-    margin-left: 10%;
-    position: absolute;
-    width: 500px;
-    height: 100vh;
-    top: 0;
-    animation: transitionIn 1s;
-    align-self: flex-start;
-    justify-self: center;
-    display: flex;
-    align-items: center;
-  }
-  .content {
-    padding: 64px 96px 64px 40px;
-    width: 500px;
-    height: 350px;
-    justify-content: center;
-    gap: 16px;
-    clip-path: path(
-      "M0 12C0 5.37259 5.37258 0 12 0H488C494.627 0 500 5.37258 500 12V38.5556C500 45.183 494.627 50.5556 488 50.5556H452C445.373 50.5556 440 55.9281 440 62.5556V287.444C440 294.072 445.373 299.444 452 299.444H488C494.627 299.444 500 304.817 500 311.444V338C500 344.627 494.627 350 488 350H12C5.37258 350 0 344.627 0 338V12Z"
-    );
-    transition: all 0.45s ease-in-out;
-    animation: none;
-  }
-  .social {
-    padding: 10px;
-    background-color: var(--content);
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
-    animation: slideInTop 0.45s ease-in-out forwards;
-    opacity: 0;
-    color: var(--content-foreground);
-    transition: all 250ms ease-in;
-  }
-  .social:hover {
-    scale: 1.1;
-    transition: all 250ms ease-in;
-  }
-  .social:nth-child(1) {
-    animation-delay: 0.15s;
-  }
-  .social:nth-child(2) {
-    animation-delay: 0.3s;
-  }
-  .social:nth-child(3) {
-    animation-delay: 0.45s;
-  }
-  .social:nth-child(4) {
-    animation-delay: 0.6s;
-  }
-
-  @media screen and (width < 640px) {
-    .content {
-      padding: 40px 24px 40px 24px !important;
-      width: 95%;
-      max-width: 450px;
-      clip-path: none;
-      height: fit-content;
-    }
-    .container {
-      margin: 0px;
-      padding-top: 16px;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      gap: 16px;
-      text-align: center;
-    }
-  }
-</style>

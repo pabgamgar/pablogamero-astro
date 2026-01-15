@@ -1,0 +1,74 @@
+---
+import ProjectTile from "@/components/ProjectTile.astro";
+import BackButton from "@/components/BackButton.astro";
+import FeaturedProjectTile from "@/components/FeaturedProjectTile.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("proyectos");
+
+export async function getStaticPaths() {
+    const projects = await getCollection("proyectos");
+    return projects.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+---
+
+<MainLayout
+    title="Mis Trabajos • Pablo Gamero"
+    desc="Explora mi trabajo, incluyendo apps, webs, startups y negocios que he desarrollado."
+    kw="Pablo Gamero, Pablo Gamero García, work, apps, webapps, websites, startups, businesses, portfolio"
+    canon="https://pablogamero.com/es/proyectos"
+    alt="https://pablogamero.com/projects"
+>
+    <div
+        id="content"
+        class="flex flex-col gap-8 max-w-5xl px-4 sm:px-6 md:px-8"
+    >
+        <BackButton link="/es" text="Volver a inicio" />
+        <div class="flex flex-col gap-4">
+            <h1>
+                Cosas que he construido, estoy construyendo o he discontinuado
+            </h1>
+            {
+                projects
+                    .filter((p) => p.data.featured && p.data.active)
+                    .map((project) => {
+                        return (
+                            <FeaturedProjectTile project={project} lang="es" />
+                        );
+                    })
+            }
+        </div>
+        <div class="flex flex-col gap-4">
+            <h2>Proyectos independientes</h2>
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-16"
+            >
+                {
+                    projects
+                        .filter((p) => p.data.active && !p.data.featured)
+                        .map((project) => {
+                            return <ProjectTile project={project} lang="es" />;
+                        })
+                }
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h2>Negocios pasados / proyectos discontinuados</h2>
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-16"
+            >
+                {
+                    projects
+                        .filter((p) => !p.data.active && !p.data.featured)
+                        .map((project) => {
+                            return <ProjectTile project={project} lang="es" />;
+                        })
+                }
+            </div>
+        </div>
+    </div>
+</MainLayout>

@@ -1,117 +1,71 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import Button from "@/components/Button.astro";
+import BackButton from "@/components/BackButton.astro";
 import { Image } from "astro:assets";
 ---
 
 <MainLayout
-  title="Sobre Mí • Pablo Gamero"
-  desc="Descubre más sobre mí, mi experiencia laboral, habilidades e inspiraciones. Conoce las aplicaciones que uso a diario."
-  kw="Pablo Gamero, Pablo Gamero García, sobre mí, desarrollador, emprendedor, experiencia laboral, habilidades, inspiraciones, aplicaciones diarias"
-  lang="es"
-  canon="https://pablogamero.com/es/sobre-mi"
-  alt="https://pablogamero.com/about"
+    title="Sobre mí • Pablo Gamero"
+    desc="Descubre más sobre mí, mi camino, en qué trabajo ahora y por qué lo hago."
+    kw="Pablo Gamero, Pablo Gamero García, about, developer, entrepreneur"
+    canon="https://pablogamero.com/es/sobre-mi"
+    alt="https://pablogamero.com/about"
 >
-  <div class="p-4 sm:p-6">
-    <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-6 w-full max-w-5xl rounded-3xl overflow-clip">
-      <div class="col-span-1 sm:col-span-2 lg:col-span-4 row-span-1 !rounded-lg content gap-4 !max-w-none">
-        <p>
-          Hola, soy Pablo Gamero — un desarrollador, solucionador de problemas y entusiasta de las startups de Sevilla, España. Me encanta crear productos que faciliten la vida y ayuden a las personas a convertir ideas en realidad.
-        </p>
-        <p>
-          ¿Mi misión? Crear herramientas que eliminen la fricción de la vida diaria, permitiendo a las personas enfocarse en lo que realmente importa, ya sea construir un negocio, perseguir proyectos creativos o simplemente vivir de manera más eficiente. Inspirado por la frase de David Allen, <span class="italic">"Tu mente está para tener ideas, no para retenerlas,"</span> me apasiona usar la tecnología para liberar nuestras mentes de tareas mundanas.
-        </p>
-        <p>
-          Cuando no estoy programando o explorando ideas de negocio, probablemente me encuentres en un viaje improvisado con amigos, perdido en una melodía de piano, practicando fitboxing o investigando sobre las últimas tendencias tecnológicas.
-        </p>
-        <Button href="/es/trabajo">Explorar Mi Trabajo</Button>
-      </div>
-      <div class="col-span-1 row-span-1 lg:col-span-2 !p-0 !rounded-lg content overflow-clip !max-w-none !hidden sm:!block !min-w-0">
-        <Image src="/images/professional-me.webp" alt="Pablo Gamero" width="2" height="3" class="w-full h-full md:max-h-[500px] lg:max-h-[400px] object-cover no-drag" />
-      </div>
-      <div class="col-span-1 lg:col-span-3 row-span-1 !rounded-lg content gap-3 !max-w-none !max-h-none">
-        <h2>HABILIDADES</h2>
-        <div class="flex flex-col gap-2 w-full">
-          <h3 class="text-lg">Tecnologías</h3>
-          <ul class="flex flex-wrap gap-2">
-            <li>React</li>
-            <li>Next.js</li>
-            <li>Astro</li>
-            <li>Flutter</li>
-            <li>React Native</li>
-          </ul>
+    <div
+        id="content"
+        class="flex flex-col gap-8 items-center lg:items-start px-4 sm:px-6 md:px-8"
+    >
+        <BackButton link="/es" text="Volver a inicio" />
+        <h1>Construir. Aprender. Repetir.</h1>
+        <div
+            class="flex flex-col lg:flex-row w-full max-w-5xl items-center lg:items-start gap-8 justify-center lg:justify-start"
+        >
+            <div
+                class="max-w-xl lg:max-w-none aspect-square overflow-hidden rounded-xl flex-[2]"
+            >
+                <Image
+                    src="/images/professional-me.webp"
+                    alt="Pablo Gamero"
+                    width="400"
+                    height="400"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+            <div
+                class="max-w-xl lg:max-w-none flex flex-col items-start justify-start gap-4 flex-[3] text-pretty"
+            >
+                <p>Soy Pablo Gamero y aprendo construyendo.</p>
+                <p>
+                    La mayor parte de mi tiempo se va en <a
+                        href="/es/proyectos/omnia"
+                        class="italic">Omnia</a
+                    >, un proyecto a largo plazo donde uso la tecnología para
+                    reducir la fricción en negocios reales trabajando de cerca
+                    con los problemas mismos, no aplicando soluciones
+                    predefinidas.
+                </p>
+                <p>
+                    Además, construyo mis propios productos: apps, herramientas
+                    web y pequeños experimentos que me ayudan a probar ideas y
+                    mejorar mi criterio.
+                </p>
+                <p>
+                    Esta web es donde llevo el registro de ese proceso. En qué
+                    trabajo, dónde cambio de dirección y qué aprendo por el
+                    camino. No es un portafolio ni un pitch — solo una
+                    instantánea honesta en el tiempo.
+                </p>
+                <p>
+                    Fuera del trabajo, toco el piano/guitarra, entreno fitboxing
+                    e intento mantener suficiente distancia de las pantallas
+                    para pensar con claridad.
+                </p>
+                <p>
+                    Si das una vuelta, encontrarás notas sobre lo que construyo,
+                    proyectos que he lanzado o detenido, y escritos sobre las
+                    decisiones detrás de ellos.
+                </p>
+            </div>
         </div>
-        <div class="flex flex-col gap-2">
-          <h3 class="text-lg">Herramientas & Backend</h3>
-          <ul class="flex flex-wrap gap-2">
-            <li>SQL</li>
-            <li>Firebase</li>
-            <li>Git</li>
-            <li>Figma</li>
-          </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3 class="text-lg">Idiomas</h3>
-          <ul class="flex flex-wrap gap-2">
-            <li>Español <span class="text-xs">(nativo)</span></li>
-            <li>Inglés <span class="text-xs">(fluido)</span></li>
-            <li>Francés <span class="text-xs">(fluido)</span></li>
-          </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3 class="text-lg">Otras Habilidades</h3>
-          <ul class="flex flex-wrap gap-2">
-            <li>Investigación</li>
-            <li>Diseño UI/UX</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-span-1 sm:col-span-2 lg:col-span-3 row-span-1 !rounded-lg content gap-4 !max-w-none">
-        <h2>OBJETIVOS</h2>
-        <p>
-          Mi misión es crear productos que simplifiquen la vida y permitan a las personas hacer realidad sus ideas sin esfuerzo. Me apasiona especialmente:
-        </p>
-        <div class="flex flex-col gap-1 ml-4">
-          <li>Construir herramientas intuitivas y conectadas que reduzcan la carga mental.</li>
-          <li>Ayudar a otros a materializar sus ideas mediante sistemas inteligentes.</li>
-          <li>Explorar la intersección entre negocios y tecnología para generar un impacto duradero.</li>
-        </div>
-        <p>
-          ¿Tienes un proyecto o idea?
-          <a href="/contact" class="italic underline">Hagámoslo realidad</a>.
-        </p>
-        <Button href="/services">Servicios</Button>
-      </div>
     </div>
-  </div>
 </MainLayout>
-
-<style>
-  .content {
-    display: flex;
-    padding: 24px;
-    min-height: fit-content;
-    height: auto;
-    border-radius: 4px;
-  }
-  .auto-rows {
-    grid-auto-rows: 1fr;
-  }
-  ul > li {
-    list-style-type: none;
-    padding: 6px 12px;
-    border-radius: 100px;
-    background-color: #313131;
-    font-size: 14px;
-  }
-
-  .box {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px 16px;
-    background-color: var(--content);
-    border-radius: 12px;
-    text-wrap: nowrap;
-  }
-</style>

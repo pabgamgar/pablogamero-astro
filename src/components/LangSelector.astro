@@ -1,0 +1,24 @@
+---
+import Globe from "@/icons/globe.astro";
+---
+
+<div class="absolute right-6 top-5 group">
+    <button
+        aria-haspopup="true"
+        aria-label="Language"
+        class="text-neutral-300 hover:text-white/90 transition text-xs"
+    >
+        <Globe size={5} />
+    </button>
+    <div
+        class="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity absolute right-0
+  rounded-lg border border-white/10 bg-black/80 backdrop-blur px-2 py-1 text-xs"
+    >
+        <a href="/" class="block px-2 py-1 text-white/70 hover:text-white"
+            >English</a
+        >
+        <a href="/es" class="block px-2 py-1 text-white/70 hover:text-white"
+            >Español</a
+        >
+    </div>
+</div>

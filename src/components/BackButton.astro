@@ -1,0 +1,15 @@
+---
+import LeftArrow from "@/icons/arrow-left.astro";
+
+const { link = "/", text = "Back to home" } = Astro.props;
+---
+
+<a
+    href={link}
+    class="text-neutral-300 flex gap-1 self-start items-center hover:text-neutral-600 transition-all group"
+>
+    <LeftArrow size={4} />
+    <span class="-translate-y-[1px] group-hover:translate-x-1 transition-all"
+        >{text}</span
+    >
+</a>
