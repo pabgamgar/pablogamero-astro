@@ -11,7 +11,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: "Pablo Gamero • Writing",
     description:
-      "Thoughts on building Omnia, shipping products, and lessons learned along the way.",
+      "Thoughts on building BlabliWorks, shipping products, and lessons learned along the way.",
     site: context.site ?? "https://pablogamero.com",
     items: sortedPosts.map((post) => ({
       title: post.data.title,

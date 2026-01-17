@@ -11,7 +11,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: "Pablo Gamero • Blog",
     description:
-      "Reflexiones sobre construir Omnia, lanzar productos y lecciones aprendidas en el camino.",
+      "Reflexiones sobre construir BlabliWorks, lanzar productos y lecciones aprendidas en el camino.",
     site: context.site ?? "https://pablogamero.com",
     items: sortedPosts.map((post) => ({
       title: post.data.title,

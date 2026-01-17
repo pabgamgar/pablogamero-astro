@@ -1,19 +1,19 @@
 ---
-name: "Omnia"
+name: "BlabliWorks"
 title: "A long-term project focused on solving real business problems through technology."
-description: "First free essential consumer goods company in Europe thanks to the monetization scheme – through the packaging marketing."
+description: "Technology consulting focused on solving real operational problems in small businesses."
 links:
-  "Website": "https://omniacorp.es"
-  "LinkedIn": "https://linkedin.com/company/omniacorp-es"
+  "Website": "https://blabliworks.com"
+  "LinkedIn": "https://linkedin.com/company/blabliworks"
 type: "Startup"
 featured: true
 active: true
 stage: active
 ---
 
-## What Omnia is
+## What BlabliWorks is
 
-Omnia exists to reduce operational friction.
+BlabliWorks exists to reduce operational friction.
 
 That usually means dealing with processes that are slow, manual, fragmented, or poorly supported by the tools in place. Instead of offering predefined services, I focus on understanding the specific context of a business and deciding what actually needs to be built, changed, automated, or removed.
 
@@ -21,9 +21,9 @@ Sometimes the result is software.
 Sometimes it’s a system.
 Sometimes it’s simply making fewer things exist.
 
-## How I use Omnia
+## How I use BlabliWorks
 
-I work through Omnia by getting involved early and staying close to the problem.
+I work through BlabliWorks by getting involved early and staying close to the problem.
 
 That involves:
 
@@ -35,7 +35,7 @@ I deliberately avoid generic solutions, heavy frameworks, and building things �
 
 ## What comes out of it
 
-The outcomes of work done through Omnia vary, but usually fall into a few categories:
+The outcomes of work done through BlabliWorks vary, but usually fall into a few categories:
 
 - Internal tools and small web applications
 - Process automation and system redesign
@@ -62,4 +62,4 @@ The form isn’t fixed. The usefulness is.
 
 ## Current focus
 
-At the moment, Omnia is focused on small-scale, high-impact interventions: projects where understanding the problem well matters more than the size of the solution.
+At the moment, BlabliWorks is focused on small-scale, high-impact interventions: projects where understanding the problem well matters more than the size of the solution.

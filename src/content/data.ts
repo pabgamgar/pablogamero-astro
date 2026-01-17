@@ -8,7 +8,7 @@ export const experience = [
     position: "Chief Operating Officer",
   },
   {
-    company: "Omnia",
+    company: "BlabliWorks",
     position: "Co-Chief Executive Officer",
   },
 ];
@@ -59,10 +59,10 @@ export const linktreeProjectsBusinesses = [
     icon: "daykeeper-icon.webp",
   },
   {
-    name: "Omnia",
+    name: "BlabliWorks",
     text: "StartUp",
-    url: "https://www.omniacorp.es",
-    icon: "omnia-icon.webp",
+    url: "https://www.BlabliWorkscorp.es",
+    icon: "BlabliWorks-icon.webp",
   },
   {
     name: "It'sFree",

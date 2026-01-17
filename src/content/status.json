@@ -1,12 +1,9 @@
 {
-  "current": "building omnia",
+  "current": "building BlabliWorks",
   "updated": "2026-01-12T17:30:00Z",
-  "history": [
-    "evaluating app idea",
-    "client work"
-  ],
+  "history": ["evaluating app idea", "client work"],
   "allowedStatuses": [
-    "building omnia",
+    "building BlabliWorks",
     "evaluating app idea",
     "client meeting",
     "client work",
