@@ -10,13 +10,17 @@ const fallback = lang === "es" ? "Actualizando..." : "Updating...";
     data-lang={lang}
     data-endpoint={endpoint}
 >
-    <span class="relative inline-flex rounded-full size-2 bg-green-500">
+    <span
+        class="relative inline-flex rounded-full size-2 bg-green-500"
+        data-status-dot
+    >
         <span
             class="animate-ping inline-flex size-full rounded-full bg-green-400 opacity-75"
+            data-status-ping
         >
         </span>
     </span>
-    {fallback}
+    <span data-status-text>{fallback}</span>
 </p>
 
 <script is:inline>
@@ -24,21 +28,71 @@ const fallback = lang === "es" ? "Actualizando..." : "Updating...";
         const tags = document.querySelectorAll("[data-status-tag]");
         if (!tags.length) return;
 
+        const COLOR_CLASSES = {
+            green: ["bg-green-500", "bg-green-400"],
+            red: ["bg-red-500", "bg-red-400"],
+            blue: ["bg-blue-500", "bg-blue-400"],
+            orange: ["bg-orange-500", "bg-orange-400"],
+            yellow: ["bg-yellow-400", "bg-yellow-300"],
+            purple: ["bg-purple-500", "bg-purple-400"],
+            gray: ["bg-gray-400", "bg-gray-300"],
+        };
+
+        const STATUS_COLORS = {
+            building: "green",
+            shipping: "green",
+            debugging: "red",
+            planning: "blue",
+            experimenting: "blue",
+            researching: "blue",
+            learning: "blue",
+            "evaluating app idea": "blue",
+            writing: "purple",
+            "client work": "orange",
+            "client meeting": "orange",
+            admin: "yellow",
+            recharging: "gray",
+        };
+
+        const setDotColor = (dot, ping, color) => {
+            if (!color || !COLOR_CLASSES[color]) return;
+            Object.values(COLOR_CLASSES).forEach(([dotClass, pingClass]) => {
+                dot.classList.remove(dotClass);
+                ping.classList.remove(pingClass);
+            });
+            const [dotClass, pingClass] = COLOR_CLASSES[color];
+            dot.classList.add(dotClass);
+            ping.classList.add(pingClass);
+        };
+
         tags.forEach((el) => {
             const lang = el.getAttribute("data-lang") || "en";
             const endpoint = el.getAttribute("data-endpoint");
             if (!endpoint) return;
+            const textEl = el.querySelector("[data-status-text]");
+            const dotEl = el.querySelector("[data-status-dot]");
+            const pingEl = el.querySelector("[data-status-ping]");
 
             fetch(endpoint, { headers: { Accept: "application/json" } })
                 .then((res) => (res.ok ? res.json() : null))
                 .then((data) => {
                     if (!data) return;
+                    const statusKey =
+                        typeof data.key === "string" ? data.key : null;
                     const current =
                         data.current && typeof data.current === "object"
                             ? data.current[lang] || data.current.en
                             : data.current;
                     if (typeof current === "string" && current.trim()) {
-                        el.textContent = current;
+                        if (textEl) {
+                            textEl.textContent = current;
+                        }
+                    }
+                    if (dotEl && pingEl) {
+                        const color = statusKey
+                            ? STATUS_COLORS[statusKey]
+                            : null;
+                        if (color) setDotColor(dotEl, pingEl, color);
                     }
                 })
                 .catch(() => {});
