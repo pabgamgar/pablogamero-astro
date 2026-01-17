@@ -1,9 +1,14 @@
 ---
-import statusData from "@/content/status.json";
+const { lang = "en", endpoint = "https://admin.pablogamero.com/api/status" } =
+    Astro.props as { lang?: "en" | "es"; endpoint?: string };
+const fallback = lang === "es" ? "Actualizando..." : "Updating...";
 ---
 
 <p
     class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit flex gap-2 items-center text-sm text-center self-center sm:self-auto"
+    data-status-tag
+    data-lang={lang}
+    data-endpoint={endpoint}
 >
     <span class="relative inline-flex rounded-full size-2 bg-green-500">
         <span
@@ -11,5 +16,32 @@ import statusData from "@/content/status.json";
         >
         </span>
     </span>
-    {statusData.current}
+    {fallback}
 </p>
+
+<script is:inline>
+    (() => {
+        const tags = document.querySelectorAll("[data-status-tag]");
+        if (!tags.length) return;
+
+        tags.forEach((el) => {
+            const lang = el.getAttribute("data-lang") || "en";
+            const endpoint = el.getAttribute("data-endpoint");
+            if (!endpoint) return;
+
+            fetch(endpoint, { headers: { Accept: "application/json" } })
+                .then((res) => (res.ok ? res.json() : null))
+                .then((data) => {
+                    if (!data) return;
+                    const current =
+                        data.current && typeof data.current === "object"
+                            ? data.current[lang] || data.current.en
+                            : data.current;
+                    if (typeof current === "string" && current.trim()) {
+                        el.textContent = current;
+                    }
+                })
+                .catch(() => {});
+        });
+    })();
+</script>

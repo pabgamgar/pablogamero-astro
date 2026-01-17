@@ -1,5 +1,8 @@
 {
-  "current": "building BlabliWorks",
+  "current": {
+    "en": "building BlabliWorks",
+    "es": "construyendo BlabliWorks"
+  },
   "updated": "2026-01-12T17:30:00Z",
   "history": ["evaluating app idea", "client work"],
   "allowedStatuses": [
