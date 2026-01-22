@@ -1,9 +1,9 @@
 ---
-name: "BlabliWorks"
+name: "Limero"
 title: "A long-term project focused on solving real business problems through technology."
 description: "Technology consulting focused on solving real operational problems in small businesses."
 links:
-  "Website": "https://blabliworks.com"
+  "Website": "https://limero.com"
   "LinkedIn": "https://linkedin.com/company/blabliworks"
 type: "Startup"
 featured: true
@@ -11,9 +11,9 @@ active: true
 stage: active
 ---
 
-## What BlabliWorks is
+## What Limero is
 
-BlabliWorks exists to reduce operational friction.
+Limero exists to reduce operational friction.
 
 That usually means dealing with processes that are slow, manual, fragmented, or poorly supported by the tools in place. Instead of offering predefined services, I focus on understanding the specific context of a business and deciding what actually needs to be built, changed, automated, or removed.
 
@@ -21,9 +21,9 @@ Sometimes the result is software.
 Sometimes it’s a system.
 Sometimes it’s simply making fewer things exist.
 
-## How I use BlabliWorks
+## How I use Limero
 
-I work through BlabliWorks by getting involved early and staying close to the problem.
+I work through Limero by getting involved early and staying close to the problem.
 
 That involves:
 
@@ -35,7 +35,7 @@ I deliberately avoid generic solutions, heavy frameworks, and building things �
 
 ## What comes out of it
 
-The outcomes of work done through BlabliWorks vary, but usually fall into a few categories:
+The outcomes of work done through Limero vary, but usually fall into a few categories:
 
 - Internal tools and small web applications
 - Process automation and system redesign
