@@ -1,12 +1,12 @@
 {
   "current": {
-    "en": "building BlabliWorks",
-    "es": "construyendo BlabliWorks"
+    "en": "building Limero",
+    "es": "construyendo Limero"
   },
   "updated": "2026-01-12T17:30:00Z",
   "history": ["evaluating app idea", "client work"],
   "allowedStatuses": [
-    "building BlabliWorks",
+    "building Limero",
     "evaluating app idea",
     "client meeting",
     "client work",

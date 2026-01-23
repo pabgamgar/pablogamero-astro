@@ -62,4 +62,4 @@ The form isn’t fixed. The usefulness is.
 
 ## Current focus
 
-At the moment, BlabliWorks is focused on small-scale, high-impact interventions: projects where understanding the problem well matters more than the size of the solution.
+At the moment, Limero is focused on small-scale, high-impact interventions: projects where understanding the problem well matters more than the size of the solution.

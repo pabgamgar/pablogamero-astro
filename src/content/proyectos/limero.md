@@ -62,4 +62,4 @@ La forma no es fija. La utilidad sí.
 
 ## Enfoque actual
 
-Por el momento, BlabliWorks se centra en intervenciones de pequeña escala y alto impacto: proyectos donde entender bien el problema importa más que el tamaño de la solución.
+Por el momento, Limero se centra en intervenciones de pequeña escala y alto impacto: proyectos donde entender bien el problema importa más que el tamaño de la solución.

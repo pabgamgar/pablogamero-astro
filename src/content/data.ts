@@ -8,8 +8,8 @@ export const experience = [
     position: "Chief Operating Officer",
   },
   {
-    company: "BlabliWorks",
-    position: "Co-Chief Executive Officer",
+    company: "Limero",
+    position: "CEO",
   },
 ];
 
@@ -59,10 +59,10 @@ export const linktreeProjectsBusinesses = [
     icon: "daykeeper-icon.webp",
   },
   {
-    name: "BlabliWorks",
+    name: "Limero",
     text: "StartUp",
-    url: "https://www.BlabliWorkscorp.es",
-    icon: "BlabliWorks-icon.webp",
+    url: "https://www.limero.co",
+    icon: "Limero-icon.webp",
   },
   {
     name: "It'sFree",
