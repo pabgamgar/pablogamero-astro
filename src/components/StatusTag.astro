@@ -4,24 +4,26 @@ const { lang = "en", endpoint = "https://admin.pablogamero.com/api/status" } =
 const fallback = lang === "es" ? "Actualizando..." : "Updating...";
 ---
 
-<p
-    class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit min-w-[22ch] min-h-[1.5rem] flex gap-2 items-center justify-center text-sm text-center self-center sm:self-auto whitespace-nowrap"
-    data-status-tag
-    data-lang={lang}
-    data-endpoint={endpoint}
->
-    <span
-        class="relative inline-flex rounded-full size-2 bg-green-500"
-        data-status-dot
+<div class="flex w-full items-center justify-center h-fit">
+    <p
+        class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit min-w-[22ch] min-h-[1.5rem] flex gap-2 items-center justify-center text-sm text-center self-center sm:self-auto whitespace-nowrap"
+        data-status-tag
+        data-lang={lang}
+        data-endpoint={endpoint}
     >
         <span
-            class="animate-ping inline-flex size-full rounded-full bg-green-400 opacity-75"
-            data-status-ping
+            class="relative inline-flex rounded-full size-2 bg-green-500"
+            data-status-dot
         >
+            <span
+                class="animate-ping inline-flex size-full rounded-full bg-green-400 opacity-75"
+                data-status-ping
+            >
+            </span>
         </span>
-    </span>
-    <span data-status-text>{fallback}</span>
-</p>
+        <span data-status-text>{fallback}</span>
+    </p>
+</div>
 
 <script is:inline>
     (() => {
