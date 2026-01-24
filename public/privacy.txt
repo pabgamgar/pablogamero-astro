@@ -1,0 +1,14 @@
+PRIVACY POLICY
+
+Last updated: 2026-01-24
+
+Overview
+This site is a personal portfolio. I respect your privacy and keep data collection to a minimum.
+
+Data I collect
+- Server logs: Cloudflare may log IP address, user agent, requested URL, and related request metadata for security and performance.
+- Analytics: Umami collects anonymous usage data (for example page views, referrers, device/browser, and approximate location) without cookies.
+- Cookies: None.
+
+Contact
+If you have questions, contact: hi@pablogamero.com
