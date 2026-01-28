@@ -11,33 +11,7 @@ active: true
 stage: active
 ---
 
-## What Limero is
-
-Limero exists to reduce operational friction.
-
-That usually means dealing with processes that are slow, manual, fragmented, or poorly supported by the tools in place. Instead of offering predefined services, I focus on understanding the specific context of a business and deciding what actually needs to be built, changed, automated, or removed.
-
-Sometimes the result is software.
-Sometimes it’s a system.
-Sometimes it’s simply making fewer things exist.
-
-## How I use Limero
-
-I work through Limero by getting involved early and staying close to the problem.
-
-That involves:
-
-- Understanding how work is actually done, not how it’s described
-- Identifying where time, attention, or information is being wasted
-- Deciding whether technology is the right lever, and at what scale
-
-I deliberately avoid generic solutions, heavy frameworks, and building things “just in case”. The goal is not to maximize output, but to improve how the business functions with the least added complexity.
-
-## What comes out of it
-
-The outcomes of work done through Limero vary, but usually fall into a few categories:
-
-- Internal tools and small web applications
+Limero is a consulting and implementation service that acts as a fractional CTO and technology partner for businesses without in-house technical expertise. It identifies operational bottlenecks, decides the right solution, and either builds it or oversees delivery, with a focus on reducing manual work, automating processes, and integrating existing tools. The positioning is simple: tech leadership and delivery for non-technical teams that know something needs fixing but need clarity on what and how.
 - Process automation and system redesign
 - Websites and lightweight platforms when they remove real friction
 - Technical decision-making and simplification

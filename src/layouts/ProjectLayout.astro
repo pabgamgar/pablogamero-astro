@@ -1,7 +1,8 @@
 ---
 import type { WorkItem } from "@/content/config";
-import type { Render, RenderedContent } from "astro:content";
+import type { CollectionEntry, Render, RenderedContent } from "astro:content";
 import MainLayout from "./MainLayout.astro";
+import PostTile from "@/components/PostTile.astro";
 
 interface Props {
     project: {
@@ -15,16 +16,24 @@ interface Props {
         filePath?: string;
     };
     lang: "en" | "es";
+    relatedPosts?: CollectionEntry<"blog" | "blog_es">[];
 }
 
 const { project, lang } = Astro.props;
 const { slug, data } = project;
 const { name, title, description, links } = data;
+const descriptionText = Array.isArray(description)
+    ? description.join(" ")
+    : description;
+const metaDescription = Array.isArray(description)
+    ? description[0]
+    : description;
+const relatedPosts = Astro.props.relatedPosts ?? [];
 ---
 
 <MainLayout
     title={name}
-    desc={description[0]}
+    desc={metaDescription}
     kw={name}
     canon={`https://pablogamero.com${lang === "en" ? "/projects" : "/es/proyectos"}/${slug}`}
     alt={`https://pablogamero.com${lang === "en" ? "/es/proyectos" : "/projects"}/${slug}`}
@@ -37,7 +46,7 @@ const { name, title, description, links } = data;
             <h1 class="font-bold text-pretty flex gap-4 items-center">
                 {name}{title && `: ${title}`}
             </h1>
-            <p class="text-pretty text-neutral-300">{description}</p>
+            <p class="text-pretty text-neutral-300">{descriptionText}</p>
             <div class="w-full aspect-video overflow-clip rounded-xl">
                 <img
                     src={`/images/${slug}-show.webp`}
@@ -66,6 +75,29 @@ const { name, title, description, links } = data;
         <section id="content" class="flex flex-col gap-4">
             <slot />
         </section>
+        <div class="project-divider" aria-hidden="true"></div>
+        <section id="posts" class="flex flex-col gap-4">
+            <h2 class="text-2xl font-semibold">
+                {lang === "es"
+                    ? "Posts sobre este proyecto"
+                    : "Posts about this project"}
+            </h2>
+            {
+                relatedPosts.length > 0 ? (
+                    <div class="flex flex-col gap-2">
+                        {relatedPosts.map((post) => (
+                            <PostTile post={post} lang={lang} />
+                        ))}
+                    </div>
+                ) : (
+                    <p class="text-neutral-300">
+                        {lang === "es"
+                            ? "Todavía no hay posts sobre este proyecto."
+                            : "No posts about this project yet."}
+                    </p>
+                )
+            }
+        </section>
     </article>
 </MainLayout>
 <style is:inline>
@@ -80,5 +112,16 @@ const { name, title, description, links } = data;
 
     li {
         display: list-item;
+    }
+
+    .project-divider {
+        height: 1px;
+        width: 100%;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.05)
+        );
     }
 </style>

@@ -10,33 +10,7 @@ active: true
 stage: building
 ---
 
-Pubmefy is a tool I’m building to reduce the friction researchers face when preparing and maintaining their academic CVs for funding calls.
-
-The idea came from repeatedly seeing the same problem: valuable time spent copying, formatting, and updating the same information across different systems, with a high risk of small but costly errors.
-
-[photo]
-
-## The problem
-
-In many research environments, especially around public funding calls, researchers are required to submit CVs in very specific formats. These formats often change, are poorly integrated with existing tools, and require manual data entry even when the information already exists elsewhere.
-
-The result is:
-
-- Repetitive work
-- Inconsistencies between documents
-- Stress close to deadlines
-- Time spent formatting instead of doing research
-
-## What I built
-
-Pubmefy focuses on turning existing publication data into structured, reusable information.
-
-At its core, it:
-
-- Ingests publication identifiers (such as DOIs or PMIDs)
-- Extracts and normalizes the relevant metadata
-- Generates CVs in the required formats
-- Automates repetitive steps in official submission platforms when possible
+Pubmefy is a web app and extension that automates the creation and updating of academic CVs. It ingests publication identifiers like DOIs or PMIDs, pulls metadata, and formats it into structured, reusable CV content aligned with official call requirements. The goal is to save researchers time and reduce manual formatting errors, with ongoing development toward automating submission workflows and form completion.
 
 The scope is intentionally narrow. Instead of trying to cover every possible workflow, the goal is to make a specific, common process faster and less error-prone.
 

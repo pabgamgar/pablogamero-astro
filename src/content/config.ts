@@ -3,7 +3,9 @@ import { z, defineCollection } from "astro:content";
 export const ProjectItemSchema = z.object({
   name: z.string(),
   title: z.string(),
-  description: z.array(z.string()),
+  description: z.union([z.string(), z.array(z.string())]),
+  summary: z.union([z.string(), z.array(z.string())]).optional(),
+  tech: z.array(z.string()).optional(),
   links: z.record(z.string()),
   type: z.enum(["App", "Website", "SaaS", "Web App", "Business", "Startup"]),
   featured: z.optional(z.boolean()),
@@ -16,6 +18,8 @@ export const BlogPostSchema = z.object({
   description: z.string(),
   date: z.date(),
   tags: z.array(z.string()).optional(),
+  project: z.string().optional(),
+  projects: z.array(z.string()).optional(),
   author: z.string().default("Pablo Gamero"),
   draft: z.boolean().default(false),
 });

@@ -1,5 +1,6 @@
 ---
-const { post, lang } = Astro.props;
+import type { WorkItem } from "@/content/config";
+const { post, lang, projectMeta = [] } = Astro.props;
 const formattedDate =
     lang === "es"
         ? post.data.date.toLocaleDateString("es-ES", {
@@ -12,6 +13,9 @@ const formattedDate =
               month: "long",
               day: "numeric",
           });
+const projectLabel = projectMeta
+    .map((project: WorkItem) => project.name)
+    .join(", ");
 ---
 
 <article
@@ -22,7 +26,15 @@ const formattedDate =
         class="no-underline flex flex-col items-start gap-2"
     >
         <div class="text-sm opacity-70" transition:name={`postDate`}>
-            {formattedDate}
+            {
+                projectLabel ? (
+                    <span>
+                        {formattedDate} • {projectLabel}
+                    </span>
+                ) : (
+                    <span>{formattedDate}</span>
+                )
+            }
         </div>
         <h2 class="text-2xl" transition:name={`title-${post.slug}`}>
             {post.data.title}
@@ -60,6 +72,11 @@ const formattedDate =
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
+    }
+
+    .post-project-inline {
+        margin-left: 6px;
+        opacity: 0.75;
     }
 
     .tag {

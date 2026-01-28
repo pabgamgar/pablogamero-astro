@@ -3,6 +3,7 @@ title: "Aprendizajes de publicar mi primera app – Dibs"
 description: "Lecciones aprendidas creando y publicando mi primera aplicación móvil"
 date: 2026-01-10
 tags: ["desarollo de apps", "lecciones", "publicar"]
+project: "dibs"
 draft: false
 ---
 

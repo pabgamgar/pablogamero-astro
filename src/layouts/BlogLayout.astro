@@ -1,7 +1,7 @@
 ---
 import MainLayout from "./MainLayout.astro";
 import BackButton from "@/components/BackButton.astro";
-import type { CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 export interface Props {
     post: CollectionEntry<"blog" | "blog_es">;
     lang: "en" | "es";
@@ -10,6 +10,20 @@ export interface Props {
 const { post, lang } = Astro.props;
 const { title, description, date, tags } = post.data;
 const { Content } = await post.render();
+const projectEntries = await getCollection(
+    lang === "es" ? "proyectos" : "projects",
+);
+const projectLookup = new Map(
+    projectEntries.map((project) => [project.slug, project.data.name]),
+);
+const projectSlugs = [post.data.project, ...(post.data.projects ?? [])].filter(
+    Boolean,
+);
+const projectMeta = [...new Set(projectSlugs)].map((slug) => ({
+    slug,
+    name: projectLookup.get(slug!) ?? slug,
+}));
+const projectLabel = projectMeta.map((project) => project.name).join(", ");
 
 // Average reading speed: 200 words per minute
 function calculateReadingTime(content: string): number {
@@ -63,6 +77,16 @@ const formattedDate =
                 <time datetime={date.toISOString()} transition:name={`postDate`}
                     >{formattedDate}</time
                 >
+                {
+                    projectLabel && (
+                        <>
+                            <span class="text-white/30">•</span>
+                            <span class="post-project-inline">
+                                {projectLabel}
+                            </span>
+                        </>
+                    )
+                }
                 <span class="text-white/30">•</span>
                 <span class="reading-time">
                     {readingTime}
@@ -160,5 +184,9 @@ const formattedDate =
     }
     .blog-content hr {
         border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .post-project-inline {
+        opacity: 0.8;
     }
 </style>

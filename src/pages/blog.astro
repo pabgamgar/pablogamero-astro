@@ -5,6 +5,20 @@ import BackButton from "@/components/BackButton.astro";
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog", ({ data }) => !data.draft);
+const projectEntries = await getCollection("projects");
+const projectLookup = new Map(
+    projectEntries.map((project) => [project.slug, project.data.name]),
+);
+const projectMetaForPost = (post: any) => {
+    const slugs = [post.data.project, ...(post.data.projects ?? [])].filter(
+        Boolean,
+    );
+    const uniqueSlugs = [...new Set(slugs)];
+    return uniqueSlugs.map((slug) => ({
+        slug,
+        name: projectLookup.get(slug) ?? slug,
+    }));
+};
 const sortedPosts = blogPosts.sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
@@ -32,7 +46,13 @@ const sortedPosts = blogPosts.sort(
         <div class="flex flex-col gap-2 w-full">
             {
                 sortedPosts.map((post) => {
-                    return <ArticleTile post={post} lang="en" />;
+                    return (
+                        <ArticleTile
+                            post={post}
+                            lang="en"
+                            projectMeta={projectMetaForPost(post)}
+                        />
+                    );
                 })
             }
         </div>
