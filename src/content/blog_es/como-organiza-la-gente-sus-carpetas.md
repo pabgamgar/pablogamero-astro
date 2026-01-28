@@ -17,7 +17,7 @@ Aún no he encontrado la respuesta, y eso es un debate para otro día. Lo sí qu
 
 Por esta razón he desarrollado una web simple donde se pueden compartir, ver y descargar estructuras de carpetas, así cómo votarlas, guardarlas en favoritos e inspirarte.
 
-# El proceso
+## El proceso
 
 Este proyecto estaba claramente enfocado a un MVP. ChatGPT ha ayudado al principio a definir qué debería tener el MVP, cómo presentar la información, y qué _no_ debería aparecer en una primera versión. Una vez que esto quedó claro, el resto era ejecución.
 
@@ -25,7 +25,7 @@ Encendí el ordenador, elegí un tech stack y me puse manos a la obra con las ba
 
 Por otra parte estaba la segunda cara de la moneda: publicar una estructura propia. Esto ha sido más complicado. Sigue siendo un poco tedioso. No tengo problema con eso. Es parte de todos los MVP: crear la funcionalidad, publicarlo, conseguir feedback, iterar.
 
-# La tecnología detrás del proyecto
+## La tecnología detrás del proyecto
 
 Como se trataba de un proyecto limitado, lo utilicé como excusa para probar algo nuevo. Opté por Vite en lugar de NextJS, mi opción habitual para sitios web dinámicos, y, sinceramente, la velocidad y la simplicidad me han parecido interesantes.
 
@@ -33,7 +33,7 @@ Para la autenticación y la base de datos he utilizado Supabase, que encaja perf
 
 Para el alojamiento, por supuesto, me decidí por Vercel, simplemente porque elimina las fricciones, perfecto para una v1.
 
-# ¿Y ahora qué?
+## ¿Y ahora qué?
 
 Ya está publicado. Lo he compartido. Ahora estoy viendo qué hace la gente con él.
 

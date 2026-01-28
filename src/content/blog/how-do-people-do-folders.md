@@ -17,7 +17,7 @@ I still haven't figured it out, and that's a rant for another day. What I did wa
 
 That's why I built a simple gallery where people can share their folder structures, browse others, upvote them, favourite them, and download the ones they like.
 
-# The process
+## The process
 
 This was very much an MVP-driven project. ChatGPT helped a lot early on defining what the MVP should be, how to present the information, and what _not_ to build yet. Once that was clear, the rest was mostly execution.
 
@@ -25,7 +25,7 @@ I opened my laptop, picked stack and got to working on the basics. First I neede
 
 I then went to the other side of the coin: uploading a folder structure. This one was a little trickier. It is still a bit clunky. I'm fine with that. That's MVP 101: make it work, publish it, get feedback, iterate.
 
-# The tech behind it
+## The tech behind it
 
 Because this felt like a contained project, I used it as an excuse to try something new. I went with Vite instead of NextJS, my go to for dynamic websites, and honestly, the speed and simplicity were refreshing.
 
@@ -33,7 +33,7 @@ For auth and database I used Supabase, which fit perfectly for an early MVP. The
 
 Fors hosting, of course, I went with Vercel simply because it removes friction, perfect for a v1.
 
-# What now?
+## What now?
 
 It's live. I shared it. Now I'm watching what people do with it.
 
