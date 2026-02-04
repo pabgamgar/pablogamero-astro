@@ -4,7 +4,7 @@ title: "A long-term project focused on solving real business problems through te
 description: "Technology consulting focused on solving real operational problems in small businesses."
 links:
   "Website": "https://limero.com"
-  "LinkedIn": "https://linkedin.com/company/blabliworks"
+  "LinkedIn": "https://linkedin.com/company/limero"
 type: "Startup"
 featured: true
 active: true
@@ -12,6 +12,7 @@ stage: active
 ---
 
 Limero is a consulting and implementation service that acts as a fractional CTO and technology partner for businesses without in-house technical expertise. It identifies operational bottlenecks, decides the right solution, and either builds it or oversees delivery, with a focus on reducing manual work, automating processes, and integrating existing tools. The positioning is simple: tech leadership and delivery for non-technical teams that know something needs fixing but need clarity on what and how.
+
 - Process automation and system redesign
 - Websites and lightweight platforms when they remove real friction
 - Technical decision-making and simplification

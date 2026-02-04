@@ -4,7 +4,7 @@ title: "Un proyecto a largo plazo enfocado en resolver problemas reales de negoc
 description: "Consultoría tecnológica enfocada en resolver problemas operativos reales en pequeñas empresas."
 links:
   "Website": "https://limero.co"
-  "LinkedIn": "https://linkedin.com/company/blabliworks"
+  "LinkedIn": "https://linkedin.com/company/limero"
 type: "Startup"
 featured: true
 active: true
