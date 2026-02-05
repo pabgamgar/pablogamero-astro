@@ -1,6 +1,8 @@
 ---
 import type { WorkItem } from "@/content/config";
 import type { Render, RenderedContent } from "astro:content";
+import fs from "node:fs";
+import path from "node:path";
 import StageBadge from "@/components/StageBadge.astro";
 import { Image } from "astro:assets";
 
@@ -21,6 +23,15 @@ interface Props {
 const { project, lang } = Astro.props;
 const { slug, data } = project;
 const { name, description, stage } = data;
+
+const imageBase = `${slug}-show`;
+const defaultImage = `${imageBase}.webp`;
+const langVariant = `${imageBase}-${lang}.webp`;
+const publicImagesDir = path.resolve(process.cwd(), "public", "images");
+const langVariantPath = path.join(publicImagesDir, langVariant);
+const imageSrc = fs.existsSync(langVariantPath)
+    ? `/images/${langVariant}`
+    : `/images/${defaultImage}`;
 ---
 
 <a
@@ -29,7 +40,7 @@ const { name, description, stage } = data;
 >
     <div class="w-full h-auto aspect-video rounded-lg overflow-hidden bg-black">
         <Image
-            src={`/images/${slug}-show.webp`}
+            src={imageSrc}
             alt=""
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 object-top"
             transition:name={`img-${slug}`}
