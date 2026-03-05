@@ -4,7 +4,7 @@ description: "Do you actually know how much money should be in your bank account
 date: 2026-02-09
 tags: ["app development", "lessons", "shipping"]
 project: "submoney"
-draft: true
+draft: false
 ---
 
 Subscriptions are more and more frequent nowadays, and they can build up to a big chunk of our money. This means that we're dependent on external services and have to pay them on time, or we'll lose our storage, automations, tools, etc.
