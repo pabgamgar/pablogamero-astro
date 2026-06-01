@@ -7,7 +7,7 @@ import { getCollection } from "astro:content";
 const blogPosts = await getCollection("blog_es", ({ data }) => !data.draft);
 const projectEntries = await getCollection("proyectos");
 const projectLookup = new Map(
-    projectEntries.map((project) => [project.slug, project.data.name]),
+    projectEntries.map((project) => [project.id, project.data.name]),
 );
 const projectMetaForPost = (post: any) => {
     const slugs = [post.data.project, ...(post.data.projects ?? [])].filter(

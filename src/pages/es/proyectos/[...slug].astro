@@ -5,7 +5,7 @@ import { getCollection, render } from "astro:content";
 export async function getStaticPaths() {
     const projects = await getCollection("proyectos");
     return projects.map((project) => ({
-        params: { slug: project.slug },
+        params: { slug: project.id },
         props: { project },
     }));
 }
@@ -15,7 +15,7 @@ const { Content } = await render(project);
 const blogPosts = await getCollection("blog_es", ({ data }) => !data.draft);
 const relatedPosts = blogPosts
     .filter((post) => {
-        const projectSlug = project.slug;
+        const projectSlug = project.id;
         return (
             post.data.project === projectSlug ||
             post.data.projects?.includes(projectSlug)

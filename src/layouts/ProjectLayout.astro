@@ -1,28 +1,18 @@
 ---
-import type { WorkItem } from "@/content/config";
-import type { CollectionEntry, Render, RenderedContent } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import fs from "node:fs";
 import path from "node:path";
 import MainLayout from "./MainLayout.astro";
 import PostTile from "@/components/PostTile.astro";
 
 interface Props {
-    project: {
-        id: string;
-        render(): Render[".md"];
-        slug: string;
-        body: string;
-        collection: "projects" | "proyectos";
-        data: WorkItem;
-        rendered?: RenderedContent;
-        filePath?: string;
-    };
+    project: CollectionEntry<"projects" | "proyectos">;
     lang: "en" | "es";
     relatedPosts?: CollectionEntry<"blog" | "blog_es">[];
 }
 
 const { project, lang } = Astro.props;
-const { slug, data } = project;
+const { id: slug, data } = project;
 const { name, title, description, links } = data;
 const descriptionText = Array.isArray(description)
     ? description.join(" ")

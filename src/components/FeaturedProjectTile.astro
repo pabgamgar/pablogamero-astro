@@ -1,24 +1,14 @@
 ---
 import StageBadge from "@/components/StageBadge.astro";
-import type { WorkItem } from "@/content/config";
-import type { Render, RenderedContent } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-    project: {
-        id: string;
-        render(): Render[".md"];
-        slug: string;
-        body: string;
-        collection: "projects" | "proyectos";
-        data: WorkItem;
-        rendered?: RenderedContent;
-        filePath?: string;
-    };
+    project: CollectionEntry<"projects" | "proyectos">;
     lang: "en" | "es";
 }
 
 const { project, lang } = Astro.props;
-const { slug, data } = project;
+const { id: slug, data } = project;
 const { name, description } = data;
 ---
 
