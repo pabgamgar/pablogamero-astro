@@ -2,6 +2,9 @@
   "name": "pablogamero-astro",
   "type": "module",
   "version": "5.0.0",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
