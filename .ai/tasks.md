@@ -5,6 +5,7 @@
 ## Completed Tasks
 
 ### typography — Blabli font for "Pablo Gamero"
+
 - Branch: `typography`
 - Added Blabli-Regular.woff to public/fonts/
 - @font-face + .font-blabli class in MainLayout.astro global styles
