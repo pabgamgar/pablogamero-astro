@@ -1,6 +1,7 @@
 ---
 title: "Learnings from shipping my first app – Dibs"
 description: "Lessons learned from building and launching my first mobile application"
+translationKey: "first-app"
 date: 2026-01-10
 tags: ["app development", "lessons", "shipping"]
 project: "dibs"

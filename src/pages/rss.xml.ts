@@ -13,11 +13,12 @@ export async function GET(context: APIContext) {
     description:
       "Thoughts on building Limero, shipping products, and lessons learned along the way.",
     site: context.site ?? "https://pablogamero.com",
+    trailingSlash: false,
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.date,
-      link: `/blog/${post.id}/`,
+      link: `/blog/${post.id}`,
       categories: post.data.tags || [],
       author: post.data.author,
     })),

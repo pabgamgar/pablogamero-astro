@@ -18,6 +18,7 @@ export const ProjectItemSchema = z.object({
 export const BlogPostSchema = z.object({
   title: z.string(),
   description: z.string(),
+  translationKey: z.string(),
   date: z.coerce.date(),
   tags: z.array(z.string()).optional(),
   project: z.string().optional(),

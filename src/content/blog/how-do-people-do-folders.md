@@ -1,6 +1,7 @@
 ---
 title: "How do people do folders?"
 description: "How do other people structure folders for projects and long-term document storage?"
+translationKey: "folder-organization"
 date: 2026-01-28
 tags: ["webapp", "shipping"]
 project: "folderssh"

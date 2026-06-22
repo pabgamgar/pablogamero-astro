@@ -1,6 +1,7 @@
 ---
 title: "¿Cuánto deberías tener ahorrado para suscripciones?"
 description: "¿De verdad sabes cuánto dinero debería haber en tu cuenta bancaria hoy para pagar todas tus suscripciones a tiempo?"
+translationKey: "subscription-savings"
 date: 2026-02-09
 tags: ["desarollo de apps", "lecciones", "publicar"]
 project: "submoney"

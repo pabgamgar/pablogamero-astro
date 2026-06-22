@@ -2,6 +2,8 @@
 import MainLayout from "./MainLayout.astro";
 import BackButton from "@/components/BackButton.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
+import fs from "node:fs";
+import path from "node:path";
 export interface Props {
     post: CollectionEntry<"blog" | "blog_es">;
     lang: "en" | "es";
@@ -10,6 +12,13 @@ export interface Props {
 const { post, lang } = Astro.props;
 const { title, description, date, tags } = post.data;
 const { Content } = await render(post);
+const translatedPosts = await getCollection(
+    lang === "es" ? "blog" : "blog_es",
+    ({ data }) => !data.draft,
+);
+const translatedPost = translatedPosts.find(
+    ({ data }) => data.translationKey === post.data.translationKey,
+);
 const projectEntries = await getCollection(
     lang === "es" ? "proyectos" : "projects",
 );
@@ -24,6 +33,25 @@ const projectMeta = [...new Set(projectSlugs)].map((slug) => ({
     name: projectLookup.get(slug!) ?? slug,
 }));
 const projectLabel = projectMeta.map((project) => project.name).join(", ");
+const primaryProject = post.data.project ?? post.data.projects?.[0];
+const socialProject = primaryProject === "folderssh" ? "folders.sh" : primaryProject;
+const socialImageBase = socialProject ? `${socialProject}-show` : undefined;
+const socialImageVariant = socialImageBase
+    ? `${socialImageBase}-${lang}.webp`
+    : undefined;
+const socialImageVariantPath = socialImageVariant
+    ? path.resolve(process.cwd(), "public", "images", socialImageVariant)
+    : undefined;
+const socialImage = socialImageBase
+    ? `/images/${
+          socialImageVariantPath && fs.existsSync(socialImageVariantPath)
+              ? socialImageVariant
+              : `${socialImageBase}.webp`
+      }`
+    : undefined;
+const translatedUrl = translatedPost
+    ? `https://pablogamero.com${lang === "es" ? "" : "/es"}/blog/${translatedPost.id}`
+    : undefined;
 
 // Average reading speed: 200 words per minute
 function calculateReadingTime(content: string): number {
@@ -55,7 +83,10 @@ const formattedDate =
     kw={tags?.join(", ") || ""}
     lang={lang}
     canon={`https://pablogamero.com${lang === "es" ? "/es" : ""}/blog/${post.id}`}
-    alt={`https://pablogamero.com${lang === "es" ? "" : "/es"}/blog/${post.id}`}
+    alt={translatedUrl}
+    socialImage={socialImage}
+    ogType="article"
+    twitterCard="summary_large_image"
 >
     <article
         class="flex w-full max-w-3xl flex-col items-start gap-8 px-4 pb-16 pt-6 sm:px-6 md:px-8"

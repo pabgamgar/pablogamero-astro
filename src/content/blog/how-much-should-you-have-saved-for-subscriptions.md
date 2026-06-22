@@ -1,6 +1,7 @@
 ---
 title: "How much should you have saved for subscriptions?"
 description: "Do you actually know how much money should be in your bank account as of today to pay all your subscriptions on time?"
+translationKey: "subscription-savings"
 date: 2026-02-09
 tags: ["app development", "lessons", "shipping"]
 project: "submoney"

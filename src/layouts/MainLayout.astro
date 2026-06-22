@@ -10,6 +10,9 @@ interface Props {
     canon?: string;
     alt?: string;
     robots?: string;
+    socialImage?: string;
+    ogType?: "website" | "article";
+    twitterCard?: "summary" | "summary_large_image";
 }
 
 const {
@@ -20,7 +23,14 @@ const {
     canon,
     alt,
     robots = "index, follow",
+    socialImage = "/images/professional-me.webp",
+    ogType = "website",
+    twitterCard = "summary",
 } = Astro.props;
+const site = Astro.site ?? new URL("https://pablogamero.com");
+const socialImageUrl = new URL(socialImage, site).toString();
+const englishUrl = lang === "en" ? canon : alt;
+const spanishUrl = lang === "es" ? canon : alt;
 ---
 
 <script>
@@ -48,7 +58,6 @@ const {
             href="/favicon.ico"
         />
         <meta name="generator" content={Astro.generator} />
-        <meta http-equiv="Cache-control" content="public" />
         <!-- END COMMON TAGS -->
 
         <title>{title}</title>
@@ -57,26 +66,30 @@ const {
 
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
-        <meta property="og:image" content="/favicon.ico" />
+        <meta property="og:image" content={socialImageUrl} />
         {canon && <meta property="og:url" content={canon} />}
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={ogType} />
 
         {canon && <link rel="canonical" href={canon} />}
         {
-            alt && (
-                <link
-                    rel="alternate"
-                    hreflang={lang == "en" ? "es" : "en"}
-                    href={alt}
-                />
+            englishUrl && spanishUrl && (
+                <>
+                    <link rel="alternate" hreflang="en" href={englishUrl} />
+                    <link rel="alternate" hreflang="es" href={spanishUrl} />
+                    <link
+                        rel="alternate"
+                        hreflang="x-default"
+                        href={englishUrl}
+                    />
+                </>
             )
         }
 
         <!-- TWITTER -->
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content={twitterCard} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={desc} />
-        <meta name="twitter:image" content="/favicon.ico" />
+        <meta name="twitter:image" content={socialImageUrl} />
         {canon && <meta name="twitter:url" content={canon} />}
         <script
             is:inline

@@ -13,11 +13,12 @@ export async function GET(context: APIContext) {
     description:
       "Reflexiones sobre construir Limero, lanzar productos y lecciones aprendidas en el camino.",
     site: context.site ?? "https://pablogamero.com",
+    trailingSlash: false,
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.date,
-      link: `/es/blog/${post.id}/`,
+      link: `/es/blog/${post.id}`,
       categories: post.data.tags || [],
       author: post.data.author,
     })),

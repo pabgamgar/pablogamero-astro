@@ -33,12 +33,14 @@ const imageSrc = fs.existsSync(langVariantPath)
 ---
 
 <MainLayout
-    title={name}
+    title={`${name}${title ? `: ${title}` : ""} • Pablo Gamero`}
     desc={metaDescription}
     kw={name}
     canon={`https://pablogamero.com${lang === "en" ? "/projects" : "/es/proyectos"}/${slug}`}
     alt={`https://pablogamero.com${lang === "en" ? "/es/proyectos" : "/projects"}/${slug}`}
     lang={lang}
+    socialImage={imageSrc}
+    twitterCard="summary_large_image"
 >
     <article
         class="text-white max-w-4xl flex flex-col gap-8 self-center px-4 sm:px-8 md:px-12 py-4"

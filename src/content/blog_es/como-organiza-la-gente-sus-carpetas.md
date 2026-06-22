@@ -1,6 +1,7 @@
 ---
 title: "¿Cómo organiza la gente sus carpetas?"
 description: "¿De qué forma manejan la organización de información en carpetas otras personas para proyectos y documentación de larga duración?"
+translationKey: "folder-organization"
 date: 2026-01-28
 tags: ["webapp", "publicar"]
 project: "folderssh"
