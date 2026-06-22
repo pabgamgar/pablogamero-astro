@@ -28,7 +28,7 @@ After I decided that I'd create the app I couldn't find, I took the design of on
 
 Then I did a quick mockup in Figma (I've found that starting to code without a minimal idea of the design is a waste of time) and started coding. It didn't end quite the same as the design but close enough.
 
-![Dibs mockup](/images/dibs-mockup.webp)
+<p><img src="/images/dibs-mockup.webp" alt="Dibs mockup" width="1480" height="1052" loading="lazy" /></p>
 
 Since I had already built a few apps with Flutter, and due to the simplicity of this one, the actual development didn't take that long, just long enough for me to be happy with the result (which of course meant that I'd keep make changes and tweaks for the next 3 weeks after it was supposedly finished). My main hurdle was the reminder notifications, which I had not done before.
 
@@ -49,7 +49,7 @@ What I’d do differently is shipping the app with just the main feature, share 
 
 It's been a week since the app was published and to my surprise, it has been downloaded 30 times without me advertising it other than a post on LinkedIn.
 
-![App Store Connect Screenshot for Dibs](/images/dibs-appstoreconnect.webp)
+<p><img src="/images/dibs-appstoreconnect.webp" alt="App Store Connect Screenshot for Dibs" width="2818" height="324" loading="lazy" /></p>
 
 Now, this data also shows that although my app catches the attention of a few people and they decide to give it a go, the app has got no retention. Interestingly, this is exactly how the app is meant to be used. People open it when they need it, not habitually.
 

@@ -30,6 +30,19 @@ const langVariantPath = path.join(publicImagesDir, langVariant);
 const imageSrc = fs.existsSync(langVariantPath)
     ? `/images/${langVariant}`
     : `/images/${defaultImage}`;
+const imageDimensions: Record<string, { width: number; height: number }> = {
+    caredose: { width: 5760, height: 3240 },
+    dibs: { width: 1920, height: 1080 },
+    "folders.sh": { width: 2048, height: 1274 },
+    itsfree: { width: 2048, height: 1280 },
+    limero: { width: 2048, height: 1285 },
+    pubmefy: { width: 2048, height: 1280 },
+    submoney: { width: 1920, height: 1080 },
+};
+const { width: imageWidth, height: imageHeight } = imageDimensions[slug] ?? {
+    width: 1280,
+    height: 720,
+};
 ---
 
 <MainLayout
@@ -54,8 +67,12 @@ const imageSrc = fs.existsSync(langVariantPath)
                 <img
                     src={imageSrc}
                     alt={name}
+                    width={imageWidth}
+                    height={imageHeight}
                     class="object-cover w-full h-full object-top"
                     transition:name={`img-${slug}`}
+                    loading="eager"
+                    fetchpriority="high"
                 />
             </div>
             <div class="flex gap-4">

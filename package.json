@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node scripts/prepare-build.mjs",
     "build": "astro check && astro build",
+    "postbuild": "node scripts/finalize-build.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -28,7 +28,7 @@ Después de decidir que crearía la app que no podía encontrar, cogí el diseñ
 
 Luego hice un boceto rápido en Figma (empezar a programar sin una idea mínima del diseño es una pérdida de tiempo) y empecé a desarrollarla. No acabó exactamente igual que el diseño pero bastante parecido.
 
-![Boceto de Dibs](/images/dibs-mockup.webp)
+<p><img src="/images/dibs-mockup.webp" alt="Boceto de Dibs" width="1480" height="1052" loading="lazy" /></p>
 
 Como ya había construido algunas apps con Flutter, y por la simplicidad de esta, el desarrollo en sí no llevó tanto tiempo, solo el suficiente para estar contento con el resultado (lo que por supuesto significaba que seguiría haciendo cambios y ajustes durante las siguientes 3 semanas después de que supuestamente estuviera terminada). Mi principal obstáculo fueron las notificaciones de recordatorio, que no había hecho antes.
 
@@ -49,7 +49,7 @@ Lo que haría diferente es lanzar la app solo con la funcionalidad principal, co
 
 Ha pasado una semana desde que la app fue publicada y para mi sorpresa, ha sido descargada 30 veces sin que la haya promocionado más allá de un post en LinkedIn.
 
-![Captura de App Store Connect de Dibs](/images/dibs-appstoreconnect.webp)
+<p><img src="/images/dibs-appstoreconnect.webp" alt="Captura de App Store Connect de Dibs" width="2818" height="324" loading="lazy" /></p>
 
 Ahora bien, estos datos también muestran que aunque mi app llama la atención de algunas personas y deciden probarla, la app no tiene retención. Curiosamente, así es exactamente como la app está pensada para usarse. La gente la abre cuando la necesita, no de forma habitual.
 
