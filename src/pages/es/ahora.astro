@@ -1,0 +1,234 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import BackButton from "@/components/BackButton.astro";
+import StatusTag from "@/components/StatusTag.astro";
+import status from "@/content/status.json";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("proyectos");
+const building = projects.filter(
+    (p) => p.data.active && p.data.stage === "building",
+);
+const maintaining = projects.filter(
+    (p) => p.data.active && p.data.stage === "maintaining",
+);
+
+const updated = new Date(status.updated).toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+
+// Translate the known status labels; fall back to the raw value.
+const STATUS_ES: Record<string, string> = {
+    "building Limero": "construyendo Limero",
+    "evaluating app idea": "evaluando una idea de app",
+    "client meeting": "reunión con cliente",
+    "client work": "trabajo con cliente",
+    admin: "administración",
+    writing: "escribiendo",
+    recharging: "recargando",
+    shipping: "lanzando",
+    debugging: "depurando",
+    planning: "planificando",
+    researching: "investigando",
+    learning: "aprendiendo",
+    experimenting: "experimentando",
+};
+const history = (status.history ?? []).map((h) => STATUS_ES[h] ?? h);
+
+// Escrito a mano. Edita esta línea cuando cambie el foco.
+const focus =
+    "Metido de lleno en Limero — convirtiendo un puñado de flujos manuales de clientes en cosas que funcionan solas. Mis propios productos van a fuego lento de fondo.";
+---
+
+<MainLayout
+    title="Ahora • Pablo Gamero"
+    desc="En qué estoy centrado ahora mismo — una instantánea con fecha de lo que construyo, mantengo y aprendo."
+    kw="Pablo Gamero, página ahora, actualmente, building in public, Limero"
+    canon="https://pablogamero.com/es/ahora"
+    alt="https://pablogamero.com/now"
+    lang="es"
+>
+    <div
+        id="content"
+        class="now w-full max-w-3xl px-4 sm:px-6 md:px-8 flex flex-col gap-12"
+    >
+        <BackButton link="/es" text="Volver a inicio" />
+
+        <!-- HERO -->
+        <header class="flex flex-col gap-5 items-start">
+            <h1>Ahora</h1>
+            <div class="pill-wrap">
+                <StatusTag lang="es" fallback={status.current.es} />
+            </div>
+            <p class="focus">{focus}</p>
+            <span class="stamp">Última actualización: {updated}</span>
+        </header>
+
+        <!-- CONSTRUYENDO / MANTENIENDO -->
+        <div class="cols">
+            {
+                building.length > 0 && (
+                    <section class="block">
+                        <span class="eyebrow">Construyendo ahora</span>
+                        <ul class="proj">
+                            {building.map((p) => (
+                                <li>
+                                    <a href={`/es/proyectos/${p.id}`}>
+                                        <span class="name">{p.data.name}</span>
+                                        <span class="tag">{p.data.title}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )
+            }
+            {
+                maintaining.length > 0 && (
+                    <section class="block">
+                        <span class="eyebrow">Manteniendo vivo</span>
+                        <ul class="proj">
+                            {maintaining.map((p) => (
+                                <li>
+                                    <a href={`/es/proyectos/${p.id}`}>
+                                        <span class="name">{p.data.name}</span>
+                                        <span class="tag">{p.data.title}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )
+            }
+        </div>
+
+        <!-- HISTORIAL -->
+        {
+            history.length > 0 && (
+                <section class="block">
+                    <span class="eyebrow">Antes de esto</span>
+                    <ul class="history">
+                        {history.map((h) => (
+                            <li>
+                                <span class="dot" />
+                                {h}
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )
+        }
+
+        <p class="note">
+            Esta página cambia cuando cambia mi foco — no en una agenda. Si se ve
+            igual durante un tiempo, es honestidad, no dejadez.
+        </p>
+    </div>
+</MainLayout>
+
+<style>
+    .now {
+        text-align: left;
+        line-height: 1.65;
+    }
+    .pill-wrap :global([data-status-tag]) {
+        margin: 0;
+    }
+    .pill-wrap :global(.flex.min-h-6) {
+        justify-content: flex-start;
+    }
+
+    .focus {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        line-height: 1.45;
+        color: #eef2f1;
+        max-width: 58ch;
+    }
+    .stamp {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--faint);
+    }
+
+    .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 640px) {
+        .cols {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+    }
+    .eyebrow {
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .proj {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .proj a {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        text-decoration: none;
+        border-left: 2px solid var(--teal-deep);
+        padding-left: 0.9rem;
+        transition: border-color 250ms ease;
+    }
+    .proj a:hover {
+        border-color: var(--teal);
+    }
+    .proj .name {
+        font-weight: 600;
+        color: #f1f1f1;
+    }
+    .proj .tag {
+        font-size: 0.85rem;
+        color: var(--muted);
+    }
+
+    .history {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .history li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+    .history .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        background: var(--faint);
+        flex-shrink: 0;
+    }
+
+    .note {
+        font-size: 0.9rem;
+        color: var(--faint);
+        max-width: 56ch;
+    }
+</style>

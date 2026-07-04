@@ -1,7 +1,15 @@
 ---
-const { lang = "en", endpoint = "https://admin.pablogamero.com/api/status" } =
-    Astro.props as { lang?: "en" | "es"; endpoint?: string };
-const fallback = lang === "es" ? "Actualizando..." : "Updating...";
+const {
+    lang = "en",
+    endpoint = "https://admin.pablogamero.com/api/status",
+    fallback,
+} = Astro.props as {
+    lang?: "en" | "es";
+    endpoint?: string;
+    fallback?: string;
+};
+const fallbackText =
+    fallback ?? (lang === "es" ? "Actualizando..." : "Updating...");
 ---
 
 <div class="flex min-h-6 w-full items-center justify-center">
@@ -21,7 +29,7 @@ const fallback = lang === "es" ? "Actualizando..." : "Updating...";
             >
             </span>
         </span>
-        <span data-status-text>{fallback}</span>
+        <span data-status-text>{fallbackText}</span>
     </p>
 </div>
 <script is:inline>

@@ -1,0 +1,217 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import BackButton from "@/components/BackButton.astro";
+import StatusTag from "@/components/StatusTag.astro";
+import status from "@/content/status.json";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+const building = projects.filter(
+    (p) => p.data.active && p.data.stage === "building",
+);
+const maintaining = projects.filter(
+    (p) => p.data.active && p.data.stage === "maintaining",
+);
+
+const updated = new Date(status.updated).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+const history = status.history ?? [];
+
+// Hand-written. Edit this line when the focus shifts.
+const focus =
+    "Heads-down on Limero — turning a handful of manual client workflows into things that run on their own. My own products are on a slow simmer in the background.";
+---
+
+<MainLayout
+    title="Now • Pablo Gamero"
+    desc="What I'm focused on right now — a dated snapshot of what I'm building, keeping alive, and learning."
+    kw="Pablo Gamero, now page, currently, building in public, Limero"
+    canon="https://pablogamero.com/now"
+    alt="https://pablogamero.com/es/ahora"
+>
+    <div
+        id="content"
+        class="now w-full max-w-3xl px-4 sm:px-6 md:px-8 flex flex-col gap-12"
+    >
+        <BackButton />
+
+        <!-- HERO -->
+        <header class="flex flex-col gap-5 items-start">
+            <h1>Now</h1>
+            <div class="pill-wrap">
+                <StatusTag lang="en" fallback={status.current.en} />
+            </div>
+            <p class="focus">{focus}</p>
+            <span class="stamp">Last updated {updated}</span>
+        </header>
+
+        <!-- BUILDING / MAINTAINING -->
+        <div class="cols">
+            {
+                building.length > 0 && (
+                    <section class="block">
+                        <span class="eyebrow">Building now</span>
+                        <ul class="proj">
+                            {building.map((p) => (
+                                <li>
+                                    <a href={`/projects/${p.id}`}>
+                                        <span class="name">{p.data.name}</span>
+                                        <span class="tag">{p.data.title}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )
+            }
+            {
+                maintaining.length > 0 && (
+                    <section class="block">
+                        <span class="eyebrow">Keeping alive</span>
+                        <ul class="proj">
+                            {maintaining.map((p) => (
+                                <li>
+                                    <a href={`/projects/${p.id}`}>
+                                        <span class="name">{p.data.name}</span>
+                                        <span class="tag">{p.data.title}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )
+            }
+        </div>
+
+        <!-- HISTORY -->
+        {
+            history.length > 0 && (
+                <section class="block">
+                    <span class="eyebrow">Before this</span>
+                    <ul class="history">
+                        {history.map((h) => (
+                            <li>
+                                <span class="dot" />
+                                {h}
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )
+        }
+
+        <p class="note">
+            This page changes when my focus changes — not on a schedule. If it
+            looks the same for a while, that's honest, not stale.
+        </p>
+    </div>
+</MainLayout>
+
+<style>
+    .now {
+        text-align: left;
+        line-height: 1.65;
+    }
+    .pill-wrap :global([data-status-tag]) {
+        margin: 0;
+    }
+    /* left-align the reused status pill instead of centering it */
+    .pill-wrap :global(.flex.min-h-6) {
+        justify-content: flex-start;
+    }
+
+    .focus {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        line-height: 1.45;
+        color: #eef2f1;
+        max-width: 58ch;
+    }
+    .stamp {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--faint);
+    }
+
+    .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 640px) {
+        .cols {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+    }
+    .eyebrow {
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .proj {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .proj a {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        text-decoration: none;
+        border-left: 2px solid var(--teal-deep);
+        padding-left: 0.9rem;
+        transition: border-color 250ms ease;
+    }
+    .proj a:hover {
+        border-color: var(--teal);
+    }
+    .proj .name {
+        font-weight: 600;
+        color: #f1f1f1;
+    }
+    .proj .tag {
+        font-size: 0.85rem;
+        color: var(--muted);
+    }
+
+    .history {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .history li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+    .history .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        background: var(--faint);
+        flex-shrink: 0;
+    }
+
+    .note {
+        font-size: 0.9rem;
+        color: var(--faint);
+        max-width: 56ch;
+    }
+</style>
