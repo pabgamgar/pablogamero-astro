@@ -1,11 +1,12 @@
 {
   "current": {
-    "en": "building Limero",
-    "es": "construyendo Limero"
+    "en": "Limero + personal projects",
+    "es": "Limero + proyectos propios"
   },
-  "updated": "2026-01-12T17:30:00Z",
+  "updated": "2026-07-05T00:00:00Z",
   "history": ["evaluating app idea", "client work"],
   "allowedStatuses": [
+    "Limero + personal projects",
     "building Limero",
     "evaluating app idea",
     "client meeting",
