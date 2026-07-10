@@ -1,7 +1,7 @@
 ---
 name: "Folders.sh"
 title: "Folder structures gallery"
-description: "Have you ever wondered how people's folder structures look like? Folders.sh let's you upload, browse and download them."
+description: "Have you ever wondered how people's folder structures look like? Folders.sh lets you upload, browse and download them."
 links:
   "Website": "https://folders-sh.vercel.app"
 type: "Website"
