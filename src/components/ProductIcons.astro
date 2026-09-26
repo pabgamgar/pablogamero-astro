@@ -8,11 +8,21 @@ const { lang } = Astro.props;
 // `fan` offsets pull the outer icons toward the centre so they overlap until hovered.
 const products = [
     {
+        name: "CareDose",
+        href: "https://caredose.pablogamero.com",
+        icon: "/images/caredose-icon-128.webp",
+        desc: {
+            en: "Medication reminders and dose tracking",
+            es: "Recordatorios de medicación y seguimiento de dosis",
+        },
+        fan: "translate-x-[1.125rem]",
+    },
+    {
         name: "Dibs",
         href: "https://dibs.pablogamero.com",
         icon: "/images/dibs-icon-128.webp",
         desc: { en: "A simple debt tracker", es: "Un gestor de deudas simple" },
-        fan: "translate-x-3",
+        fan: "translate-x-1.5",
     },
     {
         name: "Pubmefy",
@@ -22,7 +32,7 @@ const products = [
             en: "Automated CVs for researchers",
             es: "CVs automatizados para investigadores",
         },
-        fan: "",
+        fan: "-translate-x-1.5",
     },
     {
         name: "Submoney",
@@ -32,7 +42,7 @@ const products = [
             en: "A simple subscription tracker",
             es: "Un gestor de suscripciones simple",
         },
-        fan: "-translate-x-3",
+        fan: "-translate-x-[1.125rem]",
     },
 ];
 ---
