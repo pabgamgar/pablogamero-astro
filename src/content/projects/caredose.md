@@ -8,7 +8,7 @@ links:
 type: "App"
 featured: false
 active: true
-stage: active
+stage: maintaining
 ---
 
 CareDose is a medication companion for managing prescriptions, schedules, and daily doses in one place. It provides reminders, dose history, adherence insights, and low-stock alerts so it is easier to follow a treatment plan consistently.
