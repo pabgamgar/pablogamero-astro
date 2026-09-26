@@ -6,10 +6,10 @@ const { link = "/", text = "Back to home" } = Astro.props;
 
 <a
     href={link}
-    class="text-neutral-300 flex gap-1 self-start items-center hover:text-neutral-600 transition-all group"
+    class="text-neutral-300 flex gap-1 self-start items-center hover:text-white transition-colors group"
 >
     <LeftArrow size={4} />
-    <span class="-translate-y-[1px] group-hover:translate-x-1 transition-all"
+    <span class="-translate-y-[1px] group-hover:translate-x-1 transition-transform motion-reduce:transition-none"
         >{text}</span
     >
 </a>

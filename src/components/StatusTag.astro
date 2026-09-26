@@ -3,18 +3,26 @@ const {
     lang = "en",
     endpoint = "https://admin.pablogamero.com/api/status",
     fallback,
+    href,
 } = Astro.props as {
     lang?: "en" | "es";
     endpoint?: string;
     fallback?: string;
+    href?: string;
 };
 const fallbackText =
     fallback ?? (lang === "es" ? "Actualizando..." : "Updating...");
+const Tag = href ? "a" : "p";
 ---
 
 <div class="flex min-h-6 w-full items-center justify-center">
-    <p
-        class="px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit flex gap-2 items-center justify-center text-sm text-center self-center sm:self-auto whitespace-nowrap"
+    <Tag
+        href={href}
+        class:list={[
+            "group/status px-2.5 py-0.5 rounded-full bg-[var(--content)] w-fit flex gap-2 items-center justify-center text-sm text-center self-center sm:self-auto whitespace-nowrap",
+            href &&
+                "border border-transparent hover:border-[var(--border)] transition-colors duration-150",
+        ]}
         data-status-tag
         data-lang={lang}
         data-endpoint={endpoint}
@@ -24,13 +32,28 @@ const fallbackText =
             data-status-dot
         >
             <span
-                class="animate-ping inline-flex size-full rounded-full bg-green-400 opacity-75"
+                class="animate-ping motion-reduce:animate-none inline-flex size-full rounded-full bg-green-400 opacity-75"
                 data-status-ping
             >
             </span>
         </span>
-        <span data-status-text>{fallbackText}</span>
-    </p>
+        <span data-status-text aria-live="polite">{fallbackText}</span>
+        {
+            href && (
+                <>
+                    <span
+                        aria-hidden="true"
+                        class="text-[var(--teal)] transition-transform duration-300 group-hover/status:translate-x-0.5 motion-reduce:transition-none"
+                    >
+                        →
+                    </span>
+                    <span class="sr-only">
+                        {lang === "es" ? "(qué hago ahora)" : "(what I'm up to now)"}
+                    </span>
+                </>
+            )
+        }
+    </Tag>
 </div>
 <script is:inline>
     (() => {
@@ -82,10 +105,17 @@ const fallbackText =
             const dotEl = el.querySelector("[data-status-dot]");
             const pingEl = el.querySelector("[data-status-ping]");
 
+            const markOffline = () => {
+                if (dotEl && pingEl) {
+                    setDotColor(dotEl, pingEl, "gray");
+                    pingEl.classList.add("hidden");
+                }
+            };
+
             fetch(endpoint, { headers: { Accept: "application/json" } })
                 .then((res) => (res.ok ? res.json() : null))
                 .then((data) => {
-                    if (!data) return;
+                    if (!data) return markOffline();
                     const statusKey =
                         typeof data.key === "string" ? data.key : null;
                     const current =
@@ -104,7 +134,7 @@ const fallbackText =
                         if (color) setDotColor(dotEl, pingEl, color);
                     }
                 })
-                .catch(() => {});
+                .catch(markOffline);
         });
     })();
 </script>

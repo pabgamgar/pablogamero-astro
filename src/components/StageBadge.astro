@@ -1,13 +1,26 @@
 ---
 type Stage = "building" | "maintaining" | "paused" | "active";
 
-const { stage } = Astro.props as { stage: Stage };
+interface Props {
+    stage?: Stage;
+    lang: "en" | "es";
+}
 
-const LABEL: Record<Stage, string> = {
-    building: "building",
-    maintaining: "maintaining",
-    paused: "paused",
-    active: "active",
+const { stage, lang } = Astro.props;
+
+const LABEL: Record<"en" | "es", Record<Stage, string>> = {
+    en: {
+        building: "building",
+        maintaining: "maintaining",
+        paused: "paused",
+        active: "active",
+    },
+    es: {
+        building: "en desarrollo",
+        maintaining: "en mantenimiento",
+        paused: "en pausa",
+        active: "activo",
+    },
 };
 
 const CLASS: Record<Stage, string> = {
@@ -19,13 +32,17 @@ const CLASS: Record<Stage, string> = {
 };
 ---
 
-<span
-    class={[
-        "inline-flex items-center rounded-full px-2 py-0.5",
-        "text-[11px] leading-4 tracking-wide",
-        "select-none whitespace-nowrap",
-        CLASS[stage],
-    ].join(" ")}
->
-    {LABEL[stage]}
-</span>
+{
+    stage && (
+        <span
+            class:list={[
+                "inline-flex items-center rounded-full px-2 py-0.5",
+                "text-[11px] leading-4 tracking-wide",
+                "select-none whitespace-nowrap",
+                CLASS[stage],
+            ]}
+        >
+            {LABEL[lang][stage]}
+        </span>
+    )
+}

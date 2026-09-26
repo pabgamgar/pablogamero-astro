@@ -1,0 +1,74 @@
+---
+interface Props {
+    lang: "en" | "es";
+}
+
+const { lang } = Astro.props;
+
+// `fan` offsets pull the outer icons toward the centre so they overlap until hovered.
+const products = [
+    {
+        name: "Dibs",
+        href: "https://dibs.pablogamero.com",
+        icon: "/images/dibs-icon-128.webp",
+        desc: { en: "A simple debt tracker", es: "Un gestor de deudas simple" },
+        fan: "sm:translate-x-3",
+    },
+    {
+        name: "Pubmefy",
+        href: "https://pubmefy.vercel.app",
+        icon: "/images/pubmefy-icon-128.webp",
+        desc: {
+            en: "Automated CVs for researchers",
+            es: "CVs automatizados para investigadores",
+        },
+        fan: "",
+    },
+    {
+        name: "Submoney",
+        href: "https://submoney.pablogamero.com",
+        icon: "/images/submoney-icon-128.webp",
+        desc: {
+            en: "A simple subscription tracker",
+            es: "Un gestor de suscripciones simple",
+        },
+        fan: "sm:-translate-x-3",
+    },
+];
+---
+
+<ul class="grid grid-cols-3 gap-4 sm:flex sm:gap-2">
+    {
+        products.map((p) => (
+            <li>
+                <a
+                    href={p.href}
+                    class:list={[
+                        "group/icon relative flex flex-col items-center gap-2 rounded-lg",
+                        "sm:-rotate-6 sm:group-hover/projects:translate-x-0 sm:group-hover/projects:rotate-0",
+                        "sm:group-focus-within/projects:translate-x-0 sm:group-focus-within/projects:rotate-0",
+                        "transition-transform duration-300 motion-reduce:transition-none",
+                        p.fan,
+                    ]}
+                >
+                    <img
+                        src={p.icon}
+                        alt=""
+                        width="128"
+                        height="128"
+                        class="size-10 rounded-lg"
+                    />
+                    <span class="flex flex-col gap-0.5 text-xs leading-snug sm:hidden">
+                        <span class="font-medium text-white/90">{p.name}</span>
+                        <span class="text-balance text-white/55">
+                            {p.desc[lang]}
+                        </span>
+                    </span>
+                    <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden w-max max-w-[14rem] -translate-x-1/2 text-balance rounded-xl bg-black/80 px-2.5 py-1 text-xs text-white opacity-0 transition-opacity group-hover/icon:opacity-100 group-focus-visible/icon:opacity-100 sm:block">
+                        {p.name} — {p.desc[lang]}
+                    </span>
+                </a>
+            </li>
+        ))
+    }
+</ul>

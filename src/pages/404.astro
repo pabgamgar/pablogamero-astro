@@ -1,6 +1,5 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import Button from "@/components/Button.astro";
 ---
 
 <MainLayout
@@ -8,19 +7,21 @@ import Button from "@/components/Button.astro";
     desc="Not Found Page"
     robots="noindex, nofollow"
 >
-  <div class="content">
-    <h1>404</h1>
-    <p>Page not found</p>
-    <Button href="/">Go Back Home</Button>
-  </div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-4 px-4 pb-8 text-center">
+        <img
+            src="/images/winkPablo.webp"
+            alt=""
+            width="280"
+            height="280"
+            class="size-24 no-drag"
+        />
+        <h1>404</h1>
+        <p class="text-white/70">This page doesn't exist — or it used to and I moved it.</p>
+        <a
+            href="/"
+            class="mt-2 rounded-lg bg-[var(--teal)] px-4 py-2 font-medium text-[var(--black)] transition-colors duration-150 hover:bg-[var(--teal-deep)]"
+        >
+            Go back home
+        </a>
+    </div>
 </MainLayout>
-
-<style>
-  .content {
-    align-items: center;
-    margin: auto;
-  }
-  button {
-    margin-top: 1rem;
-  }
-</style>

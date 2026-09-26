@@ -2,23 +2,54 @@
 import Globe from "@/icons/globe.astro";
 ---
 
-<div class="absolute right-6 top-5 group">
+<div class="absolute right-6 top-5 group" data-lang-selector>
     <button
-        aria-haspopup="true"
+        type="button"
+        aria-expanded="false"
+        aria-controls="lang-menu"
         aria-label="Language"
-        class="text-neutral-300 hover:text-white/90 transition text-xs"
+        class="text-neutral-300 hover:text-white/90 transition-colors text-xs"
+        data-lang-toggle
     >
         <Globe size={5} />
     </button>
     <div
-        class="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity absolute right-0
+        id="lang-menu"
+        class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-data-[open]:visible group-data-[open]:opacity-100 transition-[opacity,visibility] absolute right-0
   rounded-lg border border-white/10 bg-black/80 backdrop-blur px-2 py-1 text-xs"
     >
-        <a href="/" class="block px-2 py-1 text-white/70 hover:text-white"
+        <a href="/" lang="en" class="block px-2 py-1 text-white/70 hover:text-white"
             >English</a
         >
-        <a href="/es" class="block px-2 py-1 text-white/70 hover:text-white"
+        <a href="/es" lang="es" class="block px-2 py-1 text-white/70 hover:text-white"
             >Español</a
         >
     </div>
 </div>
+
+<script>
+    // Delegated on document so it survives ClientRouter page swaps.
+    const close = (root: Element) => {
+        root.removeAttribute("data-open");
+        root.querySelector("[data-lang-toggle]")?.setAttribute("aria-expanded", "false");
+    };
+
+    document.addEventListener("click", (event) => {
+        const target = event.target as Element;
+        const toggle = target.closest("[data-lang-toggle]");
+        document.querySelectorAll("[data-lang-selector]").forEach((root) => {
+            if (toggle && root.contains(toggle)) {
+                const open = !root.hasAttribute("data-open");
+                root.toggleAttribute("data-open", open);
+                toggle.setAttribute("aria-expanded", String(open));
+            } else if (!root.contains(target)) {
+                close(root);
+            }
+        });
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        document.querySelectorAll("[data-lang-selector][data-open]").forEach(close);
+    });
+</script>

@@ -3,7 +3,7 @@ name: "Limero"
 title: "A long-term project focused on solving real business problems through technology."
 description: "Technology consulting focused on solving real operational problems in small businesses."
 links:
-  "Website": "https://limero.com"
+  "Website": "https://limero.co"
   "LinkedIn": "https://linkedin.com/company/limero"
 type: "Startup"
 featured: true

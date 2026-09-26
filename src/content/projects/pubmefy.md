@@ -14,8 +14,6 @@ Pubmefy is a web app and extension that automates the creation and updating of a
 
 The scope is intentionally narrow. Instead of trying to cover every possible workflow, the goal is to make a specific, common process faster and less error-prone.
 
-[photo]
-
 ## What I learned
 
 - Narrowing the problem early is more valuable than adding features later

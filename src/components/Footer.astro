@@ -75,7 +75,7 @@ const { lang } = Astro.props;
         padding: 10px;
         border-radius: 8px;
         color: var(--content-foreground);
-        transition: all 250ms ease-in;
+        transition: scale 250ms ease-in;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -83,6 +83,11 @@ const { lang } = Astro.props;
 
     .social-icon:hover {
         scale: 1.1;
-        transition: all 250ms ease-in;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .social-icon {
+            transition: none;
+        }
     }
 </style>

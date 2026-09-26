@@ -2,17 +2,7 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import BackButton from "@/components/BackButton.astro";
 import { Image } from "astro:assets";
-
-const inspiracion = [
-    {
-        name: "Ali Abdaal",
-        desc: "Ex-médico y youtuber centrado en la productividad y en disfrutar del proceso.",
-    },
-    {
-        name: "Tiago Forte",
-        desc: "Creador del método PARA para organizar nuestras ideas y pensamientos.",
-    },
-];
+import { inspiration } from "@/content/data";
 ---
 
 <MainLayout
@@ -93,10 +83,10 @@ const inspiracion = [
             <span class="eyebrow">De quién aprendo</span>
             <ul class="influences">
                 {
-                    inspiracion.map((person) => (
+                    inspiration.map((person) => (
                         <li>
                             <span class="name">{person.name}</span>
-                            <span class="desc">{person.desc}</span>
+                            <span class="desc">{person.desc.es}</span>
                         </li>
                     ))
                 }
