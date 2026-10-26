@@ -7,7 +7,7 @@ links:
 type: "Website"
 featured: false
 active: true
-stage: maintaining
+stage: paused
 ---
 
 Folders.sh is a lightweight web utility for sharing and visualizing folder structures. It helps people communicate complex directory hierarchies without sharing file contents, producing a simple, shareable representation suited for documentation, collaboration, or team discussions.
